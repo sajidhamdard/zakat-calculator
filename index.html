@@ -306,6 +306,73 @@
         font-size: 0.9rem;
         padding-bottom: 24px;
       }
+
+      .info-section {
+        margin: 0 0 26px;
+        display: grid;
+        gap: 16px;
+      }
+
+      .info-card {
+        background: #fff;
+        border: 1px solid #e4efe8;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 18px;
+      }
+
+      .info-card h3 {
+        margin: 0 0 10px;
+        color: var(--primary-dark);
+        font-size: 1.06rem;
+      }
+
+      .info-card p,
+      .info-card li {
+        color: #33463d;
+        line-height: 1.6;
+      }
+
+      .info-card ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+      }
+
+      .quick-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+        font-size: 0.94rem;
+      }
+
+      .quick-table th,
+      .quick-table td {
+        border: 1px solid #e2ece6;
+        padding: 9px 10px;
+        text-align: left;
+      }
+
+      .quick-table th {
+        background: #f2f8f5;
+        color: #2c5845;
+      }
+
+      .faq-item {
+        border: 1px solid #deebe4;
+        border-radius: 10px;
+        padding: 10px 12px;
+        background: #fcfffd;
+      }
+
+      .faq-item summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: #224837;
+      }
+
+      .faq-item p {
+        margin: 8px 0 0;
+      }
     </style>
   </head>
   <body>
@@ -313,7 +380,7 @@
       <section class="hero">
         <div class="hero-content">
           <h1>ज़कात कैलकुलेटर</h1>
-          <p class="subtitle">अपनी सालाना ज़कात की गणना आसान तरीके से करें</p>
+          <p class="subtitle">अपनी सालाना ज़कात (2.5%) की गणना कुछ आसान स्टेप्स में करें</p>
         </div>
       </section>
 
@@ -363,7 +430,7 @@
           </section>
 
           <section class="card split">
-            <h2>3️⃣ निवेश</h2>
+            <h2>3️⃣ निवेश और व्यापारिक संपत्ति</h2>
             <div class="field-grid">
               <div class="field">
                 <label for="stocks">शेयर / म्यूचुअल फंड (₹)</label>
@@ -381,10 +448,10 @@
           </section>
 
           <section class="card split">
-            <h2>4️⃣ देनदारियां (1 साल के अंदर वाली)</h2>
+            <h2>4️⃣ देनदारियां (अभी देय)</h2>
             <div class="field-grid">
               <div class="field">
-                <label for="loan">कर्ज (₹)</label>
+                <label for="loan">कर्ज (अभी देय) (₹)</label>
                 <input type="number" id="loan" min="0" step="0.01" value="0" />
               </div>
               <div class="field">
@@ -399,7 +466,7 @@
             <div class="radio-group">
               <label class="radio-item">
                 <input type="radio" name="nisabBase" value="silver" checked />
-                चांदी के आधार पर
+                चांदी के आधार पर (अनुशंसित)
               </label>
               <label class="radio-item">
                 <input type="radio" name="nisabBase" value="gold" />
@@ -410,18 +477,21 @@
               <div class="field">
                 <label for="nisabGoldPrice">वर्तमान सोने की कीमत (₹/ग्राम)</label>
                 <input type="number" id="nisabGoldPrice" min="0" step="0.01" value="0" />
-                <p class="inline-note">सोना निसाब = 87.48 ग्राम × कीमत</p>
+                <p class="inline-note">सोना निसाब = 87.48 ग्राम × बाजार कीमत</p>
               </div>
               <div class="field">
                 <label for="nisabSilverPrice">वर्तमान चांदी की कीमत (₹/ग्राम)</label>
                 <input type="number" id="nisabSilverPrice" min="0" step="0.01" value="0" />
-                <p class="inline-note">चांदी निसाब = 612.36 ग्राम × कीमत</p>
+                <p class="inline-note">चांदी निसाब = 612.36 ग्राम × बाजार कीमत</p>
               </div>
             </div>
             <div class="actions" style="margin-top: 14px;">
               <button type="submit" class="btn btn-primary">गणना करें</button>
-              <button type="button" class="btn btn-secondary" id="resetBtn">Reset</button>
+              <button type="button" class="btn btn-secondary" id="resetBtn">रीसेट</button>
             </div>
+            <p class="inline-note" style="margin-top: 12px;">
+              ध्यान दें: यह टूल ज़कात अल-माल की गणना करता है। आपकी शुद्ध संपत्ति एक चांद्र वर्ष (हौल) तक निसाब से ऊपर होनी चाहिए।
+            </p>
             <div class="error" id="errorBox" aria-live="polite"></div>
           </section>
         </div>
@@ -435,18 +505,85 @@
             <span id="totalAssetsOut">₹0</span>
           </div>
           <div class="result-item">
-            <strong>निसाब</strong>
+            <strong>कुल देनदारियां</strong>
+            <span id="debtsOut">₹0</span>
+          </div>
+          <div class="result-item">
+            <strong>शुद्ध संपत्ति</strong>
+            <span id="netWealthOut">₹0</span>
+          </div>
+          <div class="result-item">
+            <strong>निसाब सीमा</strong>
             <span id="nisabOut">₹0</span>
           </div>
           <div class="result-item highlight">
-            <strong>ज़कात देय राशि</strong>
+            <strong>ज़कात देय राशि (2.5%)</strong>
             <span id="zakatOut">₹0</span>
           </div>
         </div>
       </section>
 
+      <section class="info-section" aria-label="ज़कात जानकारी और संदर्भ">
+        <article class="info-card">
+          <h3>यह कैलकुलेटर कैसे काम करता है</h3>
+          <p>
+            प्रयुक्त सूत्र: <strong>(कुल ज़कात योग्य संपत्ति − देय देनदारियां) × 2.5%</strong>।
+            ज़कात तब देय होती है जब आपकी शुद्ध संपत्ति निसाब के बराबर या उससे अधिक हो और एक चांद्र वर्ष तक बनी रहे।
+          </p>
+          <table class="quick-table">
+            <thead>
+              <tr>
+                <th>निसाब प्रकार</th>
+                <th>वजन आधार</th>
+                <th>उद्देश्य</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>सोना निसाब</td>
+                <td>87.48 ग्राम</td>
+                <td>उच्च सीमा</td>
+              </tr>
+              <tr>
+                <td>चांदी निसाब</td>
+                <td>612.36 ग्राम</td>
+                <td>कम सीमा (आमतौर पर अनुशंसित)</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="info-card">
+          <h3>क्या शामिल करें और क्या नहीं</h3>
+          <ul>
+            <li><strong>शामिल करें:</strong> नकद, बैंक बचत, सोना/चांदी, निवेश, बिजनेस स्टॉक।</li>
+            <li><strong>शामिल न करें:</strong> मुख्य निवास, निजी उपयोग की गाड़ी, घरेलू सामान, बिक्री के लिए नहीं होने वाले उपकरण।</li>
+            <li><strong>देनदारियां:</strong> केवल अभी देय राशि घटाएं (पूरी लंबी अवधि की राशि नहीं)।</li>
+          </ul>
+        </article>
+
+        <article class="info-card">
+          <h3>त्वरित सामान्य प्रश्न</h3>
+          <details class="faq-item">
+            <summary>क्या यह कैलकुलेटर ज़कात अल-फित्र के लिए है?</summary>
+            <p>नहीं। यह कैलकुलेटर सालाना ज़कात अल-माल (माल की ज़कात) के लिए है, ज़कात अल-फित्र के लिए नहीं।</p>
+          </details>
+          <details class="faq-item">
+            <summary>क्या मैं नियत तिथि से पहले ज़कात दे सकता/सकती हूँ?</summary>
+            <p>हाँ, पहले भुगतान करना सामान्यतः जायज़ है। बिना उचित कारण देरी करना उचित नहीं है।</p>
+          </details>
+          <details class="faq-item">
+            <summary>क्या मैं परिवार को ज़कात दे सकता/सकती हूँ?</summary>
+            <p>
+              योग्य विस्तारित रिश्तेदार (जैसे भाई-बहन, चचेरे/ममेरे रिश्तेदार) पात्र होने पर ज़कात ले सकते हैं।
+              जीवनसाथी, माता-पिता या बच्चों को ज़कात नहीं दी जा सकती।
+            </p>
+          </details>
+        </article>
+      </section>
+
       <footer>
-        यह कैलकुलेटर सामान्य अनुमान देता है। जटिल मामलों में किसी आलिम से सलाह लें।
+        यह कैलकुलेटर सामान्य अनुमान देता है। जटिल मामलों में किसी योग्य आलिम से सलाह लें।
       </footer>
     </main>
 
@@ -459,6 +596,8 @@
       const silverValueEl = document.getElementById("silverValue");
 
       const totalAssetsOut = document.getElementById("totalAssetsOut");
+      const debtsOut = document.getElementById("debtsOut");
+      const netWealthOut = document.getElementById("netWealthOut");
       const nisabOut = document.getElementById("nisabOut");
       const zakatOut = document.getElementById("zakatOut");
 
@@ -536,14 +675,14 @@
         const goldValue = goldWeight * goldPrice;
         const silverValue = silverWeight * silverPrice;
 
-        // Total assets = cash + bank + wallet + metal value + investment value.
+        // कुल संपत्ति = cash + bank + wallet + metal value + investment value.
         const totalAssets =
           cash + bank + wallet + goldValue + silverValue + stocks + crypto + businessStock;
 
         // Debts payable within 1 year.
         const totalDebts = loan + pendingBills;
 
-        // Net wealth after subtracting debts.
+        // शुद्ध संपत्ति after subtracting debts.
         const netWealth = totalAssets - totalDebts;
 
         // Nisab based on selected metal.
@@ -555,6 +694,8 @@
         const zakat = netWealth >= nisabValue ? Math.max(netWealth, 0) * 0.025 : 0;
 
         totalAssetsOut.textContent = inr(Math.max(totalAssets, 0));
+        debtsOut.textContent = inr(Math.max(totalDebts, 0));
+        netWealthOut.textContent = inr(Math.max(netWealth, 0));
         nisabOut.textContent = inr(Math.max(nisabValue, 0));
         zakatOut.textContent = inr(Math.max(zakat, 0));
 
@@ -578,6 +719,8 @@
         document.querySelector("input[name='nisabBase'][value='silver']").checked = true;
         errorBox.textContent = "";
         totalAssetsOut.textContent = "₹0";
+        debtsOut.textContent = "₹0";
+        netWealthOut.textContent = "₹0";
         nisabOut.textContent = "₹0";
         zakatOut.textContent = "₹0";
         updateMetalValues();
