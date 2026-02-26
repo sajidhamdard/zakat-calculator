@@ -721,7 +721,7 @@
         document.getElementById("madhabStatus").textContent = note;
       }
 
-      function calculate() {
+      function calculate({ shouldScroll = true } = {}) {
         if (hasNegativeValues()) {
           errorBox.textContent = "मेहरबानी करके मनफ़ी (negative) क़ीमत दर्ज न करें।";
           return;
@@ -780,7 +780,9 @@
         nisabOut.textContent = inr(Math.max(nisabValue, 0));
         zakatOut.textContent = inr(Math.max(zakat, 0));
 
-        resultSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (shouldScroll) {
+          resultSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       }
 
       form.addEventListener("input", () => {
@@ -789,7 +791,7 @@
 
       document.getElementById("madhabSelect").addEventListener("change", () => {
         updateMetalValues();
-        calculate();
+        calculate({ shouldScroll: false });
       });
 
       form.addEventListener("submit", (event) => {
