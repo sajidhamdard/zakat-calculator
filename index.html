@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ज़कात कैलकुलेटर</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f6fbf8;
+        --card: #ffffff;
+        --primary: #1f8f63;
+        --primary-dark: #156f4d;
+        --accent: #d7b76a;
+        --text: #1c2a23;
+        --muted: #5d6b64;
+        --danger: #c0392b;
+        --shadow: 0 12px 32px rgba(18, 73, 53, 0.12);
+        --radius: 16px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Noto Sans Devanagari", "Poppins", system-ui, -apple-system,
+          sans-serif;
+        background: radial-gradient(circle at top, #eef9f2 0%, var(--bg) 40%, #f9fcfa 100%);
+        color: var(--text);
+      }
+
+      .container {
+        width: min(1080px, 92vw);
+        margin: 0 auto;
+      }
+
+      .hero {
+        margin: 22px auto 24px;
+        border-radius: 24px;
+        background: linear-gradient(120deg, #1f8f63, #2ca876 45%, #8ccf87 100%);
+        color: #fff;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.12);
+        pointer-events: none;
+      }
+
+      .hero::before {
+        width: 220px;
+        height: 220px;
+        right: -70px;
+        top: -80px;
+      }
+
+      .hero::after {
+        width: 150px;
+        height: 150px;
+        left: -50px;
+        bottom: -60px;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        padding: 32px 24px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+        letter-spacing: 0.2px;
+      }
+
+      .subtitle {
+        margin: 10px 0 0;
+        opacity: 0.95;
+        font-size: clamp(0.95rem, 2.1vw, 1.08rem);
+      }
+
+      form {
+        display: grid;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      .card {
+        grid-column: span 12;
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 18px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        animation: riseIn 0.55s ease both;
+      }
+
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 16px 32px rgba(17, 61, 45, 0.14);
+      }
+
+      @keyframes riseIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (min-width: 760px) {
+        .card.split {
+          grid-column: span 6;
+        }
+      }
+
+      .card h2 {
+        margin: 0 0 14px;
+        font-size: 1.1rem;
+        color: var(--primary-dark);
+        border-bottom: 1px solid #e9f1ec;
+        padding-bottom: 10px;
+      }
+
+      .field-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .field label {
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+
+      .field input[type="number"] {
+        width: 100%;
+        border: 1px solid #d9e9df;
+        border-radius: 10px;
+        padding: 12px;
+        font-size: 1rem;
+        background: #fcfffd;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .field input[type="number"]:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(31, 143, 99, 0.15);
+      }
+
+      .inline-note {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .calc-value {
+        margin-top: 6px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: #f4fbf7;
+        border: 1px dashed #c9e5d6;
+        color: var(--primary-dark);
+        font-weight: 600;
+      }
+
+      .radio-group {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+
+      .radio-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #fbfefb;
+        border: 1px solid #deede4;
+        border-radius: 10px;
+        padding: 10px 12px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .btn {
+        border: none;
+        border-radius: 10px;
+        padding: 12px 18px;
+        font-size: 0.96rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn:active {
+        transform: translateY(0);
+      }
+
+      .btn-primary {
+        background: linear-gradient(120deg, var(--primary-dark), var(--primary));
+        color: #fff;
+        box-shadow: 0 10px 20px rgba(31, 143, 99, 0.25);
+      }
+
+      .btn-secondary {
+        background: #edf6f1;
+        color: #1f5540;
+      }
+
+      .error {
+        margin-top: 8px;
+        color: var(--danger);
+        font-size: 0.9rem;
+        font-weight: 500;
+        min-height: 20px;
+      }
+
+      .result-card {
+        margin: 8px 0 26px;
+        background: linear-gradient(145deg, #fefdf8, #fff);
+        border: 1px solid #f1e6c8;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 20px;
+      }
+
+      .result-title {
+        margin: 0 0 14px;
+        color: #8a6f35;
+        font-size: 1.08rem;
+      }
+
+      .result-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .result-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        border-radius: 10px;
+        background: #fff;
+        border: 1px solid #f3ebd5;
+        padding: 11px 12px;
+      }
+
+      .result-item strong {
+        color: #3f4d45;
+      }
+
+      .result-item span {
+        font-weight: 700;
+        color: #2e5e48;
+      }
+
+      .result-item.highlight {
+        border: 1px solid #e5c679;
+        background: #fffaf0;
+      }
+
+      footer {
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+        padding-bottom: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <div class="hero-content">
+          <h1>ज़कात कैलकुलेटर</h1>
+          <p class="subtitle">अपनी सालाना ज़कात की गणना आसान तरीके से करें</p>
+        </div>
+      </section>
+
+      <form id="zakatForm" novalidate>
+        <div class="grid">
+          <section class="card split">
+            <h2>1️⃣ नकद और बैंक राशि</h2>
+            <div class="field-grid">
+              <div class="field">
+                <label for="cash">नकद राशि (₹)</label>
+                <input type="number" id="cash" min="0" step="0.01" value="0" />
+              </div>
+              <div class="field">
+                <label for="bank">बैंक बैलेंस (₹)</label>
+                <input type="number" id="bank" min="0" step="0.01" value="0" />
+              </div>
+              <div class="field">
+                <label for="wallet">डिजिटल वॉलेट (₹)</label>
+                <input type="number" id="wallet" min="0" step="0.01" value="0" />
+              </div>
+            </div>
+          </section>
+
+          <section class="card split">
+            <h2>2️⃣ सोना और चांदी</h2>
+            <div class="field-grid">
+              <div class="field">
+                <label for="goldWeight">सोने का वजन (ग्राम)</label>
+                <input type="number" id="goldWeight" min="0" step="0.01" value="0" />
+              </div>
+              <div class="field">
+                <label for="goldPrice">सोने की प्रति ग्राम कीमत (₹)</label>
+                <input type="number" id="goldPrice" min="0" step="0.01" value="0" />
+              </div>
+              <p class="calc-value" id="goldValue">सोने का कुल मूल्य: ₹0</p>
+
+              <div class="field">
+                <label for="silverWeight">चांदी का वजन (ग्राम)</label>
+                <input type="number" id="silverWeight" min="0" step="0.01" value="0" />
+              </div>
+              <div class="field">
+                <label for="silverPrice">चांदी की प्रति ग्राम कीमत (₹)</label>
+                <input type="number" id="silverPrice" min="0" step="0.01" value="0" />
+              </div>
+              <p class="calc-value" id="silverValue">चांदी का कुल मूल्य: ₹0</p>
+            </div>
+          </section>
+
+          <section class="card split">
+            <h2>3️⃣ निवेश</h2>
+            <div class="field-grid">
+              <div class="field">
+                <label for="stocks">शेयर / म्यूचुअल फंड (₹)</label>
+                <input type="number" id="stocks" min="0" step="0.01" value="0" />
+              </div>
+              <div class="field">
+                <label for="crypto">क्रिप्टो (₹)</label>
+                <input type="number" id="crypto" min="0" step="0.01" value="0" />
+              </div>
+              <div class="field">
+                <label for="businessStock">बिजनेस स्टॉक (₹)</label>
+                <input type="number" id="businessStock" min="0" step="0.01" value="0" />
+              </div>
+            </div>
+          </section>
+
+          <section class="card split">
+            <h2>4️⃣ देनदारियां (1 साल के अंदर वाली)</h2>
+            <div class="field-grid">
+              <div class="field">
+                <label for="loan">कर्ज (₹)</label>
+                <input type="number" id="loan" min="0" step="0.01" value="0" />
+              </div>
+              <div class="field">
+                <label for="pendingBills">बकाया बिल (₹)</label>
+                <input type="number" id="pendingBills" min="0" step="0.01" value="0" />
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2>5️⃣ निसाब विकल्प</h2>
+            <div class="radio-group">
+              <label class="radio-item">
+                <input type="radio" name="nisabBase" value="silver" checked />
+                चांदी के आधार पर
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="nisabBase" value="gold" />
+                सोने के आधार पर
+              </label>
+            </div>
+            <div class="field-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+              <div class="field">
+                <label for="nisabGoldPrice">वर्तमान सोने की कीमत (₹/ग्राम)</label>
+                <input type="number" id="nisabGoldPrice" min="0" step="0.01" value="0" />
+                <p class="inline-note">सोना निसाब = 87.48 ग्राम × कीमत</p>
+              </div>
+              <div class="field">
+                <label for="nisabSilverPrice">वर्तमान चांदी की कीमत (₹/ग्राम)</label>
+                <input type="number" id="nisabSilverPrice" min="0" step="0.01" value="0" />
+                <p class="inline-note">चांदी निसाब = 612.36 ग्राम × कीमत</p>
+              </div>
+            </div>
+            <div class="actions" style="margin-top: 14px;">
+              <button type="submit" class="btn btn-primary">गणना करें</button>
+              <button type="button" class="btn btn-secondary" id="resetBtn">Reset</button>
+            </div>
+            <div class="error" id="errorBox" aria-live="polite"></div>
+          </section>
+        </div>
+      </form>
+
+      <section class="result-card" id="resultSection">
+        <h2 class="result-title">📊 परिणाम</h2>
+        <div class="result-list">
+          <div class="result-item">
+            <strong>कुल संपत्ति</strong>
+            <span id="totalAssetsOut">₹0</span>
+          </div>
+          <div class="result-item">
+            <strong>निसाब</strong>
+            <span id="nisabOut">₹0</span>
+          </div>
+          <div class="result-item highlight">
+            <strong>ज़कात देय राशि</strong>
+            <span id="zakatOut">₹0</span>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        यह कैलकुलेटर सामान्य अनुमान देता है। जटिल मामलों में किसी आलिम से सलाह लें।
+      </footer>
+    </main>
+
+    <script>
+      const form = document.getElementById("zakatForm");
+      const errorBox = document.getElementById("errorBox");
+      const resultSection = document.getElementById("resultSection");
+
+      const goldValueEl = document.getElementById("goldValue");
+      const silverValueEl = document.getElementById("silverValue");
+
+      const totalAssetsOut = document.getElementById("totalAssetsOut");
+      const nisabOut = document.getElementById("nisabOut");
+      const zakatOut = document.getElementById("zakatOut");
+
+      const inputIds = [
+        "cash",
+        "bank",
+        "wallet",
+        "goldWeight",
+        "goldPrice",
+        "silverWeight",
+        "silverPrice",
+        "stocks",
+        "crypto",
+        "businessStock",
+        "loan",
+        "pendingBills",
+        "nisabGoldPrice",
+        "nisabSilverPrice"
+      ];
+
+      const INDIAN_FORMATTER = new Intl.NumberFormat("hi-IN", {
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 2
+      });
+
+      function getNum(id) {
+        const val = Number(document.getElementById(id).value);
+        return Number.isFinite(val) ? val : 0;
+      }
+
+      function inr(value) {
+        return `₹${INDIAN_FORMATTER.format(value)}`;
+      }
+
+      function hasNegativeValues() {
+        return inputIds.some((id) => getNum(id) < 0);
+      }
+
+      function updateMetalValues() {
+        const goldValue = getNum("goldWeight") * getNum("goldPrice");
+        const silverValue = getNum("silverWeight") * getNum("silverPrice");
+        goldValueEl.textContent = `सोने का कुल मूल्य: ${inr(goldValue)}`;
+        silverValueEl.textContent = `चांदी का कुल मूल्य: ${inr(silverValue)}`;
+      }
+
+      function calculate() {
+        if (hasNegativeValues()) {
+          errorBox.textContent = "कृपया ऋणात्मक (negative) मान दर्ज न करें।";
+          return;
+        }
+
+        errorBox.textContent = "";
+
+        const cash = getNum("cash");
+        const bank = getNum("bank");
+        const wallet = getNum("wallet");
+
+        const goldWeight = getNum("goldWeight");
+        const goldPrice = getNum("goldPrice");
+        const silverWeight = getNum("silverWeight");
+        const silverPrice = getNum("silverPrice");
+
+        const stocks = getNum("stocks");
+        const crypto = getNum("crypto");
+        const businessStock = getNum("businessStock");
+
+        const loan = getNum("loan");
+        const pendingBills = getNum("pendingBills");
+
+        const nisabGoldPrice = getNum("nisabGoldPrice");
+        const nisabSilverPrice = getNum("nisabSilverPrice");
+        const nisabBase = document.querySelector("input[name='nisabBase']:checked").value;
+
+        // Gold and silver valuation from entered weight and price.
+        const goldValue = goldWeight * goldPrice;
+        const silverValue = silverWeight * silverPrice;
+
+        // Total assets = cash + bank + wallet + metal value + investment value.
+        const totalAssets =
+          cash + bank + wallet + goldValue + silverValue + stocks + crypto + businessStock;
+
+        // Debts payable within 1 year.
+        const totalDebts = loan + pendingBills;
+
+        // Net wealth after subtracting debts.
+        const netWealth = totalAssets - totalDebts;
+
+        // Nisab based on selected metal.
+        const nisabByGold = 87.48 * nisabGoldPrice;
+        const nisabBySilver = 612.36 * nisabSilverPrice;
+        const nisabValue = nisabBase === "gold" ? nisabByGold : nisabBySilver;
+
+        // Zakat is 2.5% only if net wealth meets or exceeds Nisab.
+        const zakat = netWealth >= nisabValue ? Math.max(netWealth, 0) * 0.025 : 0;
+
+        totalAssetsOut.textContent = inr(Math.max(totalAssets, 0));
+        nisabOut.textContent = inr(Math.max(nisabValue, 0));
+        zakatOut.textContent = inr(Math.max(zakat, 0));
+
+        resultSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      form.addEventListener("input", () => {
+        updateMetalValues();
+      });
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        calculate();
+      });
+
+      document.getElementById("resetBtn").addEventListener("click", () => {
+        form.reset();
+        inputIds.forEach((id) => {
+          document.getElementById(id).value = "0";
+        });
+        document.querySelector("input[name='nisabBase'][value='silver']").checked = true;
+        errorBox.textContent = "";
+        totalAssetsOut.textContent = "₹0";
+        nisabOut.textContent = "₹0";
+        zakatOut.textContent = "₹0";
+        updateMetalValues();
+      });
+
+      updateMetalValues();
+    </script>
+  </body>
+</html>
