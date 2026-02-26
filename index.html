@@ -174,6 +174,23 @@
         transition: border-color 0.2s ease, box-shadow 0.2s ease;
       }
 
+      .field select {
+        width: 100%;
+        border: 1px solid #d9e9df;
+        border-radius: 10px;
+        padding: 12px;
+        font-size: 1rem;
+        background: #fcfffd;
+        color: var(--text);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .field select:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(31, 143, 99, 0.15);
+      }
+
       .field input[type="number"]:focus {
         outline: none;
         border-color: var(--primary);
@@ -184,6 +201,16 @@
         margin: 0;
         color: var(--muted);
         font-size: 0.85rem;
+      }
+
+      .madhab-status {
+        margin-top: 8px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid #d8ebdf;
+        background: #f6fbf8;
+        font-size: 0.88rem;
+        color: #234938;
       }
 
       .calc-value {
@@ -388,10 +415,11 @@
         <div class="field">
           <label for="madhabSelect">मस्लक (Madhab) चुनें</label>
           <select id="madhabSelect">
-            <option value="hanafi">hanafi</option>
-            <option value="shafai">shafai</option>
+            <option value="hanafi">हन्फ़ी (सामान्य इस्तेमाल का ज़ेवर शामिल)</option>
+            <option value="shafai">शाफ़ई (सामान्य इस्तेमाल का ज़ेवर शामिल नहीं)</option>
           </select>
-          <p class="inline-note">Hanafi में इस्तेमाल का ज़ेवर शामिल होगा। Shaafa'i में आम इस्तेमाल का ज़ेवर शामिल नहीं।</p>
+          <p class="inline-note">मस्लक बदलते ही नीचे सोना/चांदी की गणना और कुल ज़कात योग्य संपत्ति अपडेट हो जाती है।</p>
+          <p class="madhab-status" id="madhabStatus" aria-live="polite"></p>
         </div>
       </section>
 
@@ -664,18 +692,33 @@
         return inputIds.some((id) => getNum(id) < 0);
       }
 
-      function updateMetalValues() {
+      function getMetalValuesByMadhab() {
         const madhab = document.getElementById("madhabSelect").value;
-        let goldValue = getNum("goldWeight") * getNum("goldPrice");
-        let silverValue = getNum("silverWeight") * getNum("silverPrice");
+        const rawGoldValue = getNum("goldWeight") * getNum("goldPrice");
+        const rawSilverValue = getNum("silverWeight") * getNum("silverPrice");
 
         if (madhab === "shafai") {
-          goldValue = 0;
-          silverValue = 0;
+          return {
+            madhab,
+            goldValue: 0,
+            silverValue: 0,
+            note: "शाफ़ई मस्लक चुना गया: सामान्य इस्तेमाल का सोना/चांदी ज़कात योग्य में शामिल नहीं किया गया।"
+          };
         }
 
+        return {
+          madhab,
+          goldValue: rawGoldValue,
+          silverValue: rawSilverValue,
+          note: "हन्फ़ी मस्लक चुना गया: सोना/चांदी की दर्ज की गई वैल्यू ज़कात योग्य संपत्ति में शामिल है।"
+        };
+      }
+
+      function updateMetalValues() {
+        const { goldValue, silverValue, note } = getMetalValuesByMadhab();
         goldValueEl.textContent = `सोने का कुल मूल्य: ${inr(goldValue)}`;
         silverValueEl.textContent = `चांदी का कुल मूल्य: ${inr(silverValue)}`;
+        document.getElementById("madhabStatus").textContent = note;
       }
 
       function calculate() {
@@ -689,12 +732,7 @@
         const cash = getNum("cash");
         const bank = getNum("bank");
         const wallet = getNum("wallet");
-        const madhab = document.getElementById("madhabSelect").value;
-
-        const goldWeight = getNum("goldWeight");
-        const goldPrice = getNum("goldPrice");
-        const silverWeight = getNum("silverWeight");
-        const silverPrice = getNum("silverPrice");
+        const { goldValue, silverValue } = getMetalValuesByMadhab();
 
         const stocks = getNum("stocks");
         const crypto = getNum("crypto");
@@ -708,15 +746,6 @@
         const nisabGoldPrice = getNum("nisabGoldPrice");
         const nisabSilverPrice = getNum("nisabSilverPrice");
         const nisabBase = document.querySelector("input[name='nisabBase']:checked").value;
-
-        // Gold and silver valuation from entered weight and price.
-        let goldValue = goldWeight * goldPrice;
-        let silverValue = silverWeight * silverPrice;
-
-        if (madhab === "shafai") {
-          goldValue = 0;
-          silverValue = 0;
-        }
 
         // कुल संपत्ति = cash + bank + wallet + metal value + investment value.
         const totalAssets =
@@ -760,6 +789,7 @@
 
       document.getElementById("madhabSelect").addEventListener("change", () => {
         updateMetalValues();
+        calculate();
       });
 
       form.addEventListener("submit", (event) => {
