@@ -384,6 +384,17 @@
         </div>
       </section>
 
+      <section class="card">
+        <div class="field">
+          <label for="madhabSelect">मस्लक (Madhab) चुनें</label>
+          <select id="madhabSelect">
+            <option value="hanafi">hanafi</option>
+            <option value="shafai">shafai</option>
+          </select>
+          <p class="inline-note">Hanafi में इस्तेमाल का ज़ेवर शामिल होगा। Shaafa'i में आम इस्तेमाल का ज़ेवर शामिल नहीं।</p>
+        </div>
+      </section>
+
       <form id="zakatForm" novalidate>
         <div class="grid">
           <section class="card split">
@@ -444,6 +455,10 @@
                 <label for="businessStock">बिजनेस स्टॉक (₹)</label>
                 <input type="number" id="businessStock" min="0" step="0.01" value="0" />
               </div>
+              <div class="field">
+                <label for="propertyInvestment">प्रॉपर्टी (Resale / Investment) (₹)</label>
+                <input type="number" id="propertyInvestment" min="0" step="0.01" value="0" />
+              </div>
             </div>
           </section>
 
@@ -457,6 +472,17 @@
               <div class="field">
                 <label for="pendingBills">बकाया बिल (₹)</label>
                 <input type="number" id="pendingBills" min="0" step="0.01" value="0" />
+              </div>
+            </div>
+          </section>
+
+          <section class="card split">
+            <h2>6️⃣ पिछला साल की बकाया ज़कात</h2>
+            <div class="field-grid">
+              <div class="field">
+                <label for="lastYearZakat">पिछले साल की ज़कात (अगर बाकी हो) (₹)</label>
+                <input type="number" id="lastYearZakat" min="0" step="0.01" value="0" />
+                <p class="inline-note">अगर पिछला साल अदा नहीं किया तो यहाँ जोड़ें।</p>
               </div>
             </div>
           </section>
@@ -612,8 +638,10 @@
         "stocks",
         "crypto",
         "businessStock",
+        "propertyInvestment",
         "loan",
         "pendingBills",
+        "lastYearZakat",
         "nisabGoldPrice",
         "nisabSilverPrice"
       ];
@@ -637,8 +665,15 @@
       }
 
       function updateMetalValues() {
-        const goldValue = getNum("goldWeight") * getNum("goldPrice");
-        const silverValue = getNum("silverWeight") * getNum("silverPrice");
+        const madhab = document.getElementById("madhabSelect").value;
+        let goldValue = getNum("goldWeight") * getNum("goldPrice");
+        let silverValue = getNum("silverWeight") * getNum("silverPrice");
+
+        if (madhab === "shafai") {
+          goldValue = 0;
+          silverValue = 0;
+        }
+
         goldValueEl.textContent = `सोने का कुल मूल्य: ${inr(goldValue)}`;
         silverValueEl.textContent = `चांदी का कुल मूल्य: ${inr(silverValue)}`;
       }
@@ -654,6 +689,7 @@
         const cash = getNum("cash");
         const bank = getNum("bank");
         const wallet = getNum("wallet");
+        const madhab = document.getElementById("madhabSelect").value;
 
         const goldWeight = getNum("goldWeight");
         const goldPrice = getNum("goldPrice");
@@ -663,21 +699,36 @@
         const stocks = getNum("stocks");
         const crypto = getNum("crypto");
         const businessStock = getNum("businessStock");
+        const propertyInvestment = getNum("propertyInvestment");
 
         const loan = getNum("loan");
         const pendingBills = getNum("pendingBills");
+        const lastYearZakat = getNum("lastYearZakat");
 
         const nisabGoldPrice = getNum("nisabGoldPrice");
         const nisabSilverPrice = getNum("nisabSilverPrice");
         const nisabBase = document.querySelector("input[name='nisabBase']:checked").value;
 
         // Gold and silver valuation from entered weight and price.
-        const goldValue = goldWeight * goldPrice;
-        const silverValue = silverWeight * silverPrice;
+        let goldValue = goldWeight * goldPrice;
+        let silverValue = silverWeight * silverPrice;
+
+        if (madhab === "shafai") {
+          goldValue = 0;
+          silverValue = 0;
+        }
 
         // कुल संपत्ति = cash + bank + wallet + metal value + investment value.
         const totalAssets =
-          cash + bank + wallet + goldValue + silverValue + stocks + crypto + businessStock;
+          cash +
+          bank +
+          wallet +
+          goldValue +
+          silverValue +
+          stocks +
+          crypto +
+          businessStock +
+          propertyInvestment;
 
         // Debts payable within 1 year.
         const totalDebts = loan + pendingBills;
@@ -691,7 +742,8 @@
         const nisabValue = nisabBase === "gold" ? nisabByGold : nisabBySilver;
 
         // Zakat is 2.5% only if net wealth meets or exceeds Nisab.
-        const zakat = netWealth >= nisabValue ? Math.max(netWealth, 0) * 0.025 : 0;
+        const currentYearZakat = netWealth >= nisabValue ? Math.max(netWealth, 0) * 0.025 : 0;
+        const zakat = currentYearZakat + lastYearZakat;
 
         totalAssetsOut.textContent = inr(Math.max(totalAssets, 0));
         debtsOut.textContent = inr(Math.max(totalDebts, 0));
@@ -706,6 +758,10 @@
         updateMetalValues();
       });
 
+      document.getElementById("madhabSelect").addEventListener("change", () => {
+        updateMetalValues();
+      });
+
       form.addEventListener("submit", (event) => {
         event.preventDefault();
         calculate();
@@ -717,6 +773,7 @@
           document.getElementById(id).value = "0";
         });
         document.querySelector("input[name='nisabBase'][value='silver']").checked = true;
+        document.getElementById("madhabSelect").value = "hanafi";
         errorBox.textContent = "";
         totalAssetsOut.textContent = "₹0";
         debtsOut.textContent = "₹0";
