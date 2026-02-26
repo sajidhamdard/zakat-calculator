@@ -448,10 +448,10 @@
           </section>
 
           <section class="card split">
-            <h2>4️⃣ देनदारियां (अभी देय)</h2>
+            <h2>4️⃣ देनदारियां (फ़िलहाल देय)</h2>
             <div class="field-grid">
               <div class="field">
-                <label for="loan">कर्ज (अभी देय) (₹)</label>
+                <label for="loan">कर्ज (फ़िलहाल देय) (₹)</label>
                 <input type="number" id="loan" min="0" step="0.01" value="0" />
               </div>
               <div class="field">
@@ -466,7 +466,7 @@
             <div class="radio-group">
               <label class="radio-item">
                 <input type="radio" name="nisabBase" value="silver" checked />
-                चांदी के आधार पर (अनुशंसित)
+                चांदी के आधार पर (मुनासिब)
               </label>
               <label class="radio-item">
                 <input type="radio" name="nisabBase" value="gold" />
@@ -477,20 +477,20 @@
               <div class="field">
                 <label for="nisabGoldPrice">वर्तमान सोने की कीमत (₹/ग्राम)</label>
                 <input type="number" id="nisabGoldPrice" min="0" step="0.01" value="0" />
-                <p class="inline-note">सोना निसाब = 87.48 ग्राम × बाजार कीमत</p>
+                <p class="inline-note">सोना निसाब = 87.48 ग्राम × बाज़ार क़ीमत</p>
               </div>
               <div class="field">
                 <label for="nisabSilverPrice">वर्तमान चांदी की कीमत (₹/ग्राम)</label>
                 <input type="number" id="nisabSilverPrice" min="0" step="0.01" value="0" />
-                <p class="inline-note">चांदी निसाब = 612.36 ग्राम × बाजार कीमत</p>
+                <p class="inline-note">चांदी निसाब = 612.36 ग्राम × बाज़ार क़ीमत</p>
               </div>
             </div>
             <div class="actions" style="margin-top: 14px;">
-              <button type="submit" class="btn btn-primary">गणना करें</button>
-              <button type="button" class="btn btn-secondary" id="resetBtn">रीसेट</button>
+              <button type="submit" class="btn btn-primary">हिसाब करें</button>
+              <button type="button" class="btn btn-secondary" id="resetBtn">दुबारा सेट करें</button>
             </div>
             <p class="inline-note" style="margin-top: 12px;">
-              ध्यान दें: यह टूल ज़कात अल-माल की गणना करता है। आपकी शुद्ध संपत्ति एक चांद्र वर्ष (हौल) तक निसाब से ऊपर होनी चाहिए।
+              गौर फ़रमाएं: यह टूल ज़कात अल-माल की गणना करता है। आपकी खालिस दौलत एक क़मरी साल (हौल) तक निसाब से ऊपर होनी चाहिए।
             </p>
             <div class="error" id="errorBox" aria-live="polite"></div>
           </section>
@@ -505,15 +505,15 @@
             <span id="totalAssetsOut">₹0</span>
           </div>
           <div class="result-item">
-            <strong>कुल देनदारियां</strong>
+            <strong>जुमला देनदारियां</strong>
             <span id="debtsOut">₹0</span>
           </div>
           <div class="result-item">
-            <strong>शुद्ध संपत्ति</strong>
+            <strong>खालिस दौलत</strong>
             <span id="netWealthOut">₹0</span>
           </div>
           <div class="result-item">
-            <strong>निसाब सीमा</strong>
+            <strong>निसाब हद</strong>
             <span id="nisabOut">₹0</span>
           </div>
           <div class="result-item highlight">
@@ -527,27 +527,27 @@
         <article class="info-card">
           <h3>यह कैलकुलेटर कैसे काम करता है</h3>
           <p>
-            प्रयुक्त सूत्र: <strong>(कुल ज़कात योग्य संपत्ति − देय देनदारियां) × 2.5%</strong>।
-            ज़कात तब देय होती है जब आपकी शुद्ध संपत्ति निसाब के बराबर या उससे अधिक हो और एक चांद्र वर्ष तक बनी रहे।
+            इस्तेमाल किया गया फ़ॉर्मूला: <strong>(कुल ज़कात योग्य संपत्ति − देय देनदारियां) × 2.5%</strong>।
+            ज़कात तब लाज़िम होती है जब आपकी खालिस दौलत निसाब के बराबर या उससे अधिक हो और एक क़मरी साल तक बनी रहे।
           </p>
           <table class="quick-table">
             <thead>
               <tr>
                 <th>निसाब प्रकार</th>
                 <th>वजन आधार</th>
-                <th>उद्देश्य</th>
+                <th>मकसद</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>सोना निसाब</td>
                 <td>87.48 ग्राम</td>
-                <td>उच्च सीमा</td>
+                <td>ऊंची हद</td>
               </tr>
               <tr>
                 <td>चांदी निसाब</td>
                 <td>612.36 ग्राम</td>
-                <td>कम सीमा (आमतौर पर अनुशंसित)</td>
+                <td>कम सीमा (आमतौर पर मुनासिब)</td>
               </tr>
             </tbody>
           </table>
@@ -558,24 +558,24 @@
           <ul>
             <li><strong>शामिल करें:</strong> नकद, बैंक बचत, सोना/चांदी, निवेश, बिजनेस स्टॉक।</li>
             <li><strong>शामिल न करें:</strong> मुख्य निवास, निजी उपयोग की गाड़ी, घरेलू सामान, बिक्री के लिए नहीं होने वाले उपकरण।</li>
-            <li><strong>देनदारियां:</strong> केवल अभी देय राशि घटाएं (पूरी लंबी अवधि की राशि नहीं)।</li>
+            <li><strong>देनदारियां:</strong> सिर्फ़ फ़िलहाल देय रकम घटाएं (पूरी लंबी मुद्दत की रकम नहीं)।</li>
           </ul>
         </article>
 
         <article class="info-card">
-          <h3>त्वरित सामान्य प्रश्न</h3>
+          <h3>फ़ौरी सवाल-जवाब</h3>
           <details class="faq-item">
             <summary>क्या यह कैलकुलेटर ज़कात अल-फित्र के लिए है?</summary>
-            <p>नहीं। यह कैलकुलेटर सालाना ज़कात अल-माल (माल की ज़कात) के लिए है, ज़कात अल-फित्र के लिए नहीं।</p>
+            <p>नहीं। यह कैलकुलेटर सालाना ज़कात अल-माल (माल की ज़कात) के लिए है, ज़कात अल-फ़ित्र के लिए नहीं।</p>
           </details>
           <details class="faq-item">
             <summary>क्या मैं नियत तिथि से पहले ज़कात दे सकता/सकती हूँ?</summary>
-            <p>हाँ, पहले भुगतान करना सामान्यतः जायज़ है। बिना उचित कारण देरी करना उचित नहीं है।</p>
+            <p>हाँ, पहले अदायगी करना आम तौर पर जायज़ है। बिना मुनासिब वजह ताख़ीर करना दुरुस्त नहीं है।</p>
           </details>
           <details class="faq-item">
             <summary>क्या मैं परिवार को ज़कात दे सकता/सकती हूँ?</summary>
             <p>
-              योग्य विस्तारित रिश्तेदार (जैसे भाई-बहन, चचेरे/ममेरे रिश्तेदार) पात्र होने पर ज़कात ले सकते हैं।
+              मुनासिब विस्तारित रिश्तेदार (जैसे भाई-बहन, चचेरे/ममेरे रिश्तेदार) पात्र होने पर ज़कात ले सकते हैं।
               जीवनसाथी, माता-पिता या बच्चों को ज़कात नहीं दी जा सकती।
             </p>
           </details>
@@ -583,7 +583,7 @@
       </section>
 
       <footer>
-        यह कैलकुलेटर सामान्य अनुमान देता है। जटिल मामलों में किसी योग्य आलिम से सलाह लें।
+        यह कैलकुलेटर आम अंदाज़ा देता है। पेचीदा मामलों में किसी मुअतबर आलिम से मशविरा लें।
       </footer>
     </main>
 
@@ -645,7 +645,7 @@
 
       function calculate() {
         if (hasNegativeValues()) {
-          errorBox.textContent = "कृपया ऋणात्मक (negative) मान दर्ज न करें।";
+          errorBox.textContent = "मेहरबानी करके मनफ़ी (negative) क़ीमत दर्ज न करें।";
           return;
         }
 
@@ -682,7 +682,7 @@
         // Debts payable within 1 year.
         const totalDebts = loan + pendingBills;
 
-        // शुद्ध संपत्ति after subtracting debts.
+        // खालिस दौलत after subtracting debts.
         const netWealth = totalAssets - totalDebts;
 
         // Nisab based on selected metal.
