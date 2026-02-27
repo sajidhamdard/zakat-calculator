@@ -400,6 +400,9 @@
       .faq-item p {
         margin: 8px 0 0;
       }
+      .nisab-notes { margin-top: 1rem; color: #4b5563; font-size: 0.95rem; line-height: 1.5; }
+      .nisab-notes ol { padding-left: 1.2rem; margin: 0; }
+      .nisab-notes li { margin-bottom: 0.4rem; }
     </style>
   </head>
   <body>
@@ -434,10 +437,6 @@
               <div class="field">
                 <label for="bank">बैंक बैलेंस (₹)</label>
                 <input type="number" id="bank" min="0" step="0.01" value="0" />
-              </div>
-              <div class="field">
-                <label for="wallet">डिजिटल वॉलेट (₹)</label>
-                <input type="number" id="wallet" min="0" step="0.01" value="0" />
               </div>
             </div>
           </section>
@@ -475,10 +474,6 @@
                 <input type="number" id="stocks" min="0" step="0.01" value="0" />
               </div>
               <div class="field">
-                <label for="crypto">क्रिप्टो (₹)</label>
-                <input type="number" id="crypto" min="0" step="0.01" value="0" />
-              </div>
-              <div class="field">
                 <label for="businessStock">बिजनेस स्टॉक (₹)</label>
                 <input type="number" id="businessStock" min="0" step="0.01" value="0" />
               </div>
@@ -497,7 +492,7 @@
                 <input type="number" id="loan" min="0" step="0.01" value="0" />
               </div>
               <div class="field">
-                <label for="pendingBills">बकाया बिल (₹)</label>
+                <label for="pendingBills">बकाया बिल/Tax (₹)</label>
                 <input type="number" id="pendingBills" min="0" step="0.01" value="0" />
               </div>
             </div>
@@ -545,6 +540,14 @@
             <p class="inline-note" style="margin-top: 12px;">
               गौर फ़रमाएं: यह टूल ज़कात अल-माल की गणना करता है। आपकी खालिस दौलत एक क़मरी साल (हौल) तक निसाब से ऊपर होनी चाहिए।
             </p>
+            <!-- Insert this block immediately after the two buttons (हिसाब करें and दुबारा सेट करें) -->
+            <div class="nisab-notes" aria-label="निसाब के बारे में नोट्स">
+              <ol>
+                <li>अगर किसी के पास सिर्फ सोना हो तो ज़कात सिर्फ सोने के निसाब के अनुसार होगी ।</li>
+                <li>अगर किसी के पास सिर्फ चांदी हो तो ज़कात सिर्फ चांदी के निसाब के अनुसार होगी ।</li>
+                <li>अगर चांदी, नकद पैसा या व्यापार का माल हो तो चांदी के निसाब के अनुसार होगी क्यूंकि चांदी का निसाब जल्दी पहुंच जाता है।</li>
+              </ol>
+            </div>
             <div class="error" id="errorBox" aria-live="polite"></div>
           </section>
         </div>
@@ -611,7 +614,7 @@
           <ul>
             <li><strong>शामिल करें:</strong> नकद, बैंक बचत, सोना/चांदी, निवेश, बिजनेस स्टॉक।</li>
             <li><strong>शामिल न करें:</strong> मुख्य निवास, निजी उपयोग की गाड़ी, घरेलू सामान, बिक्री के लिए नहीं होने वाले उपकरण।</li>
-            <li><strong>देनदारियां:</strong> सिर्फ़ फ़िलहाल देय रकम घटाएं (पूरी लंबी मुद्दत की रकम नहीं)।</li>
+            <li><strong>देनदारियां:</strong> देय रकम घटाएं।</li>
           </ul>
         </article>
 
@@ -632,6 +635,14 @@
               जीवनसाथी, माता-पिता या बच्चों को ज़कात नहीं दी जा सकती।
             </p>
           </details>
+          <details class="faq-item">
+          <summary>क्या प्रॉपर्टी पर ज़कात देनी होती है?</summary>
+          <p>
+            यदि प्रॉपर्टी बेचने (निवेश या व्यापार) के इरादे से खरीदी गई हो, तो उसकी मौजूदा बाजार कीमत पर ज़कात देना जरूरी है।
+            लेकिन अगर प्रॉपर्टी रहने के लिए या केवल रखने (बिना बेचने के इरादे) के लिए ली गई है,
+            तो उस पर ज़कात नहीं है।
+          </p>
+        </details>
         </article>
       </section>
 
@@ -657,13 +668,11 @@
       const inputIds = [
         "cash",
         "bank",
-        "wallet",
         "goldWeight",
         "goldPrice",
         "silverWeight",
         "silverPrice",
         "stocks",
-        "crypto",
         "businessStock",
         "propertyInvestment",
         "loan",
