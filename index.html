@@ -444,14 +444,55 @@
         color: #6b7280; /* slightly muted */
         font-weight: 600;
       }
+
+      .lang-toggle-wrap {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 16px;
+        margin-bottom: 0;
+      }
+
+      .lang-toggle {
+        display: flex;
+        background: #e8f5ee;
+        border-radius: 20px;
+        padding: 3px;
+        gap: 2px;
+        box-shadow: 0 2px 8px rgba(31, 143, 99, 0.1);
+      }
+
+      .lang-btn {
+        border: none;
+        background: transparent;
+        border-radius: 18px;
+        padding: 6px 18px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+        color: #5d6b64;
+      }
+
+      .lang-btn.active {
+        background: var(--primary);
+        color: #fff;
+        box-shadow: 0 2px 6px rgba(31, 143, 99, 0.25);
+      }
     </style>
   </head>
   <body>
     <main class="container">
+      <div class="lang-toggle-wrap">
+        <div class="lang-toggle" role="group" aria-label="Language / भाषा">
+          <button class="lang-btn active" id="btnHindi" onclick="setLanguage('hi')">हिंदी</button>
+          <button class="lang-btn" id="btnEnglish" onclick="setLanguage('en')">English</button>
+        </div>
+      </div>
+
       <section class="hero">
         <div class="hero-content">
-          <h1>ज़कात कैलकुलेटर</h1>
-          <p class="subtitle">अपनी सालाना ज़कात (2.5%) की गणना कुछ आसान स्टेप्स में करें</p>
+          <h1 data-i18n="heroTitle">ज़कात कैलकुलेटर</h1>
+          <p class="subtitle" data-i18n="heroSubtitle">अपनी सालाना ज़कात (2.5%) की गणना कुछ आसान स्टेप्स में करें</p>
         </div>
       </section>
 
@@ -469,38 +510,38 @@
       <form id="zakatForm" novalidate>
         <div class="grid">
           <section class="card split">
-            <h2>1️⃣ नकद और बैंक राशि</h2>
+            <h2 data-i18n="sec1">1️⃣ नकद और बैंक राशि</h2>
             <div class="field-grid">
               <div class="field">
-                <label for="cash">नकद राशि (₹)</label>
+                <label for="cash" data-i18n="labelCash">नकद राशि (₹)</label>
                 <input type="number" id="cash" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <div class="field">
-                <label for="bank">बैंक बैलेंस (₹)</label>
+                <label for="bank" data-i18n="labelBank">बैंक बैलेंस (₹)</label>
                 <input type="number" id="bank" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
             </div>
           </section>
 
           <section class="card split">
-            <h2>2️⃣ सोना और चांदी</h2>
+            <h2 data-i18n="sec2">2️⃣ सोना और चांदी</h2>
             <div class="field-grid">
               <div class="field">
-                <label for="goldWeight">सोने का वजन (ग्राम)</label>
+                <label for="goldWeight" data-i18n="labelGoldWeight">सोने का वजन (ग्राम)</label>
                 <input type="number" id="goldWeight" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <div class="field">
-                <label for="goldPrice">सोने की प्रति ग्राम कीमत (₹)</label>
+                <label for="goldPrice" data-i18n="labelGoldPrice">सोने की प्रति ग्राम कीमत (₹)</label>
                 <input type="number" id="goldPrice" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <p class="calc-value" id="goldValue">सोने का कुल मूल्य: ₹0</p>
 
               <div class="field">
-                <label for="silverWeight">चांदी का वजन (ग्राम)</label>
+                <label for="silverWeight" data-i18n="labelSilverWeight">चांदी का वजन (ग्राम)</label>
                 <input type="number" id="silverWeight" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <div class="field">
-                <label for="silverPrice">चांदी की प्रति ग्राम कीमत (₹)</label>
+                <label for="silverPrice" data-i18n="labelSilverPrice">चांदी की प्रति ग्राम कीमत (₹)</label>
                 <input type="number" id="silverPrice" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <p class="calc-value" id="silverValue">चांदी का कुल मूल्य: ₹0</p>
@@ -508,85 +549,85 @@
           </section>
 
           <section class="card split">
-            <h2>3️⃣ निवेश और व्यापारिक संपत्ति</h2>
+            <h2 data-i18n="sec3">3️⃣ निवेश और व्यापारिक संपत्ति</h2>
             <div class="field-grid">
               <div class="field">
-                <label for="stocks">शेयर / म्यूचुअल फंड (₹)</label>
+                <label for="stocks" data-i18n="labelStocks">शेयर / म्यूचुअल फंड (₹)</label>
                 <input type="number" id="stocks" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <div class="field">
-                <label for="businessStock">बिजनेस स्टॉक (₹)</label>
+                <label for="businessStock" data-i18n="labelBusinessStock">बिजनेस स्टॉक (₹)</label>
                 <input type="number" id="businessStock" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <div class="field">
-                <label for="propertyInvestment">प्रॉपर्टी (Resale / Investment) (₹)</label>
+                <label for="propertyInvestment" data-i18n="labelPropertyInvestment">प्रॉपर्टी (Resale / Investment) (₹)</label>
                 <input type="number" id="propertyInvestment" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
             </div>
           </section>
 
           <section class="card split">
-            <h2>4️⃣ देनदारियां</h2>
+            <h2 data-i18n="sec4">4️⃣ देनदारियां</h2>
             <div class="field-grid">
               <div class="field">
-                <label for="loan">कर्ज (₹)</label>
+                <label for="loan" data-i18n="labelLoan">कर्ज (₹)</label>
                 <input type="number" id="loan" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <div class="field">
-                <label for="pendingBills">बकाया बिल/Tax (₹)</label>
+                <label for="pendingBills" data-i18n="labelPendingBills">बकाया बिल/Tax (₹)</label>
                 <input type="number" id="pendingBills" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
             </div>
           </section>
 
           <section class="card split">
-            <h2>6️⃣ पिछला साल की बकाया ज़कात</h2>
+            <h2 data-i18n="sec6">6️⃣ पिछला साल की बकाया ज़कात</h2>
             <div class="field-grid">
               <div class="field">
-                <label for="lastYearZakat">पिछले साल की ज़कात (अगर बाकी हो) (₹)</label>
+                <label for="lastYearZakat" data-i18n="labelLastYearZakat">पिछले साल की ज़कात (अगर बाकी हो) (₹)</label>
                 <input type="number" id="lastYearZakat" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
-                <p class="inline-note">अगर पिछला साल अदा नहीं किया तो यहाँ जोड़ें।</p>
+                <p class="inline-note" data-i18n="noteLastYear">अगर पिछला साल अदा नहीं किया तो यहाँ जोड़ें।</p>
               </div>
             </div>
           </section>
 
           <section class="card">
-            <h2>5️⃣ निसाब विकल्प</h2>
+            <h2 data-i18n="sec5">5️⃣ निसाब विकल्प</h2>
             <div class="radio-group">
               <label class="radio-item">
                 <input type="radio" name="nisabBase" value="silver" checked />
-                चांदी के आधार पर (मुनासिब)
+                <span data-i18n="radioSilver">चांदी के आधार पर (मुनासिब)</span>
               </label>
               <label class="radio-item">
                 <input type="radio" name="nisabBase" value="gold" />
-                सोने के आधार पर
+                <span data-i18n="radioGold">सोने के आधार पर</span>
               </label>
             </div>
             <div class="field-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
               <div class="field">
-                <label for="nisabGoldPrice">वर्तमान सोने की कीमत (₹/ग्राम)</label>
+                <label for="nisabGoldPrice" data-i18n="labelNisabGoldPrice">वर्तमान सोने की कीमत (₹/ग्राम)</label>
                 <input type="number" id="nisabGoldPrice" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
-                <p class="inline-note">सोना निसाब = 87.48 ग्राम × बाज़ार क़ीमत</p>
+                <p class="inline-note" data-i18n="noteGoldNisab">सोना निसाब = 87.48 ग्राम × बाज़ार क़ीमत</p>
               </div>
               <div class="field">
-                <label for="nisabSilverPrice">वर्तमान चांदी की कीमत (₹/ग्राम)</label>
+                <label for="nisabSilverPrice" data-i18n="labelNisabSilverPrice">वर्तमान चांदी की कीमत (₹/ग्राम)</label>
                 <input type="number" id="nisabSilverPrice" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
-                <p class="inline-note">चांदी निसाब = 612.36 ग्राम × बाज़ार क़ीमत</p>
+                <p class="inline-note" data-i18n="noteSilverNisab">चांदी निसाब = 612.36 ग्राम × बाज़ार क़ीमत</p>
               </div>
             </div>
             <div class="actions" style="margin-top: 14px;">
-              <button type="submit" class="btn btn-primary">हिसाब करें</button>
-              <button type="button" class="btn btn-secondary" id="resetBtn">दुबारा सेट करें</button>
+              <button type="submit" class="btn btn-primary" data-i18n="btnCalculate">हिसाब करें</button>
+              <button type="button" class="btn btn-secondary" id="resetBtn" data-i18n="btnReset">दुबारा सेट करें</button>
             </div>
-            <p class="inline-note" style="margin-top: 12px;">
+            <p class="inline-note" style="margin-top: 12px;" data-i18n="noteBottom">
               गौर फ़रमाएं: यह टूल ज़कात अल-माल की गणना करता है। आपकी खालिस दौलत एक क़मरी साल (हौल) तक निसाब से ऊपर होनी चाहिए।
             </p>
             <!-- Insert this block immediately after the two buttons (हिसाब करें and दुबारा सेट करें) -->
             <div class="nisab-notes" aria-label="निसाब के बारे में नोट्स">
               <ol>
-                <li>अगर किसी के पास सिर्फ सोना हो तो ज़कात सिर्फ सोने के निसाब के अनुसार होगी ।</li>
-                <li>अगर किसी के पास सिर्फ चांदी हो तो ज़कात सिर्फ चांदी के निसाब के अनुसार होगी ।</li>
-                <li>अगर चांदी, नकद पैसा या व्यापार का माल हो तो चांदी के निसाब के अनुसार होगी क्यूंकि चांदी का निसाब जल्दी पहुंच जाता है।</li>
+                <li data-i18n="nisabNote1">अगर किसी के पास सिर्फ सोना हो तो ज़कात सिर्फ सोने के निसाब के अनुसार होगी ।</li>
+                <li data-i18n="nisabNote2">अगर किसी के पास सिर्फ चांदी हो तो ज़कात सिर्फ चांदी के निसाब के अनुसार होगी ।</li>
+                <li data-i18n="nisabNote3">अगर चांदी, नकद पैसा या व्यापार का माल हो तो चांदी के निसाब के अनुसार होगी क्यूंकि चांदी का निसाब जल्दी पहुंच जाता है।</li>
               </ol>
             </div>
             <div class="error" id="errorBox" aria-live="polite"></div>
@@ -595,26 +636,26 @@
       </form>
 
       <section class="result-card" id="resultSection">
-        <h2 class="result-title">📊 परिणाम</h2>
+        <h2 class="result-title" data-i18n="resultTitle">📊 परिणाम</h2>
         <div class="result-list">
           <div class="result-item">
-            <strong>कुल संपत्ति</strong>
+            <strong data-i18n="resultTotalAssets">कुल संपत्ति</strong>
             <span id="totalAssetsOut">₹0</span>
           </div>
           <div class="result-item">
-            <strong>जुमला देनदारियां</strong>
+            <strong data-i18n="resultDebts">जुमला देनदारियां</strong>
             <span id="debtsOut">₹0</span>
           </div>
           <div class="result-item">
-            <strong>खालिस दौलत</strong>
+            <strong data-i18n="resultNetWealth">खालिस दौलत</strong>
             <span id="netWealthOut">₹0</span>
           </div>
           <div class="result-item">
-            <strong>निसाब हद</strong>
+            <strong data-i18n="resultNisab">निसाब हद</strong>
             <span id="nisabOut">₹0</span>
           </div>
           <div class="result-item highlight">
-            <strong>ज़कात देय राशि (2.5%)</strong>
+            <strong data-i18n="resultZakat">ज़कात देय राशि (2.5%)</strong>
             <span id="zakatOut">₹0</span>
           </div>
         </div>
@@ -622,37 +663,37 @@
 
       <section class="info-section" aria-label="ज़कात जानकारी और संदर्भ">
         <article class="info-card">
-          <h3>यह कैलकुलेटर कैसे काम करता है</h3>
-          <p>
+          <h3 data-i18n="infoTitle1">यह कैलकुलेटर कैसे काम करता है</h3>
+          <p data-i18n-html="infoContent1">
             इस्तेमाल किया गया फ़ॉर्मूला: <strong>(कुल ज़कात योग्य संपत्ति − देय देनदारियां) × 2.5%</strong>।
             ज़कात तब लाज़िम होती है जब आपकी खालिस दौलत निसाब के बराबर या उससे अधिक हो और एक क़मरी साल तक बनी रहे।
           </p>
           <table class="quick-table">
             <thead>
               <tr>
-                <th>निसाब प्रकार</th>
-                <th>वजन आधार</th>
-                <th>मकसद</th>
+                <th data-i18n="tableHead1">निसाब प्रकार</th>
+                <th data-i18n="tableHead2">वजन आधार</th>
+                <th data-i18n="tableHead3">मकसद</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>सोना निसाब</td>
-                <td>87.48 ग्राम</td>
-                <td>ऊंची हद</td>
+                <td data-i18n="tableRow1Col1">सोना निसाब</td>
+                <td data-i18n="tableRow1Col2">87.48 ग्राम</td>
+                <td data-i18n="tableRow1Col3">ऊंची हद</td>
               </tr>
               <tr>
-                <td>चांदी निसाब</td>
-                <td>612.36 ग्राम</td>
-                <td>कम सीमा (आमतौर पर मुनासिब)</td>
+                <td data-i18n="tableRow2Col1">चांदी निसाब</td>
+                <td data-i18n="tableRow2Col2">612.36 ग्राम</td>
+                <td data-i18n="tableRow2Col3">कम सीमा (आमतौर पर मुनासिब)</td>
               </tr>
             </tbody>
           </table>
         </article>
 
         <article class="info-card">
-          <h3>क्या शामिल करें और क्या नहीं</h3>
-          <ul>
+          <h3 data-i18n="infoTitle2">क्या शामिल करें और क्या नहीं</h3>
+          <ul data-i18n-html="infoContent2">
             <li><strong>शामिल करें:</strong> नकद, बैंक बचत, सोना/चांदी, निवेश, बिजनेस स्टॉक।</li>
             <li><strong>शामिल न करें:</strong> मुख्य निवास, क्रिप्टो, डिजिटल मुद्रा, निजी उपयोग की गाड़ी, घरेलू सामान, बिक्री के लिए नहीं होने वाले उपकरण।</li>
             <li><strong>देनदारियां:</strong> देय रकम घटाएं।</li>
@@ -660,25 +701,25 @@
         </article>
 
         <article class="info-card">
-          <h3>फ़ौरी सवाल-जवाब</h3>
+          <h3 data-i18n="infoTitle3">फ़ौरी सवाल-जवाब</h3>
           <details class="faq-item">
-            <summary>क्या यह कैलकुलेटर ज़कात अल-फित्र के लिए है?</summary>
-            <p>नहीं। यह कैलकुलेटर सालाना ज़कात अल-माल (माल की ज़कात) के लिए है, ज़कात अल-फ़ित्र के लिए नहीं।</p>
+            <summary data-i18n="faq1Q">क्या यह कैलकुलेटर ज़कात अल-फित्र के लिए है?</summary>
+            <p data-i18n="faq1A">नहीं। यह कैलकुलेटर सालाना ज़कात अल-माल (माल की ज़कात) के लिए है, ज़कात अल-फ़ित्र के लिए नहीं।</p>
           </details>
           <details class="faq-item">
-            <summary>क्या मैं नियत तिथि से पहले ज़कात दे सकता/सकती हूँ?</summary>
-            <p>हाँ, पहले अदायगी करना आम तौर पर जायज़ है। बिना मुनासिब वजह ताख़ीर करना दुरुस्त नहीं है।</p>
+            <summary data-i18n="faq2Q">क्या मैं नियत तिथि से पहले ज़कात दे सकता/सकती हूँ?</summary>
+            <p data-i18n="faq2A">हाँ, पहले अदायगी करना आम तौर पर जायज़ है। बिना मुनासिब वजह ताख़ीर करना दुरुस्त नहीं है।</p>
           </details>
           <details class="faq-item">
-            <summary>क्या मैं परिवार को ज़कात दे सकता/सकती हूँ?</summary>
-            <p>
+            <summary data-i18n="faq3Q">क्या मैं परिवार को ज़कात दे सकता/सकती हूँ?</summary>
+            <p data-i18n="faq3A">
               मुनासिब विस्तारित रिश्तेदार (जैसे भाई-बहन, चचेरे/ममेरे रिश्तेदार) पात्र होने पर ज़कात ले सकते हैं।
               जीवनसाथी, माता-पिता या बच्चों को ज़कात नहीं दी जा सकती।
             </p>
           </details>
           <details class="faq-item">
-          <summary>क्या प्रॉपर्टी पर ज़कात देनी होती है?</summary>
-          <p>
+          <summary data-i18n="faq4Q">क्या प्रॉपर्टी पर ज़कात देनी होती है?</summary>
+          <p data-i18n="faq4A">
             यदि प्रॉपर्टी बेचने (निवेश या व्यापार) के इरादे से खरीदी गई हो, तो उसकी मौजूदा बाजार कीमत पर ज़कात देना जरूरी है।
             लेकिन अगर प्रॉपर्टी रहने के लिए या केवल रखने (बिना बेचने के इरादे) के लिए ली गई है,
             तो उस पर ज़कात नहीं है।
@@ -688,12 +729,189 @@
       </section>
 
       <footer>
-        यह कैलकुलेटर आम अंदाज़ा देता है। पेचीदा मामलों में किसी मुअतबर आलिम से मशविरा लें।
+        <span data-i18n="footer">यह कैलकुलेटर आम अंदाज़ा देता है। पेचीदा मामलों में किसी मुअतबर आलिम से मशविरा लें।</span>
         <p class="developer-credit">Developed by Sajid Ali Khan</p>
       </footer>
     </main>
 
 <script>
+  // ─── Translations ──────────────────────────────────────────────
+  const translations = {
+    hi: {
+      pageTitle: 'ज़कात कैलकुलेटर',
+      heroTitle: 'ज़कात कैलकुलेटर',
+      heroSubtitle: 'अपनी सालाना ज़कात (2.5%) की गणना कुछ आसान स्टेप्स में करें',
+      sec1: '1️⃣ नकद और बैंक राशि',
+      labelCash: 'नकद राशि (₹)',
+      labelBank: 'बैंक बैलेंस (₹)',
+      sec2: '2️⃣ सोना और चांदी',
+      labelGoldWeight: 'सोने का वजन (ग्राम)',
+      labelGoldPrice: 'सोने की प्रति ग्राम कीमत (₹)',
+      goldValuePrefix: 'सोने का कुल मूल्य:',
+      labelSilverWeight: 'चांदी का वजन (ग्राम)',
+      labelSilverPrice: 'चांदी की प्रति ग्राम कीमत (₹)',
+      silverValuePrefix: 'चांदी का कुल मूल्य:',
+      sec3: '3️⃣ निवेश और व्यापारिक संपत्ति',
+      labelStocks: 'शेयर / म्यूचुअल फंड (₹)',
+      labelBusinessStock: 'बिजनेस स्टॉक (₹)',
+      labelPropertyInvestment: 'प्रॉपर्टी (Resale / Investment) (₹)',
+      sec4: '4️⃣ देनदारियां',
+      labelLoan: 'कर्ज (₹)',
+      labelPendingBills: 'बकाया बिल/Tax (₹)',
+      sec6: '6️⃣ पिछला साल की बकाया ज़कात',
+      labelLastYearZakat: 'पिछले साल की ज़कात (अगर बाकी हो) (₹)',
+      noteLastYear: 'अगर पिछला साल अदा नहीं किया तो यहाँ जोड़ें।',
+      sec5: '5️⃣ निसाब विकल्प',
+      radioSilver: 'चांदी के आधार पर (मुनासिब)',
+      radioGold: 'सोने के आधार पर',
+      labelNisabGoldPrice: 'वर्तमान सोने की कीमत (₹/ग्राम)',
+      noteGoldNisab: 'सोना निसाब = 87.48 ग्राम × बाज़ार क़ीमत',
+      labelNisabSilverPrice: 'वर्तमान चांदी की कीमत (₹/ग्राम)',
+      noteSilverNisab: 'चांदी निसाब = 612.36 ग्राम × बाज़ार क़ीमत',
+      btnCalculate: 'हिसाब करें',
+      btnReset: 'दुबारा सेट करें',
+      noteBottom: 'गौर फ़रमाएं: यह टूल ज़कात अल-माल की गणना करता है। आपकी खालिस दौलत एक क़मरी साल (हौल) तक निसाब से ऊपर होनी चाहिए।',
+      nisabNote1: 'अगर किसी के पास सिर्फ सोना हो तो ज़कात सिर्फ सोने के निसाब के अनुसार होगी ।',
+      nisabNote2: 'अगर किसी के पास सिर्फ चांदी हो तो ज़कात सिर्फ चांदी के निसाब के अनुसार होगी ।',
+      nisabNote3: 'अगर चांदी, नकद पैसा या व्यापार का माल हो तो चांदी के निसाब के अनुसार होगी क्यूंकि चांदी का निसाब जल्दी पहुंच जाता है।',
+      resultTitle: '📊 परिणाम',
+      resultTotalAssets: 'कुल संपत्ति',
+      resultDebts: 'जुमला देनदारियां',
+      resultNetWealth: 'खालिस दौलत',
+      resultNisab: 'निसाब हद',
+      resultZakat: 'ज़कात देय राशि (2.5%)',
+      infoTitle1: 'यह कैलकुलेटर कैसे काम करता है',
+      infoContent1: 'इस्तेमाल किया गया फ़ॉर्मूला: <strong>(कुल ज़कात योग्य संपत्ति − देय देनदारियां) × 2.5%</strong>। ज़कात तब लाज़िम होती है जब आपकी खालिस दौलत निसाब के बराबर या उससे अधिक हो और एक क़मरी साल तक बनी रहे।',
+      tableHead1: 'निसाब प्रकार',
+      tableHead2: 'वजन आधार',
+      tableHead3: 'मकसद',
+      tableRow1Col1: 'सोना निसाब',
+      tableRow1Col2: '87.48 ग्राम',
+      tableRow1Col3: 'ऊंची हद',
+      tableRow2Col1: 'चांदी निसाब',
+      tableRow2Col2: '612.36 ग्राम',
+      tableRow2Col3: 'कम सीमा (आमतौर पर मुनासिब)',
+      infoTitle2: 'क्या शामिल करें और क्या नहीं',
+      infoContent2: '<li><strong>शामिल करें:</strong> नकद, बैंक बचत, सोना/चांदी, निवेश, बिजनेस स्टॉक।</li><li><strong>शामिल न करें:</strong> मुख्य निवास, क्रिप्टो, डिजिटल मुद्रा, निजी उपयोग की गाड़ी, घरेलू सामान, बिक्री के लिए नहीं होने वाले उपकरण।</li><li><strong>देनदारियां:</strong> देय रकम घटाएं।</li>',
+      infoTitle3: 'फ़ौरी सवाल-जवाब',
+      faq1Q: 'क्या यह कैलकुलेटर ज़कात अल-फित्र के लिए है?',
+      faq1A: 'नहीं। यह कैलकुलेटर सालाना ज़कात अल-माल (माल की ज़कात) के लिए है, ज़कात अल-फ़ित्र के लिए नहीं।',
+      faq2Q: 'क्या मैं नियत तिथि से पहले ज़कात दे सकता/सकती हूँ?',
+      faq2A: 'हाँ, पहले अदायगी करना आम तौर पर जायज़ है। बिना मुनासिब वजह ताख़ीर करना दुरुस्त नहीं है।',
+      faq3Q: 'क्या मैं परिवार को ज़कात दे सकता/सकती हूँ?',
+      faq3A: 'मुनासिब विस्तारित रिश्तेदार (जैसे भाई-बहन, चचेरे/ममेरे रिश्तेदार) पात्र होने पर ज़कात ले सकते हैं। जीवनसाथी, माता-पिता या बच्चों को ज़कात नहीं दी जा सकती।',
+      faq4Q: 'क्या प्रॉपर्टी पर ज़कात देनी होती है?',
+      faq4A: 'यदि प्रॉपर्टी बेचने (निवेश या व्यापार) के इरादे से खरीदी गई हो, तो उसकी मौजूदा बाजार कीमत पर ज़कात देना जरूरी है। लेकिन अगर प्रॉपर्टी रहने के लिए या केवल रखने (बिना बेचने के इरादे) के लिए ली गई है, तो उस पर ज़कात नहीं है।',
+      footer: 'यह कैलकुलेटर आम अंदाज़ा देता है। पेचीदा मामलों में किसी मुअतबर आलिम से मशविरा लें।',
+      errorNegative: 'मेहरबानी करके मनफ़ी (negative) क़ीमत दर्ज न करें।',
+      madhabHanafi: 'हन्फ़ी मस्लक चुना गया: सोना/चांदी की दर्ज की गई वैल्यू ज़कात योग्य संपत्ति मानी जाती है।',
+      madhabShafai: 'शाफ़ई मस्लक चुना गया: सामान्य इस्तेमाल का सोना/चांदी ज़कात योग्य में शामिल नहीं।'
+    },
+    en: {
+      pageTitle: 'Zakat Calculator',
+      heroTitle: 'Zakat Calculator',
+      heroSubtitle: 'Calculate your annual Zakat (2.5%) in a few easy steps',
+      sec1: '1️⃣ Cash and Bank Balance',
+      labelCash: 'Cash Amount (₹)',
+      labelBank: 'Bank Balance (₹)',
+      sec2: '2️⃣ Gold and Silver',
+      labelGoldWeight: 'Gold Weight (grams)',
+      labelGoldPrice: 'Gold Price per gram (₹)',
+      goldValuePrefix: 'Total Gold Value:',
+      labelSilverWeight: 'Silver Weight (grams)',
+      labelSilverPrice: 'Silver Price per gram (₹)',
+      silverValuePrefix: 'Total Silver Value:',
+      sec3: '3️⃣ Investments and Business Assets',
+      labelStocks: 'Shares / Mutual Funds (₹)',
+      labelBusinessStock: 'Business Stock (₹)',
+      labelPropertyInvestment: 'Property (Resale / Investment) (₹)',
+      sec4: '4️⃣ Liabilities',
+      labelLoan: 'Loan (₹)',
+      labelPendingBills: 'Pending Bills/Tax (₹)',
+      sec6: "6️⃣ Previous Year's Pending Zakat",
+      labelLastYearZakat: "Previous Year's Zakat (if pending) (₹)",
+      noteLastYear: 'Add here if not paid last year.',
+      sec5: '5️⃣ Nisab Options',
+      radioSilver: 'Based on Silver (Recommended)',
+      radioGold: 'Based on Gold',
+      labelNisabGoldPrice: 'Current Gold Price (₹/gram)',
+      noteGoldNisab: 'Gold Nisab = 87.48 grams × market price',
+      labelNisabSilverPrice: 'Current Silver Price (₹/gram)',
+      noteSilverNisab: 'Silver Nisab = 612.36 grams × market price',
+      btnCalculate: 'Calculate',
+      btnReset: 'Reset',
+      noteBottom: 'Note: This tool calculates Zakat al-Mal. Your net wealth must remain above Nisab for one lunar year (Hawl).',
+      nisabNote1: 'If someone only has gold, Zakat will be based on the gold Nisab only.',
+      nisabNote2: 'If someone only has silver, Zakat will be based on the silver Nisab only.',
+      nisabNote3: 'If someone has silver, cash, or business goods, it will be based on silver Nisab as the silver threshold is reached earlier.',
+      resultTitle: '📊 Results',
+      resultTotalAssets: 'Total Assets',
+      resultDebts: 'Total Liabilities',
+      resultNetWealth: 'Net Wealth',
+      resultNisab: 'Nisab Threshold',
+      resultZakat: 'Zakat Due (2.5%)',
+      infoTitle1: 'How this Calculator Works',
+      infoContent1: 'Formula used: <strong>(Total Zakatable Assets − Payable Liabilities) × 2.5%</strong>. Zakat becomes obligatory when your net wealth equals or exceeds the Nisab and remains so for one lunar year.',
+      tableHead1: 'Nisab Type',
+      tableHead2: 'Weight Basis',
+      tableHead3: 'Purpose',
+      tableRow1Col1: 'Gold Nisab',
+      tableRow1Col2: '87.48 grams',
+      tableRow1Col3: 'Higher threshold',
+      tableRow2Col1: 'Silver Nisab',
+      tableRow2Col2: '612.36 grams',
+      tableRow2Col3: 'Lower threshold (generally recommended)',
+      infoTitle2: 'What to Include and Exclude',
+      infoContent2: '<li><strong>Include:</strong> Cash, bank savings, gold/silver, investments, business stock.</li><li><strong>Exclude:</strong> Primary residence, crypto, digital currency, personal-use vehicle, household items, non-resale equipment.</li><li><strong>Liabilities:</strong> Deduct payable amounts.</li>',
+      infoTitle3: 'Quick Q&A',
+      faq1Q: 'Is this calculator for Zakat al-Fitr?',
+      faq1A: 'No. This calculator is for annual Zakat al-Mal (wealth Zakat), not Zakat al-Fitr.',
+      faq2Q: 'Can I pay Zakat before the due date?',
+      faq2A: 'Yes, early payment is generally permissible. Delaying without a valid reason is not appropriate.',
+      faq3Q: 'Can I give Zakat to family members?',
+      faq3A: 'Eligible extended relatives (e.g., siblings, cousins) can receive Zakat if they qualify. Zakat cannot be given to a spouse, parents, or children.',
+      faq4Q: 'Is Zakat due on property?',
+      faq4A: 'If property was purchased with the intention to sell (investment or trade), Zakat is due on its current market value. However, if the property is for personal use or just held (without intent to sell), Zakat is not due on it.',
+      footer: 'This calculator provides a general estimate. Consult a qualified scholar for complex cases.',
+      errorNegative: 'Please do not enter negative values.',
+      madhabHanafi: 'Hanafi school selected: Entered gold/silver value is considered zakatable.',
+      madhabShafai: "Shafi'i school selected: Gold/silver for general use is not included in zakatable assets."
+    }
+  };
+
+  let currentLang = 'hi';
+
+  function t(key) {
+    return (translations[currentLang] && translations[currentLang][key]) || key;
+  }
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    document.title = t('pageTitle');
+
+    // Update toggle button states
+    const btnHindi = document.getElementById('btnHindi');
+    const btnEnglish = document.getElementById('btnEnglish');
+    if (btnHindi) btnHindi.classList.toggle('active', lang === 'hi');
+    if (btnEnglish) btnEnglish.classList.toggle('active', lang === 'en');
+
+    // Update all elements with data-i18n (textContent)
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      el.textContent = t(key);
+    });
+
+    // Update all elements with data-i18n-html (innerHTML)
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-html');
+      el.innerHTML = t(key);
+    });
+
+    // Refresh dynamic metal value display
+    updateMetalValues();
+  }
+
+  // ─── Calculator logic ──────────────────────────────────────────
   const form = document.getElementById("zakatForm");
   const errorBox = document.getElementById("errorBox");
   const resultSection = document.getElementById("resultSection");
@@ -760,7 +978,7 @@
         madhab,
         goldValue: 0,
         silverValue: 0,
-        note: "शाफ़ई मस्लक चुना गया: सामान्य इस्तेमाल का सोना/चांदी ज़कात योग्य में शामिल नहीं।"
+        note: t('madhabShafai')
       };
     }
 
@@ -768,20 +986,20 @@
       madhab,
       goldValue: rawGoldValue,
       silverValue: rawSilverValue,
-      note: "हन्फ़ी मस्लक चुना गया: सोना/चांदी की दर्ज की गई वैल्यू ज़कात योग्य संपत्ति मानी जाती है।"
+      note: t('madhabHanafi')
     };
   }
 
   function updateMetalValues() {
     const { goldValue, silverValue, note } = getMetalValuesByMadhab();
-    if (goldValueEl) goldValueEl.textContent = `सोने का कुल मूल्य: ${inr(goldValue)}`;
-    if (silverValueEl) silverValueEl.textContent = `चांदी का कुल मूल्य: ${inr(silverValue)}`;
+    if (goldValueEl) goldValueEl.textContent = `${t('goldValuePrefix')} ${inr(goldValue)}`;
+    if (silverValueEl) silverValueEl.textContent = `${t('silverValuePrefix')} ${inr(silverValue)}`;
     if (madhabStatusEl) madhabStatusEl.textContent = note;
   }
 
   function calculate({ shouldScroll = true } = {}) {
     if (hasNegativeValues()) {
-      if (errorBox) errorBox.textContent = "मेहरबानी करके मनफ़ी (negative) क़ीमत दर्ज न करें।";
+      if (errorBox) errorBox.textContent = t('errorNegative');
       return;
     }
 
@@ -806,7 +1024,6 @@
     const nisabSilverPrice = getNum("nisabSilverPrice");
     const nisabBase = (document.querySelector("input[name='nisabBase']:checked") || {}).value || "silver";
 
-    // कुल संपत्ति = cash + bank + wallet + metal value + investment value.
     const totalAssets =
       cash +
       bank +
@@ -821,7 +1038,6 @@
     // Debts payable within 1 year.
     const totalDebts = loan + pendingBills;
 
-    // खालिस दौलत after subtracting debts.
     const netWealth = totalAssets - totalDebts;
 
     // Nisab based on selected metal.
@@ -889,6 +1105,5 @@
   // Initial update
   updateMetalValues();
 </script>
-    </script>
   </body>
 </html>
