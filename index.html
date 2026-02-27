@@ -45,22 +45,40 @@
         margin: 0 auto;
       }
 
-      .top-image {
-        display: block;
-        margin: 14px auto;
-        max-height: 72px; /* keeps image small */
-        max-width: 90%;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-        border-radius: 8px;
-      }
+      .logo-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto 0;
+    pointer-events: none; /* non-interactive decorative logo */
+  }
 
-      @media (min-width: 760px) {
-        .top-image {
-          max-height: 96px;
-        }
-      }
+  /* Top image (home.png) - kept small & responsive */
+  .top-image {
+    display: block;
+    max-height: 64px;
+    max-width: 220px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.95); /* keeps it readable if image has transparency */
+    box-shadow: 0 8px 20px rgba(10, 40, 30, 0.06);
+    padding: 6px;
+  }
+
+  /* On larger screens, pull the logo up to overlap the hero */
+  @media (min-width: 760px) {
+    .logo-wrap {
+      margin-top: -36px; /* pull up so it visually integrates with hero */
+    }
+    .top-image {
+      max-height: 88px;
+      max-width: 280px;
+      padding: 8px;
+    }
+    /* small hero padding adjustment so overlap doesn't hide content */
+    .hero-content { padding-top: 40px; }
+  }
 
       .hero {
         margin: 22px auto 24px;
@@ -430,7 +448,9 @@
   </head>
   <body>
     <main class="container">
-      <img class="top-image" src="home.png" alt="ज़कात कैलकुलेटर" loading="lazy" />
+      <div class="logo-wrap" aria-hidden="true">
+        <img class="top-image" src="home.png" alt="ज़कात कैलकुलेटर" loading="lazy" />
+      </div>
       <section class="hero">
         <div class="hero-content">
           <h1>ज़कात कैलकुलेटर</h1>
