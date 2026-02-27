@@ -45,6 +45,23 @@
         margin: 0 auto;
       }
 
+      .top-image {
+        display: block;
+        margin: 14px auto;
+        max-height: 72px; /* keeps image small */
+        max-width: 90%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: 8px;
+      }
+
+      @media (min-width: 760px) {
+        .top-image {
+          max-height: 96px;
+        }
+      }
+
       .hero {
         margin: 22px auto 24px;
         border-radius: 24px;
@@ -413,6 +430,7 @@
   </head>
   <body>
     <main class="container">
+      <img class="top-image" src="home.png" alt="ज़कात कैलकुलेटर" loading="lazy" />
       <section class="hero">
         <div class="hero-content">
           <h1>ज़कात कैलकुलेटर</h1>
