@@ -473,11 +473,11 @@
             <div class="field-grid">
               <div class="field">
                 <label for="cash">नकद राशि (₹)</label>
-                <input type="number" id="cash" min="0" step="0.01" value="0" />
+                <input type="number" id="cash" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <div class="field">
                 <label for="bank">बैंक बैलेंस (₹)</label>
-                <input type="number" id="bank" min="0" step="0.01" value="0" />
+                <input type="number" id="bank" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
             </div>
           </section>
@@ -487,21 +487,21 @@
             <div class="field-grid">
               <div class="field">
                 <label for="goldWeight">सोने का वजन (ग्राम)</label>
-                <input type="number" id="goldWeight" min="0" step="0.01" value="0" />
+                <input type="number" id="goldWeight" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <div class="field">
                 <label for="goldPrice">सोने की प्रति ग्राम कीमत (₹)</label>
-                <input type="number" id="goldPrice" min="0" step="0.01" value="0" />
+                <input type="number" id="goldPrice" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <p class="calc-value" id="goldValue">सोने का कुल मूल्य: ₹0</p>
 
               <div class="field">
                 <label for="silverWeight">चांदी का वजन (ग्राम)</label>
-                <input type="number" id="silverWeight" min="0" step="0.01" value="0" />
+                <input type="number" id="silverWeight" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <div class="field">
                 <label for="silverPrice">चांदी की प्रति ग्राम कीमत (₹)</label>
-                <input type="number" id="silverPrice" min="0" step="0.01" value="0" />
+                <input type="number" id="silverPrice" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <p class="calc-value" id="silverValue">चांदी का कुल मूल्य: ₹0</p>
             </div>
@@ -512,15 +512,15 @@
             <div class="field-grid">
               <div class="field">
                 <label for="stocks">शेयर / म्यूचुअल फंड (₹)</label>
-                <input type="number" id="stocks" min="0" step="0.01" value="0" />
+                <input type="number" id="stocks" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <div class="field">
                 <label for="businessStock">बिजनेस स्टॉक (₹)</label>
-                <input type="number" id="businessStock" min="0" step="0.01" value="0" />
+                <input type="number" id="businessStock" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <div class="field">
                 <label for="propertyInvestment">प्रॉपर्टी (Resale / Investment) (₹)</label>
-                <input type="number" id="propertyInvestment" min="0" step="0.01" value="0" />
+                <input type="number" id="propertyInvestment" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
             </div>
           </section>
@@ -530,11 +530,11 @@
             <div class="field-grid">
               <div class="field">
                 <label for="loan">कर्ज (₹)</label>
-                <input type="number" id="loan" min="0" step="0.01" value="0" />
+                <input type="number" id="loan" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
               <div class="field">
                 <label for="pendingBills">बकाया बिल/Tax (₹)</label>
-                <input type="number" id="pendingBills" min="0" step="0.01" value="0" />
+                <input type="number" id="pendingBills" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
               </div>
             </div>
           </section>
@@ -544,7 +544,7 @@
             <div class="field-grid">
               <div class="field">
                 <label for="lastYearZakat">पिछले साल की ज़कात (अगर बाकी हो) (₹)</label>
-                <input type="number" id="lastYearZakat" min="0" step="0.01" value="0" />
+                <input type="number" id="lastYearZakat" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
                 <p class="inline-note">अगर पिछला साल अदा नहीं किया तो यहाँ जोड़ें।</p>
               </div>
             </div>
@@ -565,12 +565,12 @@
             <div class="field-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
               <div class="field">
                 <label for="nisabGoldPrice">वर्तमान सोने की कीमत (₹/ग्राम)</label>
-                <input type="number" id="nisabGoldPrice" min="0" step="0.01" value="0" />
+                <input type="number" id="nisabGoldPrice" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
                 <p class="inline-note">सोना निसाब = 87.48 ग्राम × बाज़ार क़ीमत</p>
               </div>
               <div class="field">
                 <label for="nisabSilverPrice">वर्तमान चांदी की कीमत (₹/ग्राम)</label>
-                <input type="number" id="nisabSilverPrice" min="0" step="0.01" value="0" />
+                <input type="number" id="nisabSilverPrice" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
                 <p class="inline-note">चांदी निसाब = 612.36 ग्राम × बाज़ार क़ीमत</p>
               </div>
             </div>
