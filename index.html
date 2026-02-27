@@ -693,179 +693,202 @@
       </footer>
     </main>
 
-    <script>
-      const form = document.getElementById("zakatForm");
-      const errorBox = document.getElementById("errorBox");
-      const resultSection = document.getElementById("resultSection");
+<script>
+  const form = document.getElementById("zakatForm");
+  const errorBox = document.getElementById("errorBox");
+  const resultSection = document.getElementById("resultSection");
 
-      const goldValueEl = document.getElementById("goldValue");
-      const silverValueEl = document.getElementById("silverValue");
+  const goldValueEl = document.getElementById("goldValue");
+  const silverValueEl = document.getElementById("silverValue");
 
-      const totalAssetsOut = document.getElementById("totalAssetsOut");
-      const debtsOut = document.getElementById("debtsOut");
-      const netWealthOut = document.getElementById("netWealthOut");
-      const nisabOut = document.getElementById("nisabOut");
-      const zakatOut = document.getElementById("zakatOut");
+  const totalAssetsOut = document.getElementById("totalAssetsOut");
+  const debtsOut = document.getElementById("debtsOut");
+  const netWealthOut = document.getElementById("netWealthOut");
+  const nisabOut = document.getElementById("nisabOut");
+  const zakatOut = document.getElementById("zakatOut");
 
-      const inputIds = [
-        "cash",
-        "bank",
-        "goldWeight",
-        "goldPrice",
-        "silverWeight",
-        "silverPrice",
-        "stocks",
-        "businessStock",
-        "propertyInvestment",
-        "loan",
-        "pendingBills",
-        "lastYearZakat",
-        "nisabGoldPrice",
-        "nisabSilverPrice"
-      ];
+  // Optional elements (may be missing in markup) — we guard their use
+  const madhabSelect = document.getElementById("madhabSelect");
+  const madhabStatusEl = document.getElementById("madhabStatus");
 
-      const INDIAN_FORMATTER = new Intl.NumberFormat("hi-IN", {
-        maximumFractionDigits: 2,
-        minimumFractionDigits: 2
-      });
+  const inputIds = [
+    "cash",
+    "bank",
+    "goldWeight",
+    "goldPrice",
+    "silverWeight",
+    "silverPrice",
+    "stocks",
+    "businessStock",
+    "propertyInvestment",
+    "loan",
+    "pendingBills",
+    "lastYearZakat",
+    "nisabGoldPrice",
+    "nisabSilverPrice"
+  ];
 
-      function getNum(id) {
-        const val = Number(document.getElementById(id).value);
-        return Number.isFinite(val) ? val : 0;
-      }
+  const INDIAN_FORMATTER = new Intl.NumberFormat("hi-IN", {
+    maximumFractionDigits: 2,
+    minimumFractionDigits: 2
+  });
 
-      function inr(value) {
-        return `₹${INDIAN_FORMATTER.format(value)}`;
-      }
+  // Safe getter: returns 0 if element is absent or value is not a finite number
+  function getNum(id) {
+    const el = document.getElementById(id);
+    if (!el) return 0;
+    const val = Number(el.value);
+    return Number.isFinite(val) ? val : 0;
+  }
 
-      function hasNegativeValues() {
-        return inputIds.some((id) => getNum(id) < 0);
-      }
+  function inr(value) {
+    return `₹${INDIAN_FORMATTER.format(value)}`;
+  }
 
-      function getMetalValuesByMadhab() {
-        const madhab = document.getElementById("madhabSelect").value;
-        const rawGoldValue = getNum("goldWeight") * getNum("goldPrice");
-        const rawSilverValue = getNum("silverWeight") * getNum("silverPrice");
+  function hasNegativeValues() {
+    return inputIds.some((id) => getNum(id) < 0);
+  }
 
-        if (madhab === "shafai") {
-          return {
-            madhab,
-            goldValue: 0,
-            silverValue: 0,
-            note: "शाफ़ई मस्लक चुना गया: सामान्य इस्तेमाल का सोना/चांदी ज़कात योग्य में शामिल नहीं किया गया।"
-          };
-        }
+  function getMetalValuesByMadhab() {
+    // fall back to 'hanafi' if the select isn't present
+    const madhab = (madhabSelect && madhabSelect.value) || "hanafi";
+    const rawGoldValue = getNum("goldWeight") * getNum("goldPrice");
+    const rawSilverValue = getNum("silverWeight") * getNum("silverPrice");
 
-        return {
-          madhab,
-          goldValue: rawGoldValue,
-          silverValue: rawSilverValue,
-          note: "हन्फ़ी मस्लक चुना गया: सोना/चांदी की दर्ज की गई वैल्यू ज़कात योग्य संपत्ति में शामिल है।"
-        };
-      }
+    if (madhab === "shafai") {
+      return {
+        madhab,
+        goldValue: 0,
+        silverValue: 0,
+        note: "शाफ़ई मस्लक चुना गया: सामान्य इस्तेमाल का सोना/चांदी ज़कात योग्य में शामिल नहीं।"
+      };
+    }
 
-      function updateMetalValues() {
-        const { goldValue, silverValue, note } = getMetalValuesByMadhab();
-        goldValueEl.textContent = `सोने का कुल मूल्य: ${inr(goldValue)}`;
-        silverValueEl.textContent = `चांदी का कुल मूल्य: ${inr(silverValue)}`;
-        document.getElementById("madhabStatus").textContent = note;
-      }
+    return {
+      madhab,
+      goldValue: rawGoldValue,
+      silverValue: rawSilverValue,
+      note: "हन्फ़ी मस्लक चुना गया: सोना/चांदी की दर्ज की गई वैल्यू ज़कात योग्य संपत्ति मानी जाती है।"
+    };
+  }
 
-      function calculate({ shouldScroll = true } = {}) {
-        if (hasNegativeValues()) {
-          errorBox.textContent = "मेहरबानी करके मनफ़ी (negative) क़ीमत दर्ज न करें।";
-          return;
-        }
+  function updateMetalValues() {
+    const { goldValue, silverValue, note } = getMetalValuesByMadhab();
+    if (goldValueEl) goldValueEl.textContent = `सोने का कुल मूल्य: ${inr(goldValue)}`;
+    if (silverValueEl) silverValueEl.textContent = `चांदी का कुल मूल्य: ${inr(silverValue)}`;
+    if (madhabStatusEl) madhabStatusEl.textContent = note;
+  }
 
-        errorBox.textContent = "";
+  function calculate({ shouldScroll = true } = {}) {
+    if (hasNegativeValues()) {
+      if (errorBox) errorBox.textContent = "मेहरबानी करके मनफ़ी (negative) क़ीमत दर्ज न करें।";
+      return;
+    }
 
-        const cash = getNum("cash");
-        const bank = getNum("bank");
-        const wallet = getNum("wallet");
-        const { goldValue, silverValue } = getMetalValuesByMadhab();
+    if (errorBox) errorBox.textContent = "";
 
-        const stocks = getNum("stocks");
-        const crypto = getNum("crypto");
-        const businessStock = getNum("businessStock");
-        const propertyInvestment = getNum("propertyInvestment");
+    const cash = getNum("cash");
+    const bank = getNum("bank");
+    // wallet/crypto fields may be missing from the HTML — getNum returns 0 if absent
+    const wallet = getNum("wallet");
+    const { goldValue, silverValue } = getMetalValuesByMadhab();
 
-        const loan = getNum("loan");
-        const pendingBills = getNum("pendingBills");
-        const lastYearZakat = getNum("lastYearZakat");
+    const stocks = getNum("stocks");
+    const crypto = getNum("crypto");
+    const businessStock = getNum("businessStock");
+    const propertyInvestment = getNum("propertyInvestment");
 
-        const nisabGoldPrice = getNum("nisabGoldPrice");
-        const nisabSilverPrice = getNum("nisabSilverPrice");
-        const nisabBase = document.querySelector("input[name='nisabBase']:checked").value;
+    const loan = getNum("loan");
+    const pendingBills = getNum("pendingBills");
+    const lastYearZakat = getNum("lastYearZakat");
 
-        // कुल संपत्ति = cash + bank + wallet + metal value + investment value.
-        const totalAssets =
-          cash +
-          bank +
-          wallet +
-          goldValue +
-          silverValue +
-          stocks +
-          crypto +
-          businessStock +
-          propertyInvestment;
+    const nisabGoldPrice = getNum("nisabGoldPrice");
+    const nisabSilverPrice = getNum("nisabSilverPrice");
+    const nisabBase = (document.querySelector("input[name='nisabBase']:checked") || {}).value || "silver";
 
-        // Debts payable within 1 year.
-        const totalDebts = loan + pendingBills;
+    // कुल संपत्ति = cash + bank + wallet + metal value + investment value.
+    const totalAssets =
+      cash +
+      bank +
+      wallet +
+      goldValue +
+      silverValue +
+      stocks +
+      crypto +
+      businessStock +
+      propertyInvestment;
 
-        // खालिस दौलत after subtracting debts.
-        const netWealth = totalAssets - totalDebts;
+    // Debts payable within 1 year.
+    const totalDebts = loan + pendingBills;
 
-        // Nisab based on selected metal.
-        const nisabByGold = 87.48 * nisabGoldPrice;
-        const nisabBySilver = 612.36 * nisabSilverPrice;
-        const nisabValue = nisabBase === "gold" ? nisabByGold : nisabBySilver;
+    // खालिस दौलत after subtracting debts.
+    const netWealth = totalAssets - totalDebts;
 
-        // Zakat is 2.5% only if net wealth meets or exceeds Nisab.
-        const currentYearZakat = netWealth >= nisabValue ? Math.max(netWealth, 0) * 0.025 : 0;
-        const zakat = currentYearZakat + lastYearZakat;
+    // Nisab based on selected metal.
+    const nisabByGold = 87.48 * nisabGoldPrice;
+    const nisabBySilver = 612.36 * nisabSilverPrice;
+    const nisabValue = nisabBase === "gold" ? nisabByGold : nisabBySilver;
 
-        totalAssetsOut.textContent = inr(Math.max(totalAssets, 0));
-        debtsOut.textContent = inr(Math.max(totalDebts, 0));
-        netWealthOut.textContent = inr(Math.max(netWealth, 0));
-        nisabOut.textContent = inr(Math.max(nisabValue, 0));
-        zakatOut.textContent = inr(Math.max(zakat, 0));
+    // Zakat is 2.5% only if net wealth meets or exceeds Nisab.
+    const currentYearZakat = netWealth >= nisabValue ? Math.max(netWealth, 0) * 0.025 : 0;
+    const zakat = currentYearZakat + lastYearZakat;
 
-        if (shouldScroll) {
-          resultSection.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }
+    if (totalAssetsOut) totalAssetsOut.textContent = inr(Math.max(totalAssets, 0));
+    if (debtsOut) debtsOut.textContent = inr(Math.max(totalDebts, 0));
+    if (netWealthOut) netWealthOut.textContent = inr(Math.max(netWealth, 0));
+    if (nisabOut) nisabOut.textContent = inr(Math.max(nisabValue, 0));
+    if (zakatOut) zakatOut.textContent = inr(Math.max(zakat, 0));
 
-      form.addEventListener("input", () => {
-        updateMetalValues();
-      });
+    if (shouldScroll && resultSection) {
+      resultSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
 
-      document.getElementById("madhabSelect").addEventListener("change", () => {
-        updateMetalValues();
-        calculate({ shouldScroll: false });
-      });
-
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        calculate();
-      });
-
-      document.getElementById("resetBtn").addEventListener("click", () => {
-        form.reset();
-        inputIds.forEach((id) => {
-          document.getElementById(id).value = "0";
-        });
-        document.querySelector("input[name='nisabBase'][value='silver']").checked = true;
-        document.getElementById("madhabSelect").value = "hanafi";
-        errorBox.textContent = "";
-        totalAssetsOut.textContent = "₹0";
-        debtsOut.textContent = "₹0";
-        netWealthOut.textContent = "₹0";
-        nisabOut.textContent = "₹0";
-        zakatOut.textContent = "₹0";
-        updateMetalValues();
-      });
-
+  // Attach listeners carefully; guard missing elements
+  if (form) {
+    form.addEventListener("input", () => {
       updateMetalValues();
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault(); // prevents page refresh
+      calculate();
+    });
+  } else {
+    console.warn("zakatForm not found in the DOM.");
+  }
+
+  if (madhabSelect) {
+    madhabSelect.addEventListener("change", () => {
+      updateMetalValues();
+      calculate({ shouldScroll: false });
+    });
+  }
+
+  const resetBtn = document.getElementById("resetBtn");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+      if (form) form.reset();
+      inputIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.value = "0";
+      });
+      const ns = document.querySelector("input[name='nisabBase'][value='silver']");
+      if (ns) ns.checked = true;
+      if (madhabSelect) madhabSelect.value = "hanafi";
+      if (errorBox) errorBox.textContent = "";
+      if (totalAssetsOut) totalAssetsOut.textContent = "₹0";
+      if (debtsOut) debtsOut.textContent = "₹0";
+      if (netWealthOut) netWealthOut.textContent = "₹0";
+      if (nisabOut) nisabOut.textContent = "₹0";
+      if (zakatOut) zakatOut.textContent = "₹0";
+      updateMetalValues();
+    });
+  }
+
+  // Initial update
+  updateMetalValues();
+</script>
     </script>
   </body>
 </html>
