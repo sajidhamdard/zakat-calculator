@@ -105,6 +105,9 @@
 
       footer { text-align: center; color: var(--muted); font-size: 0.9rem; padding: 24px 0; }
       .developer-credit { margin-top: 0.5rem; font-size: 0.85rem; color: #6b7280; font-weight: 600; }
+      .footer-links { margin-top: 0.75rem; font-size: 0.85rem; }
+      .footer-links a { color: var(--primary); text-decoration: none; font-weight: 500; }
+      .footer-links a:hover { text-decoration: underline; }
     </style>
   </head>
   <body>
@@ -118,8 +121,6 @@
           <li><a href="index.html" class="nav-link">Home</a></li>
           <li><a href="about.html" class="nav-link active">About</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
-          <li><a href="privacy-policy.html" class="nav-link">Privacy</a></li>
-          <li><a href="terms-and-conditions.html" class="nav-link">Terms</a></li>
         </ul>
       </div>
     </nav>
@@ -192,7 +193,11 @@
 
     <footer class="container">
       <span>This calculator provides a general estimate. Consult a qualified scholar for complex cases.</span>
-      <p class="developer-credit">Developed by Sajid Ali Khan</p>
+      <p class="footer-links">
+        <a href="contact.html">Contact</a> |
+        <a href="privacy-policy.html">Privacy</a> |
+        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+      </p>
     </footer>
 
     <script>
