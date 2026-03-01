@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CHGYQVXQ97"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CHGYQVXQ97');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms and Conditions – ZakatCalculation.in</title>
+    <meta name="description" content="Terms and Conditions for using ZakatCalculation.in – a free online Zakat calculator." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f6fbf8; --card: #ffffff; --primary: #1f8f63; --primary-dark: #156f4d;
+        --text: #1c2a23; --muted: #5d6b64;
+        --shadow: 0 12px 32px rgba(18, 73, 53, 0.12); --radius: 16px;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: "Poppins", "Noto Sans Devanagari", system-ui, -apple-system, sans-serif;
+        background: radial-gradient(circle at top, #eef9f2 0%, var(--bg) 40%, #f9fcfa 100%);
+        color: var(--text);
+      }
+      .container { width: min(1080px, 92vw); margin: 0 auto; }
+
+      /* Navbar */
+      .navbar { background: linear-gradient(120deg, #1f8f63, #2ca876); box-shadow: 0 2px 12px rgba(18,73,53,0.15); position: sticky; top: 0; z-index: 1000; }
+      .nav-container { width: min(1080px, 92vw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 12px 0; position: relative; }
+      .nav-brand { color: #fff; text-decoration: none; font-size: 1.15rem; font-weight: 700; }
+      .nav-menu { display: flex; list-style: none; margin: 0; padding: 0; gap: 4px; }
+      .nav-link { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 0.92rem; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: background 0.2s; }
+      .nav-link:hover, .nav-link.active { background: rgba(255,255,255,0.18); color: #fff; }
+      .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: transparent; border: none; cursor: pointer; padding: 4px; }
+      .nav-hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+      @media (max-width: 760px) {
+        .nav-hamburger { display: flex; }
+        .nav-menu { display: none; position: absolute; top: 56px; left: 0; right: 0; background: #1a7d57; flex-direction: column; padding: 8px 16px 16px; gap: 2px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .nav-menu.open { display: flex; }
+        .nav-link { padding: 10px 12px; display: block; }
+      }
+
+      /* Page */
+      .page-hero { margin: 28px auto 24px; border-radius: 24px; background: linear-gradient(120deg, #1f8f63, #2ca876 45%, #8ccf87 100%); color: #fff; box-shadow: var(--shadow); padding: 40px 32px; }
+      .page-hero h1 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.2rem); }
+      .page-hero p { margin: 10px 0 0; opacity: 0.92; font-size: 1.05rem; }
+      .last-updated { font-size: 0.85rem; opacity: 0.8; margin-top: 6px; }
+
+      .content-card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 28px; margin-bottom: 24px; }
+      .content-card h2 { margin: 0 0 14px; color: var(--primary-dark); font-size: 1.15rem; border-bottom: 1px solid #e9f1ec; padding-bottom: 10px; }
+      .content-card p { line-height: 1.75; color: #334840; margin: 0 0 12px; }
+      .content-card p:last-child { margin-bottom: 0; }
+      .content-card ul { padding-left: 20px; color: #334840; line-height: 1.75; }
+      .content-card ul li { margin-bottom: 8px; }
+
+      .warning-box { background: #fff8e1; border: 1px solid #f9c83a; border-radius: 12px; padding: 16px 18px; margin-bottom: 16px; color: #7a5c00; font-size: 0.95rem; line-height: 1.6; }
+
+      footer { text-align: center; color: var(--muted); font-size: 0.9rem; padding: 24px 0; }
+      .developer-credit { margin-top: 0.5rem; font-size: 0.85rem; color: #6b7280; font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-brand">🕌 ZakatCalculation.in</a>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="privacy-policy.html" class="nav-link">Privacy</a></li>
+          <li><a href="terms-and-conditions.html" class="nav-link active">Terms</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="page-hero">
+        <h1>📋 Terms and Conditions</h1>
+        <p>Please read these terms carefully before using ZakatCalculation.in</p>
+        <p class="last-updated">Last updated: June 2025</p>
+      </div>
+
+      <div class="container">
+        <div class="warning-box">
+          ⚠️ <strong>Important:</strong> The Zakat calculations provided by this tool are estimates for
+          general guidance only. They do not constitute official Islamic religious advice (fatwa).
+          For authoritative rulings, consult a qualified Islamic scholar or mufti.
+        </div>
+      </div>
+
+      <article class="content-card">
+        <h2>1. Acceptance of Terms</h2>
+        <p>
+          By accessing or using ZakatCalculation.in ("the website", "the tool", "we", "our"), you agree
+          to be bound by these Terms and Conditions. If you do not agree to these terms, please do not
+          use the website.
+        </p>
+      </article>
+
+      <article class="content-card">
+        <h2>2. Nature of the Service</h2>
+        <p>
+          ZakatCalculation.in is a free, non-commercial web tool that provides approximate Zakat
+          calculations based on standard Islamic jurisprudence formulas. The tool is provided as a
+          convenience for the Muslim community and is intended for informational purposes only.
+        </p>
+        <p>
+          The calculator does <strong>not</strong> constitute:
+        </p>
+        <ul>
+          <li>Official Islamic religious advice or a fatwa</li>
+          <li>Financial advice or planning services</li>
+          <li>Legal or tax advice</li>
+          <li>A substitute for consultation with a qualified Islamic scholar</li>
+        </ul>
+      </article>
+
+      <article class="content-card">
+        <h2>3. Accuracy and Disclaimer</h2>
+        <p>
+          While we strive to keep the calculations accurate and up to date, we make no warranties or
+          representations about the completeness, accuracy, or suitability of the information provided.
+          Zakat rulings may vary based on:
+        </p>
+        <ul>
+          <li>Your specific school of jurisprudence (madhab)</li>
+          <li>Jurisdiction and local scholarly opinion</li>
+          <li>The nature and type of your assets</li>
+          <li>Changes in Islamic scholarly consensus over time</li>
+        </ul>
+        <p>
+          We strongly recommend consulting a qualified Islamic scholar or certified Islamic finance
+          professional for accurate, personalised Zakat guidance.
+        </p>
+      </article>
+
+      <article class="content-card">
+        <h2>4. Limitation of Liability</h2>
+        <p>
+          To the fullest extent permitted by law, ZakatCalculation.in and its developer (Sajid Ali Khan)
+          shall not be liable for any direct, indirect, incidental, or consequential damages arising
+          from your use of, or inability to use, this website or the calculations provided.
+        </p>
+        <p>
+          You use this tool entirely at your own risk. Any Zakat obligations you undertake based on
+          the calculations from this tool are your own responsibility.
+        </p>
+      </article>
+
+      <article class="content-card">
+        <h2>5. Intellectual Property</h2>
+        <p>
+          The design, content, code, and features of ZakatCalculation.in are the intellectual property
+          of Sajid Ali Khan, unless otherwise stated. You may use this tool freely for personal,
+          non-commercial purposes.
+        </p>
+        <p>
+          You may not copy, reproduce, or redistribute the source code or design of this website for
+          commercial purposes without prior written permission.
+        </p>
+      </article>
+
+      <article class="content-card">
+        <h2>6. Free to Use</h2>
+        <p>
+          ZakatCalculation.in is and will remain free to use. We do not charge any fees for accessing
+          or using the calculator. We do not display intrusive advertisements that block access to
+          the tool.
+        </p>
+      </article>
+
+      <article class="content-card">
+        <h2>7. Third-Party Links</h2>
+        <p>
+          This website may contain links to third-party websites (e.g., LinkedIn, Google). These links
+          are provided for convenience only. We have no control over the content or privacy practices
+          of third-party websites and accept no responsibility for them.
+        </p>
+      </article>
+
+      <article class="content-card">
+        <h2>8. Changes to Terms</h2>
+        <p>
+          We reserve the right to modify these Terms and Conditions at any time. Changes will be
+          reflected with an updated "Last updated" date. Continued use of the website after any
+          changes constitutes acceptance of the updated terms.
+        </p>
+      </article>
+
+      <article class="content-card">
+        <h2>9. Governing Law</h2>
+        <p>
+          These Terms and Conditions are governed by the laws of India. Any disputes arising from
+          the use of this website shall be subject to the jurisdiction of Indian courts.
+        </p>
+      </article>
+
+      <article class="content-card">
+        <h2>10. Contact</h2>
+        <p>
+          If you have any questions about these Terms and Conditions, please
+          <a href="contact.html" style="color: var(--primary); font-weight: 600;">contact us</a>.
+        </p>
+      </article>
+    </main>
+
+    <footer class="container">
+      <span>This calculator provides a general estimate. Consult a qualified scholar for complex cases.</span>
+      <p class="developer-credit">Developed by Sajid Ali Khan</p>
+    </footer>
+
+    <script>
+      const navHamburger = document.getElementById('navHamburger');
+      const navMenu = document.getElementById('navMenu');
+      if (navHamburger && navMenu) {
+        navHamburger.addEventListener('click', function() { navMenu.classList.toggle('open'); });
+        navMenu.querySelectorAll('.nav-link').forEach(function(link) {
+          link.addEventListener('click', function() { navMenu.classList.remove('open'); });
+        });
+      }
+    </script>
+  </body>
+</html>
