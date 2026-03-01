@@ -91,7 +91,8 @@
       footer: 'यह कैलकुलेटर आम अंदाज़ा देता है। पेचीदा मामलों में किसी मुअतबर आलिम से मशविरा लें।',
       errorNegative: 'मेहरबानी करके मनफ़ी (negative) क़ीमत दर्ज न करें।',
       madhabHanafi: 'हन्फ़ी मस्लक चुना गया: सोना/चांदी की दर्ज की गई वैल्यू ज़कात योग्य संपत्ति मानी जाती है।',
-      madhabShafai: 'शाफ़ई मस्लक चुना गया: सामान्य इस्तेमाल का सोना/चांदी ज़कात योग्य में शामिल नहीं।'
+      madhabShafai: 'शाफ़ई मस्लक चुना गया: सामान्य इस्तेमाल का सोना/चांदी ज़कात योग्य में शामिल नहीं।',
+      ratesDisclaimer: '⚠️ नोट: ये दरें स्वतः लोड की जाती हैं। कृपया गणना करने से पहले आज की असल दरें जांच लें।'
     },
     en: {
       navHome: 'Home', navAbout: 'About', navContact: 'Contact', navPrivacy: 'Privacy', navTerms: 'Terms',
@@ -167,7 +168,8 @@
       footer: 'This calculator provides a general estimate. Consult a qualified scholar for complex cases.',
       errorNegative: 'Please do not enter negative values.',
       madhabHanafi: 'Hanafi school selected: Entered gold/silver value is considered zakatable.',
-      madhabShafai: "Shafi'i school selected: Gold/silver for general use is not included in zakatable assets."
+      madhabShafai: "Shafi'i school selected: Gold/silver for general use is not included in zakatable assets.",
+      ratesDisclaimer: '⚠️ Disclaimer: Rates shown are indicative. Please verify the latest gold & silver prices for today before calculating.'
     },
     ar: {
       navHome: 'الرئيسية', navAbout: 'حول', navContact: 'اتصل', navPrivacy: 'الخصوصية', navTerms: 'الشروط',
@@ -243,7 +245,8 @@
       footer: 'توفر هذه الحاسبة تقديراً عاماً. استشر عالماً مؤهلاً للحالات المعقدة.',
       errorNegative: 'يرجى عدم إدخال قيم سالبة.',
       madhabHanafi: 'تم اختيار المذهب الحنفي: قيمة الذهب/الفضة المُدخلة تُعدّ خاضعة للزكاة.',
-      madhabShafai: 'تم اختيار المذهب الشافعي: الذهب/الفضة للاستخدام العام غير مشمول في الأصول الخاضعة للزكاة.'
+      madhabShafai: 'تم اختيار المذهب الشافعي: الذهب/الفضة للاستخدام العام غير مشمول في الأصول الخاضعة للزكاة.',
+      ratesDisclaimer: '⚠️ تنبيه: الأسعار المعروضة استرشادية. يُرجى التحقق من أحدث أسعار الذهب والفضة لهذا اليوم قبل الحساب.'
     },
     es: {
       navHome: 'Inicio', navAbout: 'Acerca de', navContact: 'Contacto', navPrivacy: 'Privacidad', navTerms: 'Términos',
@@ -319,7 +322,8 @@
       footer: 'Esta calculadora proporciona una estimación general. Consulta a un erudito calificado para casos complejos.',
       errorNegative: 'Por favor, no ingrese valores negativos.',
       madhabHanafi: 'Escuela Hanafi seleccionada: El valor de oro/plata ingresado se considera zakatable.',
-      madhabShafai: 'Escuela Shafi\'i seleccionada: El oro/plata para uso general no se incluye en los activos zakatables.'
+      madhabShafai: 'Escuela Shafi\'i seleccionada: El oro/plata para uso general no se incluye en los activos zakatables.',
+      ratesDisclaimer: '⚠️ Aviso: Las tasas mostradas son indicativas. Por favor, verifica los precios actuales de oro y plata de hoy antes de calcular.'
     },
     fr: {
       navHome: 'Accueil', navAbout: 'À propos', navContact: 'Contact', navPrivacy: 'Confidentialité', navTerms: 'Conditions',
@@ -395,7 +399,8 @@
       footer: 'Ce calculateur fournit une estimation générale. Consultez un érudit qualifié pour les cas complexes.',
       errorNegative: 'Veuillez ne pas entrer de valeurs négatives.',
       madhabHanafi: 'École Hanafi sélectionnée: La valeur or/argent saisie est considérée zakatable.',
-      madhabShafai: 'École Shafi\'i sélectionnée: L\'or/argent pour usage général n\'est pas inclus dans les actifs zakatables.'
+      madhabShafai: 'École Shafi\'i sélectionnée: L\'or/argent pour usage général n\'est pas inclus dans les actifs zakatables.',
+      ratesDisclaimer: '⚠️ Avertissement: Les taux affichés sont indicatifs. Veuillez vérifier les prix actuels de l\'or et de l\'argent du jour avant de calculer.'
     },
     zh: {
       navHome: '首页', navAbout: '关于', navContact: '联系', navPrivacy: '隐私', navTerms: '条款',
@@ -471,7 +476,8 @@
       footer: '此计算器提供一般估计。复杂情况请咨询合格学者。',
       errorNegative: '请不要输入负值。',
       madhabHanafi: '已选择哈纳菲学派：输入的黄金/白银价值被视为应缴天课资产。',
-      madhabShafai: '已选择沙菲仪学派：日常使用的黄金/白银不包含在应缴天课资产中。'
+      madhabShafai: '已选择沙菲仪学派：日常使用的黄金/白银不包含在应缴天课资产中。',
+      ratesDisclaimer: '⚠️ 免责声明：显示的价格仅供参考。计算前请核实今日最新黄金和白银价格。'
     },
     bn: {
       navHome: 'হোম', navAbout: 'আমাদের সম্পর্কে', navContact: 'যোগাযোগ', navPrivacy: 'গোপনীয়তা', navTerms: 'শর্তাবলী',
@@ -547,7 +553,8 @@
       footer: 'এই ক্যালকুলেটর একটি সাধারণ অনুমান প্রদান করে। জটিল ক্ষেত্রে যোগ্য আলেমের পরামর্শ নিন।',
       errorNegative: 'অনুগ্রহ করে নেতিবাচক মান প্রবেশ করবেন না।',
       madhabHanafi: 'হানাফি মাজহাব নির্বাচিত: প্রবেশ করা সোনা/রুপার মান যাকাতযোগ্য বলে গণ্য হয়।',
-      madhabShafai: 'শাফেঈ মাজহাব নির্বাচিত: সাধারণ ব্যবহারের সোনা/রুপা যাকাতযোগ্য সম্পদে অন্তর্ভুক্ত নয়।'
+      madhabShafai: 'শাফেঈ মাজহাব নির্বাচিত: সাধারণ ব্যবহারের সোনা/রুপা যাকাতযোগ্য সম্পদে অন্তর্ভুক্ত নয়।',
+      ratesDisclaimer: '⚠️ দাবিত্যাগ: প্রদর্শিত দর নির্দেশক মাত্র। গণনার আগে আজকের সর্বশেষ সোনা ও রুপার দর যাচাই করুন।'
     },
     pt: {
       navHome: 'Início', navAbout: 'Sobre', navContact: 'Contato', navPrivacy: 'Privacidade', navTerms: 'Termos',
@@ -623,7 +630,8 @@
       footer: 'Esta calculadora fornece uma estimativa geral. Consulte um estudioso qualificado para casos complexos.',
       errorNegative: 'Por favor, não insira valores negativos.',
       madhabHanafi: 'Escola Hanafi selecionada: O valor de ouro/prata inserido é considerado zakatable.',
-      madhabShafai: 'Escola Shafi\'i selecionada: Ouro/prata para uso geral não é incluído nos ativos zakatáveis.'
+      madhabShafai: 'Escola Shafi\'i selecionada: Ouro/prata para uso geral não é incluído nos ativos zakatáveis.',
+      ratesDisclaimer: '⚠️ Aviso: As taxas exibidas são indicativas. Por favor, verifique os preços atuais de ouro e prata de hoje antes de calcular.'
     },
     ru: {
       navHome: 'Главная', navAbout: 'О нас', navContact: 'Контакты', navPrivacy: 'Конфиденциальность', navTerms: 'Условия',
@@ -699,7 +707,8 @@
       footer: 'Этот калькулятор предоставляет общую оценку. Проконсультируйтесь с квалифицированным учёным в сложных случаях.',
       errorNegative: 'Пожалуйста, не вводите отрицательные значения.',
       madhabHanafi: 'Выбрана школа Ханафи: Введённое значение золота/серебра считается закатооблагаемым.',
-      madhabShafai: 'Выбрана школа Шафии: Золото/серебро для общего использования не включается в закатооблагаемые активы.'
+      madhabShafai: 'Выбрана школа Шафии: Золото/серебро для общего использования не включается в закатооблагаемые активы.',
+      ratesDisclaimer: '⚠️ Примечание: Показанные курсы носят ориентировочный характер. Пожалуйста, проверьте актуальные цены на золото и серебро на сегодня перед расчётом.'
     },
     ur: {
       navHome: 'ہوم', navAbout: 'ہمارے بارے میں', navContact: 'رابطہ', navPrivacy: 'رازداری', navTerms: 'شرائط',
@@ -775,7 +784,8 @@
       footer: 'یہ کیلکولیٹر عمومی اندازہ فراہم کرتا ہے۔ پیچیدہ معاملات میں کسی معتبر عالم سے مشورہ لیں۔',
       errorNegative: 'براہ کرم منفی قدریں درج نہ کریں۔',
       madhabHanafi: 'حنفی مسلک منتخب: درج کردہ سونے/چاندی کی قیمت قابل زکات سمجھی جاتی ہے۔',
-      madhabShafai: 'شافعی مسلک منتخب: عام استعمال کا سونا/چاندی قابل زکات اثاثوں میں شامل نہیں۔'
+      madhabShafai: 'شافعی مسلک منتخب: عام استعمال کا سونا/چاندی قابل زکات اثاثوں میں شامل نہیں۔',
+      ratesDisclaimer: '⚠️ اہم نوٹ: دکھائی گئی قیمتیں صرف رہنمائی کے لیے ہیں۔ براہ کرم حساب سے پہلے آج کی تازہ ترین سونے اور چاندی کی قیمتیں تصدیق کریں۔'
     }
   };
 
@@ -813,6 +823,9 @@
 
     // Refresh dynamic metal value display
     updateMetalValues();
+
+    // Refresh rates disclaimer in the current language
+    setRatesStatus(t('ratesDisclaimer'));
   }
 
   // ─── Gold / Silver live rates (goldpricez.com) ────────────────
@@ -864,7 +877,7 @@
     if (cache && cache.rates && cache.rates[currency]) {
       const cached = cache.rates[currency];
       applyRatesToFields(currency, cached.gold, cached.silver);
-      setRatesStatus('');
+      setRatesStatus(t('ratesDisclaimer'));
       return;
     }
 
@@ -887,10 +900,10 @@
         saveRatesCache(existing);
 
         applyRatesToFields(currency, goldPerGram, silverPerGram);
-        setRatesStatus('');
+        setRatesStatus(t('ratesDisclaimer'));
       })
       .catch(function() {
-        setRatesStatus('');
+        setRatesStatus(t('ratesDisclaimer'));
       });
   }
 
