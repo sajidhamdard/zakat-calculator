@@ -34,7 +34,7 @@
       silverValuePrefix: 'चांदी का कुल मूल्य:',
       sec3: '3️⃣ निवेश और व्यापारिक संपत्ति',
       labelStocks: 'शेयर / म्यूचुअल फंड ({currency})',
-      labelBusinessStock: 'बिजनेस स्टॉक ({currency})',
+      labelBusinessStock: 'बिजनेस स्टॉक/माल ({currency})',
       labelPropertyInvestment: 'प्रॉपर्टी (Resale / Investment) ({currency})',
       sec4: '4️⃣ देनदारियां',
       labelLoan: 'अल्पकालीन देय ऋण ({currency})',
