@@ -368,6 +368,10 @@ form {
   line-height: 1.8;
 }
 
+.formula-box:empty {
+  display: none;
+}
+
 .formula-box .formula-line {
   display: flex;
   justify-content: space-between;
