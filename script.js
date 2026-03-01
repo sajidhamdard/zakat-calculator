@@ -815,9 +815,89 @@
     updateMetalValues();
   }
 
+  // ─── Gold / Silver live rates (goldpricez.com) ────────────────
+  const GOLD_API_KEY = '5c14832fd2c9b40eda87ecc79e31cf4d5c14832f';
+  const GOLD_RATES_CACHE_KEY = 'goldRatesCache';
+
+  function getTodayDateString() {
+    const d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  function loadRatesCache() {
+    try {
+      const raw = localStorage.getItem(GOLD_RATES_CACHE_KEY);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (parsed && parsed.date === getTodayDateString() && parsed.rates) return parsed;
+    } catch (e) { /* ignore */ }
+    return null;
+  }
+
+  function saveRatesCache(cache) {
+    try { localStorage.setItem(GOLD_RATES_CACHE_KEY, JSON.stringify(cache)); } catch (e) { /* ignore */ }
+  }
+
+  function applyRatesToFields(currency, goldPerGram, silverPerGram) {
+    const goldPriceEl = document.getElementById('goldPrice');
+    const silverPriceEl = document.getElementById('silverPrice');
+    const nisabGoldEl = document.getElementById('nisabGoldPrice');
+    const nisabSilverEl = document.getElementById('nisabSilverPrice');
+    if (goldPriceEl && goldPerGram > 0) goldPriceEl.value = goldPerGram.toFixed(2);
+    if (silverPriceEl && silverPerGram > 0) silverPriceEl.value = silverPerGram.toFixed(2);
+    if (nisabGoldEl && goldPerGram > 0) nisabGoldEl.value = goldPerGram.toFixed(2);
+    if (nisabSilverEl && silverPerGram > 0) nisabSilverEl.value = silverPerGram.toFixed(2);
+    updateMetalValues();
+  }
+
+  function setRatesStatus(msg) {
+    const el = document.getElementById('ratesStatus');
+    if (el) el.textContent = msg;
+  }
+
+  function fetchAndApplyRates(currency) {
+    const cache = loadRatesCache();
+    const cur = currency.toLowerCase();
+    const goldKey = 'gram_in_' + cur;
+    const silverKey = 'silver_gram_in_' + cur;
+
+    if (cache && cache.rates && cache.rates[currency]) {
+      const cached = cache.rates[currency];
+      applyRatesToFields(currency, cached.gold, cached.silver);
+      setRatesStatus('');
+      return;
+    }
+
+    setRatesStatus('⏳ Fetching live rates…');
+    fetch('https://goldpricez.com/api/rates/currency/' + cur + '/measure/gram/metal/all', {
+      headers: { 'X-API-KEY': GOLD_API_KEY }
+    })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        const goldPerGram = parseFloat(data[goldKey]) || 0;
+        const silverPerGram = parseFloat(data[silverKey]) || 0;
+
+        // Update cache
+        const existing = loadRatesCache() || { date: getTodayDateString(), rates: {} };
+        if (existing.date !== getTodayDateString()) {
+          existing.date = getTodayDateString();
+          existing.rates = {};
+        }
+        existing.rates[currency] = { gold: goldPerGram, silver: silverPerGram };
+        saveRatesCache(existing);
+
+        applyRatesToFields(currency, goldPerGram, silverPerGram);
+        setRatesStatus('');
+      })
+      .catch(function() {
+        setRatesStatus('');
+      });
+  }
+
   function setCurrency(code) {
     currentCurrency = code;
     setLanguage(currentLang);
+    fetchAndApplyRates(code);
     calculate({ shouldScroll: false });
   }
 
@@ -1043,3 +1123,4 @@
   // Initial update
   setLanguage('hi');
   updateMetalValues();
+  fetchAndApplyRates(currentCurrency);
