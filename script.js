@@ -809,8 +809,9 @@
     const langSelectEl = document.getElementById('langSelect');
     if (langSelectEl) langSelectEl.value = lang;
 
-    // Update all elements with data-i18n (textContent)
+    // Update all elements with data-i18n (textContent) — skip navbar (always English)
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      if (el.closest('.navbar')) return;
       var key = el.getAttribute('data-i18n');
       el.textContent = t(key);
     });
@@ -831,6 +832,7 @@
   // ─── Gold / Silver live rates (goldpricez.com) ────────────────
   const GOLD_API_KEY = '5c14832fd2c9b40eda87ecc79e31cf4d5c14832f';
   const GOLD_RATES_CACHE_KEY = 'goldRatesCache';
+  const CORS_PROXY = 'https://corsproxy.io/?url=';
 
   function getTodayDateString() {
     const d = new Date();
@@ -882,7 +884,8 @@
     }
 
     setRatesStatus('⏳ Fetching live rates…');
-    fetch('https://goldpricez.com/api/rates/currency/' + cur + '/measure/gram/metal/all', {
+    const apiUrl = 'https://goldpricez.com/api/rates/currency/' + cur + '/measure/gram/metal/all';
+    fetch(CORS_PROXY + encodeURIComponent(apiUrl), {
       headers: { 'X-API-KEY': GOLD_API_KEY }
     })
       .then(function(res) { return res.json(); })
