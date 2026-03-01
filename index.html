@@ -498,47 +498,168 @@
         font-weight: 600;
       }
 
-      .lang-toggle-wrap {
+      .controls-row {
         display: flex;
         justify-content: flex-end;
+        align-items: center;
         padding-top: 16px;
         margin-bottom: 0;
+        gap: 10px;
+        flex-wrap: wrap;
       }
-
-      .lang-toggle {
+      .control-group {
         display: flex;
-        background: #e8f5ee;
-        border-radius: 20px;
-        padding: 3px;
-        gap: 2px;
-        box-shadow: 0 2px 8px rgba(31, 143, 99, 0.1);
+        align-items: center;
+        gap: 6px;
       }
-
-      .lang-btn {
-        border: none;
-        background: transparent;
-        border-radius: 18px;
-        padding: 6px 18px;
+      .control-label {
+        font-size: 1rem;
+      }
+      .control-select {
+        border: 1px solid #c8e6d8;
+        border-radius: 10px;
+        padding: 6px 12px;
         font-size: 0.9rem;
         font-weight: 600;
+        background: #e8f5ee;
+        color: var(--primary-dark);
         cursor: pointer;
-        transition: background 0.2s, color 0.2s;
-        color: #5d6b64;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .control-select:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(31,143,99,0.15);
       }
 
-      .lang-btn.active {
-        background: var(--primary);
+      /* ── Navbar ── */
+      .navbar {
+        background: linear-gradient(120deg, #1f8f63, #2ca876);
+        box-shadow: 0 2px 12px rgba(18,73,53,0.15);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .nav-container {
+        width: min(1080px, 92vw);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 0;
+        position: relative;
+      }
+      .nav-brand {
         color: #fff;
-        box-shadow: 0 2px 6px rgba(31, 143, 99, 0.25);
+        text-decoration: none;
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+      }
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 4px;
+      }
+      .nav-link {
+        color: rgba(255,255,255,0.9);
+        text-decoration: none;
+        font-size: 0.92rem;
+        font-weight: 500;
+        padding: 6px 12px;
+        border-radius: 8px;
+        transition: background 0.2s;
+      }
+      .nav-link:hover, .nav-link.active {
+        background: rgba(255,255,255,0.18);
+        color: #fff;
+      }
+      .nav-hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+      .nav-hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #fff;
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+      @media (max-width: 760px) {
+        .nav-hamburger { display: flex; }
+        .nav-menu {
+          display: none;
+          position: absolute;
+          top: 56px;
+          left: 0;
+          right: 0;
+          background: #1a7d57;
+          flex-direction: column;
+          padding: 8px 16px 16px;
+          gap: 2px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .nav-menu.open { display: flex; }
+        .nav-link { padding: 10px 12px; display: block; }
       }
     </style>
   </head>
   <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-brand">🕌 ZakatCalculation.in</a>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link active" data-i18n="navHome">होम</a></li>
+          <li><a href="about.html" class="nav-link" data-i18n="navAbout">हमारे बारे में</a></li>
+          <li><a href="contact.html" class="nav-link" data-i18n="navContact">संपर्क</a></li>
+          <li><a href="privacy-policy.html" class="nav-link" data-i18n="navPrivacy">गोपनीयता</a></li>
+          <li><a href="terms-and-conditions.html" class="nav-link" data-i18n="navTerms">नियम व शर्तें</a></li>
+        </ul>
+      </div>
+    </nav>
     <main class="container">
-      <div class="lang-toggle-wrap">
-        <div class="lang-toggle" role="group" aria-label="Language / भाषा">
-          <button class="lang-btn active" id="btnHindi" onclick="setLanguage('hi')">हिंदी</button>
-          <button class="lang-btn" id="btnEnglish" onclick="setLanguage('en')">English</button>
+      <div class="controls-row">
+        <div class="control-group">
+          <label class="control-label" for="langSelect">🌐</label>
+          <select id="langSelect" class="control-select" onchange="setLanguage(this.value)">
+            <option value="hi" selected>हिंदी</option>
+            <option value="en">English</option>
+            <option value="ar">العربية</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="zh">中文</option>
+            <option value="bn">বাংলা</option>
+            <option value="pt">Português</option>
+            <option value="ru">Русский</option>
+            <option value="ur">اردو</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="currencySelect">💰</label>
+          <select id="currencySelect" class="control-select" onchange="setCurrency(this.value)">
+            <option value="INR" selected>₹ INR</option>
+            <option value="USD">$ USD</option>
+            <option value="EUR">€ EUR</option>
+            <option value="GBP">£ GBP</option>
+            <option value="SAR">ر.س SAR</option>
+            <option value="AED">د.إ AED</option>
+            <option value="PKR">₨ PKR</option>
+            <option value="BDT">৳ BDT</option>
+            <option value="IDR">Rp IDR</option>
+            <option value="CNY">¥ CNY</option>
+            <option value="MYR">RM MYR</option>
+          </select>
         </div>
       </div>
 
@@ -788,38 +909,55 @@
     </main>
 
 <script>
+  // ─── Currencies ────────────────────────────────────────────────
+  const currencies = {
+    INR: { symbol: '₹', locale: 'hi-IN' },
+    USD: { symbol: '$', locale: 'en-US' },
+    EUR: { symbol: '€', locale: 'de-DE' },
+    GBP: { symbol: '£', locale: 'en-GB' },
+    SAR: { symbol: 'ر.س', locale: 'ar-SA' },
+    AED: { symbol: 'د.إ', locale: 'ar-AE' },
+    PKR: { symbol: '₨', locale: 'ur-PK' },
+    BDT: { symbol: '৳', locale: 'bn-BD' },
+    IDR: { symbol: 'Rp', locale: 'id-ID' },
+    CNY: { symbol: '¥', locale: 'zh-CN' },
+    MYR: { symbol: 'RM', locale: 'ms-MY' }
+  };
+  let currentCurrency = 'INR';
+
   // ─── Translations ──────────────────────────────────────────────
   const translations = {
     hi: {
+      navHome: 'होम', navAbout: 'हमारे बारे में', navContact: 'संपर्क', navPrivacy: 'गोपनीयता', navTerms: 'नियम व शर्तें',
       pageTitle: 'ज़कात कैलकुलेटर',
       heroTitle: 'ज़कात कैलकुलेटर',
       heroSubtitle: 'अपनी सालाना ज़कात (2.5%) की गणना कुछ आसान स्टेप्स में करें',
       sec1: '1️⃣ नकद और बैंक राशि',
-      labelCash: 'नकद राशि (₹)',
-      labelBank: 'बैंक बैलेंस (₹)',
+      labelCash: 'नकद राशि ({currency})',
+      labelBank: 'बैंक बैलेंस ({currency})',
       sec2: '2️⃣ सोना और चांदी',
       labelGoldWeight: 'सोने का वजन (ग्राम)',
-      labelGoldPrice: 'सोने की प्रति ग्राम कीमत (₹)',
+      labelGoldPrice: 'सोने की प्रति ग्राम कीमत ({currency})',
       goldValuePrefix: 'सोने का कुल मूल्य:',
       labelSilverWeight: 'चांदी का वजन (ग्राम)',
-      labelSilverPrice: 'चांदी की प्रति ग्राम कीमत (₹)',
+      labelSilverPrice: 'चांदी की प्रति ग्राम कीमत ({currency})',
       silverValuePrefix: 'चांदी का कुल मूल्य:',
       sec3: '3️⃣ निवेश और व्यापारिक संपत्ति',
-      labelStocks: 'शेयर / म्यूचुअल फंड (₹)',
-      labelBusinessStock: 'बिजनेस स्टॉक (₹)',
-      labelPropertyInvestment: 'प्रॉपर्टी (Resale / Investment) (₹)',
+      labelStocks: 'शेयर / म्यूचुअल फंड ({currency})',
+      labelBusinessStock: 'बिजनेस स्टॉक ({currency})',
+      labelPropertyInvestment: 'प्रॉपर्टी (Resale / Investment) ({currency})',
       sec4: '4️⃣ देनदारियां',
-      labelLoan: 'कर्ज (₹)',
-      labelPendingBills: 'बकाया बिल/Tax (₹)',
+      labelLoan: 'कर्ज ({currency})',
+      labelPendingBills: 'बकाया बिल/Tax ({currency})',
       sec6: '6️⃣ पिछला साल की बकाया ज़कात',
-      labelLastYearZakat: 'पिछले साल की ज़कात (अगर बाकी हो) (₹)',
+      labelLastYearZakat: 'पिछले साल की ज़कात (अगर बाकी हो) ({currency})',
       noteLastYear: 'अगर पिछला साल अदा नहीं किया तो यहाँ जोड़ें।',
       sec5: '5️⃣ निसाब विकल्प',
       radioSilver: 'चांदी के आधार पर (मुनासिब)',
       radioGold: 'सोने के आधार पर',
-      labelNisabGoldPrice: 'वर्तमान सोने की कीमत (₹/ग्राम)',
+      labelNisabGoldPrice: 'वर्तमान सोने की कीमत ({currency}/ग्राम)',
       noteGoldNisab: 'सोना निसाब = 87.48 ग्राम × बाज़ार क़ीमत',
-      labelNisabSilverPrice: 'वर्तमान चांदी की कीमत (₹/ग्राम)',
+      labelNisabSilverPrice: 'वर्तमान चांदी की कीमत ({currency}/ग्राम)',
       noteSilverNisab: 'चांदी निसाब = 612.36 ग्राम × बाज़ार क़ीमत',
       btnCalculate: 'हिसाब करें',
       btnReset: 'दुबारा सेट करें',
@@ -861,35 +999,36 @@
       madhabShafai: 'शाफ़ई मस्लक चुना गया: सामान्य इस्तेमाल का सोना/चांदी ज़कात योग्य में शामिल नहीं।'
     },
     en: {
+      navHome: 'Home', navAbout: 'About', navContact: 'Contact', navPrivacy: 'Privacy', navTerms: 'Terms',
       pageTitle: 'Zakat Calculator',
       heroTitle: 'Zakat Calculator',
       heroSubtitle: 'Calculate your annual Zakat (2.5%) in a few easy steps',
       sec1: '1️⃣ Cash and Bank Balance',
-      labelCash: 'Cash Amount (₹)',
-      labelBank: 'Bank Balance (₹)',
+      labelCash: 'Cash Amount ({currency})',
+      labelBank: 'Bank Balance ({currency})',
       sec2: '2️⃣ Gold and Silver',
       labelGoldWeight: 'Gold Weight (grams)',
-      labelGoldPrice: 'Gold Price per gram (₹)',
+      labelGoldPrice: 'Gold Price per gram ({currency})',
       goldValuePrefix: 'Total Gold Value:',
       labelSilverWeight: 'Silver Weight (grams)',
-      labelSilverPrice: 'Silver Price per gram (₹)',
+      labelSilverPrice: 'Silver Price per gram ({currency})',
       silverValuePrefix: 'Total Silver Value:',
       sec3: '3️⃣ Investments and Business Assets',
-      labelStocks: 'Shares / Mutual Funds (₹)',
-      labelBusinessStock: 'Business Stock (₹)',
-      labelPropertyInvestment: 'Property (Resale / Investment) (₹)',
+      labelStocks: 'Shares / Mutual Funds ({currency})',
+      labelBusinessStock: 'Business Stock ({currency})',
+      labelPropertyInvestment: 'Property (Resale / Investment) ({currency})',
       sec4: '4️⃣ Liabilities',
-      labelLoan: 'Loan (₹)',
-      labelPendingBills: 'Pending Bills/Tax (₹)',
+      labelLoan: 'Loan ({currency})',
+      labelPendingBills: 'Pending Bills/Tax ({currency})',
       sec6: "6️⃣ Previous Year's Pending Zakat",
-      labelLastYearZakat: "Previous Year's Zakat (if pending) (₹)",
+      labelLastYearZakat: "Previous Year's Zakat (if pending) ({currency})",
       noteLastYear: 'Add here if not paid last year.',
       sec5: '5️⃣ Nisab Options',
       radioSilver: 'Based on Silver (Recommended)',
       radioGold: 'Based on Gold',
-      labelNisabGoldPrice: 'Current Gold Price (₹/gram)',
+      labelNisabGoldPrice: 'Current Gold Price ({currency}/gram)',
       noteGoldNisab: 'Gold Nisab = 87.48 grams × market price',
-      labelNisabSilverPrice: 'Current Silver Price (₹/gram)',
+      labelNisabSilverPrice: 'Current Silver Price ({currency}/gram)',
       noteSilverNisab: 'Silver Nisab = 612.36 grams × market price',
       btnCalculate: 'Calculate',
       btnReset: 'Reset',
@@ -929,24 +1068,596 @@
       errorNegative: 'Please do not enter negative values.',
       madhabHanafi: 'Hanafi school selected: Entered gold/silver value is considered zakatable.',
       madhabShafai: "Shafi'i school selected: Gold/silver for general use is not included in zakatable assets."
+    },
+    ar: {
+      navHome: 'الرئيسية', navAbout: 'حول', navContact: 'اتصل', navPrivacy: 'الخصوصية', navTerms: 'الشروط',
+      pageTitle: 'حاسبة الزكاة',
+      heroTitle: 'حاسبة الزكاة',
+      heroSubtitle: 'احسب زكاتك السنوية (2.5%) في خطوات بسيطة',
+      sec1: '1️⃣ النقد والرصيد البنكي',
+      labelCash: 'المبلغ النقدي ({currency})',
+      labelBank: 'الرصيد البنكي ({currency})',
+      sec2: '2️⃣ الذهب والفضة',
+      labelGoldWeight: 'وزن الذهب (جرام)',
+      labelGoldPrice: 'سعر الذهب لكل جرام ({currency})',
+      goldValuePrefix: 'إجمالي قيمة الذهب:',
+      labelSilverWeight: 'وزن الفضة (جرام)',
+      labelSilverPrice: 'سعر الفضة لكل جرام ({currency})',
+      silverValuePrefix: 'إجمالي قيمة الفضة:',
+      sec3: '3️⃣ الاستثمارات والأصول التجارية',
+      labelStocks: 'الأسهم / صناديق الاستثمار ({currency})',
+      labelBusinessStock: 'المخزون التجاري ({currency})',
+      labelPropertyInvestment: 'العقار (إعادة بيع / استثمار) ({currency})',
+      sec4: '4️⃣ الالتزامات',
+      labelLoan: 'القرض ({currency})',
+      labelPendingBills: 'الفواتير المعلقة / الضريبة ({currency})',
+      sec6: '6️⃣ زكاة العام الماضي المتبقية',
+      labelLastYearZakat: 'زكاة العام الماضي (إن وجدت) ({currency})',
+      noteLastYear: 'أضف هنا إذا لم تُدفع العام الماضي.',
+      sec5: '5️⃣ خيارات النصاب',
+      radioSilver: 'على أساس الفضة (موصى به)',
+      radioGold: 'على أساس الذهب',
+      labelNisabGoldPrice: 'سعر الذهب الحالي ({currency}/جرام)',
+      noteGoldNisab: 'نصاب الذهب = 87.48 جرام × سعر السوق',
+      labelNisabSilverPrice: 'سعر الفضة الحالي ({currency}/جرام)',
+      noteSilverNisab: 'نصاب الفضة = 612.36 جرام × سعر السوق',
+      btnCalculate: 'احسب',
+      btnReset: 'إعادة تعيين',
+      noteBottom: 'ملاحظة: تحسب هذه الأداة زكاة المال. يجب أن تبقى ثروتك الصافية فوق النصاب لمدة حول قمري.',
+      nisabNote1: 'إذا كان لدى شخص ذهب فقط، تُحسب الزكاة على أساس نصاب الذهب فقط.',
+      nisabNote2: 'إذا كان لدى شخص فضة فقط، تُحسب الزكاة على أساس نصاب الفضة فقط.',
+      nisabNote3: 'إذا كان لديه فضة أو نقود أو بضاعة تجارية، يُعتمد نصاب الفضة لأنه يُبلغ أسرع.',
+      resultTitle: '📊 النتائج',
+      resultTotalAssets: 'إجمالي الأصول',
+      resultDebts: 'إجمالي الالتزامات',
+      resultNetWealth: 'صافي الثروة',
+      resultNisab: 'حد النصاب',
+      resultZakat: 'الزكاة المستحقة (2.5%)',
+      infoTitle1: 'كيف تعمل هذه الحاسبة',
+      infoContent1: 'الصيغة المستخدمة: <strong>(إجمالي الأصول الخاضعة للزكاة − الالتزامات المستحقة) × 2.5%</strong>. تجب الزكاة عندما تبلغ ثروتك الصافية النصاب أو تتجاوزه وتبقى كذلك لمدة حول قمري.',
+      tableHead1: 'نوع النصاب',
+      tableHead2: 'أساس الوزن',
+      tableHead3: 'الغرض',
+      tableRow1Col1: 'نصاب الذهب',
+      tableRow1Col2: '87.48 جرام',
+      tableRow1Col3: 'الحد الأعلى',
+      tableRow2Col1: 'نصاب الفضة',
+      tableRow2Col2: '612.36 جرام',
+      tableRow2Col3: 'الحد الأدنى (موصى به عموماً)',
+      infoTitle2: 'ما يُدرج وما لا يُدرج',
+      infoContent2: '<li><strong>أدرج:</strong> النقد، المدخرات البنكية، الذهب/الفضة، الاستثمارات، المخزون التجاري.</li><li><strong>استثنِ:</strong> السكن الرئيسي، العملات الرقمية، السيارة للاستخدام الشخصي، الأثاث المنزلي، المعدات غير المخصصة للبيع.</li><li><strong>الالتزامات:</strong> اطرح المبالغ المستحقة.</li>',
+      infoTitle3: 'أسئلة شائعة',
+      faq1Q: 'هل هذه الحاسبة لزكاة الفطر؟',
+      faq1A: 'لا. هذه الحاسبة لزكاة المال السنوية، وليست لزكاة الفطر.',
+      faq2Q: 'هل يمكنني دفع الزكاة قبل موعدها؟',
+      faq2A: 'نعم، الدفع المبكر جائز في الغالب. التأخير بدون عذر مشروع غير مناسب.',
+      faq3Q: 'هل يمكنني إعطاء الزكاة لأفراد الأسرة؟',
+      faq3A: 'يمكن للأقارب المستحقين (كالإخوة والأبناء عمومة) قبول الزكاة. لا تُعطى الزكاة للزوج/الزوجة أو الوالدين أو الأبناء.',
+      faq4Q: 'هل تجب الزكاة على العقار؟',
+      faq4A: 'إذا اشتُري العقار بنية البيع (استثمار أو تجارة)، تجب الزكاة على قيمته السوقية الحالية. أما إذا كان للسكن أو الاحتفاظ (بدون نية البيع)، فلا تجب عليه زكاة.',
+      footer: 'توفر هذه الحاسبة تقديراً عاماً. استشر عالماً مؤهلاً للحالات المعقدة.',
+      errorNegative: 'يرجى عدم إدخال قيم سالبة.',
+      madhabHanafi: 'تم اختيار المذهب الحنفي: قيمة الذهب/الفضة المُدخلة تُعدّ خاضعة للزكاة.',
+      madhabShafai: 'تم اختيار المذهب الشافعي: الذهب/الفضة للاستخدام العام غير مشمول في الأصول الخاضعة للزكاة.'
+    },
+    es: {
+      navHome: 'Inicio', navAbout: 'Acerca de', navContact: 'Contacto', navPrivacy: 'Privacidad', navTerms: 'Términos',
+      pageTitle: 'Calculadora de Zakat',
+      heroTitle: 'Calculadora de Zakat',
+      heroSubtitle: 'Calcula tu Zakat anual (2.5%) en unos sencillos pasos',
+      sec1: '1️⃣ Efectivo y Saldo Bancario',
+      labelCash: 'Efectivo ({currency})',
+      labelBank: 'Saldo Bancario ({currency})',
+      sec2: '2️⃣ Oro y Plata',
+      labelGoldWeight: 'Peso del Oro (gramos)',
+      labelGoldPrice: 'Precio del Oro por gramo ({currency})',
+      goldValuePrefix: 'Valor Total del Oro:',
+      labelSilverWeight: 'Peso de la Plata (gramos)',
+      labelSilverPrice: 'Precio de la Plata por gramo ({currency})',
+      silverValuePrefix: 'Valor Total de la Plata:',
+      sec3: '3️⃣ Inversiones y Activos Comerciales',
+      labelStocks: 'Acciones / Fondos Mutuos ({currency})',
+      labelBusinessStock: 'Inventario Comercial ({currency})',
+      labelPropertyInvestment: 'Propiedad (Reventa / Inversión) ({currency})',
+      sec4: '4️⃣ Pasivos',
+      labelLoan: 'Préstamo ({currency})',
+      labelPendingBills: 'Facturas Pendientes/Impuesto ({currency})',
+      sec6: '6️⃣ Zakat Pendiente del Año Anterior',
+      labelLastYearZakat: 'Zakat del Año Anterior (si aplica) ({currency})',
+      noteLastYear: 'Agrega aquí si no pagaste el año pasado.',
+      sec5: '5️⃣ Opciones de Nisab',
+      radioSilver: 'Basado en Plata (Recomendado)',
+      radioGold: 'Basado en Oro',
+      labelNisabGoldPrice: 'Precio Actual del Oro ({currency}/gramo)',
+      noteGoldNisab: 'Nisab de Oro = 87.48 gramos × precio de mercado',
+      labelNisabSilverPrice: 'Precio Actual de la Plata ({currency}/gramo)',
+      noteSilverNisab: 'Nisab de Plata = 612.36 gramos × precio de mercado',
+      btnCalculate: 'Calcular',
+      btnReset: 'Restablecer',
+      noteBottom: 'Nota: Esta herramienta calcula el Zakat al-Mal. Tu riqueza neta debe permanecer por encima del Nisab durante un año lunar.',
+      nisabNote1: 'Si alguien solo tiene oro, el Zakat se calculará solo según el Nisab de oro.',
+      nisabNote2: 'Si alguien solo tiene plata, el Zakat se calculará solo según el Nisab de plata.',
+      nisabNote3: 'Si alguien tiene plata, efectivo o bienes comerciales, se usará el Nisab de plata ya que su umbral se alcanza antes.',
+      resultTitle: '📊 Resultados',
+      resultTotalAssets: 'Total de Activos',
+      resultDebts: 'Total de Pasivos',
+      resultNetWealth: 'Riqueza Neta',
+      resultNisab: 'Umbral de Nisab',
+      resultZakat: 'Zakat Debido (2.5%)',
+      infoTitle1: 'Cómo Funciona esta Calculadora',
+      infoContent1: 'Fórmula utilizada: <strong>(Total de Activos Zakatable − Pasivos Pagaderos) × 2.5%</strong>. El Zakat se vuelve obligatorio cuando tu riqueza neta iguala o supera el Nisab y permanece así durante un año lunar.',
+      tableHead1: 'Tipo de Nisab',
+      tableHead2: 'Base de Peso',
+      tableHead3: 'Propósito',
+      tableRow1Col1: 'Nisab de Oro',
+      tableRow1Col2: '87.48 gramos',
+      tableRow1Col3: 'Umbral alto',
+      tableRow2Col1: 'Nisab de Plata',
+      tableRow2Col2: '612.36 gramos',
+      tableRow2Col3: 'Umbral bajo (generalmente recomendado)',
+      infoTitle2: 'Qué Incluir y Excluir',
+      infoContent2: '<li><strong>Incluir:</strong> Efectivo, ahorros bancarios, oro/plata, inversiones, inventario comercial.</li><li><strong>Excluir:</strong> Residencia principal, criptomonedas, moneda digital, vehículo personal, artículos del hogar, equipo no para reventa.</li><li><strong>Pasivos:</strong> Deduce los montos pagaderos.</li>',
+      infoTitle3: 'Preguntas Frecuentes',
+      faq1Q: '¿Esta calculadora es para Zakat al-Fitr?',
+      faq1A: 'No. Esta calculadora es para el Zakat al-Mal anual, no para el Zakat al-Fitr.',
+      faq2Q: '¿Puedo pagar el Zakat antes de la fecha límite?',
+      faq2A: 'Sí, el pago anticipado es generalmente permisible. Retrasar sin una razón válida no es apropiado.',
+      faq3Q: '¿Puedo dar Zakat a miembros de la familia?',
+      faq3A: 'Parientes extendidos elegibles (p. ej., hermanos, primos) pueden recibir Zakat si califican. No se puede dar Zakat a cónyuge, padres o hijos.',
+      faq4Q: '¿Se debe Zakat sobre la propiedad?',
+      faq4A: 'Si la propiedad fue comprada con intención de vender (inversión o comercio), se debe Zakat sobre su valor de mercado actual. Sin embargo, si es para uso personal o solo retención, no se debe Zakat.',
+      footer: 'Esta calculadora proporciona una estimación general. Consulta a un erudito calificado para casos complejos.',
+      errorNegative: 'Por favor, no ingrese valores negativos.',
+      madhabHanafi: 'Escuela Hanafi seleccionada: El valor de oro/plata ingresado se considera zakatable.',
+      madhabShafai: 'Escuela Shafi\'i seleccionada: El oro/plata para uso general no se incluye en los activos zakatables.'
+    },
+    fr: {
+      navHome: 'Accueil', navAbout: 'À propos', navContact: 'Contact', navPrivacy: 'Confidentialité', navTerms: 'Conditions',
+      pageTitle: 'Calculateur de Zakat',
+      heroTitle: 'Calculateur de Zakat',
+      heroSubtitle: 'Calculez votre Zakat annuelle (2,5%) en quelques étapes simples',
+      sec1: '1️⃣ Espèces et Solde Bancaire',
+      labelCash: 'Montant en Espèces ({currency})',
+      labelBank: 'Solde Bancaire ({currency})',
+      sec2: '2️⃣ Or et Argent',
+      labelGoldWeight: 'Poids de l\'Or (grammes)',
+      labelGoldPrice: 'Prix de l\'Or par gramme ({currency})',
+      goldValuePrefix: 'Valeur Totale de l\'Or:',
+      labelSilverWeight: 'Poids de l\'Argent (grammes)',
+      labelSilverPrice: 'Prix de l\'Argent par gramme ({currency})',
+      silverValuePrefix: 'Valeur Totale de l\'Argent:',
+      sec3: '3️⃣ Investissements et Actifs Commerciaux',
+      labelStocks: 'Actions / Fonds Communs ({currency})',
+      labelBusinessStock: 'Stock Commercial ({currency})',
+      labelPropertyInvestment: 'Propriété (Revente / Investissement) ({currency})',
+      sec4: '4️⃣ Passifs',
+      labelLoan: 'Prêt ({currency})',
+      labelPendingBills: 'Factures en Attente/Taxe ({currency})',
+      sec6: '6️⃣ Zakat en Attente de l\'Année Précédente',
+      labelLastYearZakat: 'Zakat de l\'Année Précédente (si applicable) ({currency})',
+      noteLastYear: 'Ajoutez ici si non payé l\'année dernière.',
+      sec5: '5️⃣ Options de Nisab',
+      radioSilver: 'Basé sur l\'Argent (Recommandé)',
+      radioGold: 'Basé sur l\'Or',
+      labelNisabGoldPrice: 'Prix Actuel de l\'Or ({currency}/gramme)',
+      noteGoldNisab: 'Nisab de l\'Or = 87,48 grammes × prix du marché',
+      labelNisabSilverPrice: 'Prix Actuel de l\'Argent ({currency}/gramme)',
+      noteSilverNisab: 'Nisab de l\'Argent = 612,36 grammes × prix du marché',
+      btnCalculate: 'Calculer',
+      btnReset: 'Réinitialiser',
+      noteBottom: 'Note: Cet outil calcule le Zakat al-Mal. Votre richesse nette doit rester au-dessus du Nisab pendant une année lunaire.',
+      nisabNote1: 'Si quelqu\'un n\'a que de l\'or, le Zakat sera calculé uniquement sur la base du Nisab de l\'or.',
+      nisabNote2: 'Si quelqu\'un n\'a que de l\'argent, le Zakat sera calculé uniquement sur la base du Nisab de l\'argent.',
+      nisabNote3: 'Si quelqu\'un possède de l\'argent, des espèces ou des marchandises commerciales, le Nisab de l\'argent s\'applique car son seuil est atteint plus tôt.',
+      resultTitle: '📊 Résultats',
+      resultTotalAssets: 'Total des Actifs',
+      resultDebts: 'Total des Passifs',
+      resultNetWealth: 'Richesse Nette',
+      resultNisab: 'Seuil de Nisab',
+      resultZakat: 'Zakat Dû (2,5%)',
+      infoTitle1: 'Comment Fonctionne ce Calculateur',
+      infoContent1: 'Formule utilisée: <strong>(Total des Actifs Zakatables − Passifs Payables) × 2,5%</strong>. Le Zakat devient obligatoire lorsque votre richesse nette égale ou dépasse le Nisab et reste ainsi pendant une année lunaire.',
+      tableHead1: 'Type de Nisab',
+      tableHead2: 'Base de Poids',
+      tableHead3: 'Objectif',
+      tableRow1Col1: 'Nisab de l\'Or',
+      tableRow1Col2: '87,48 grammes',
+      tableRow1Col3: 'Seuil élevé',
+      tableRow2Col1: 'Nisab de l\'Argent',
+      tableRow2Col2: '612,36 grammes',
+      tableRow2Col3: 'Seuil bas (généralement recommandé)',
+      infoTitle2: 'Ce qu\'il Faut Inclure et Exclure',
+      infoContent2: '<li><strong>Inclure:</strong> Espèces, épargne bancaire, or/argent, investissements, stock commercial.</li><li><strong>Exclure:</strong> Résidence principale, crypto, monnaie numérique, véhicule personnel, articles ménagers, équipements non revendus.</li><li><strong>Passifs:</strong> Déduisez les montants payables.</li>',
+      infoTitle3: 'Questions Fréquentes',
+      faq1Q: 'Ce calculateur est-il pour le Zakat al-Fitr?',
+      faq1A: 'Non. Ce calculateur est pour le Zakat al-Mal annuel, pas pour le Zakat al-Fitr.',
+      faq2Q: 'Puis-je payer le Zakat avant la date d\'échéance?',
+      faq2A: 'Oui, le paiement anticipé est généralement permis. Retarder sans raison valable n\'est pas approprié.',
+      faq3Q: 'Puis-je donner le Zakat aux membres de la famille?',
+      faq3A: 'Les proches parents éligibles (p. ex., frères, cousins) peuvent recevoir le Zakat s\'ils y ont droit. Le Zakat ne peut pas être donné au conjoint, aux parents ou aux enfants.',
+      faq4Q: 'Le Zakat est-il dû sur la propriété?',
+      faq4A: 'Si la propriété a été achetée dans l\'intention de la vendre (investissement ou commerce), le Zakat est dû sur sa valeur marchande actuelle. Si elle est pour usage personnel ou simplement détenue, le Zakat n\'est pas dû.',
+      footer: 'Ce calculateur fournit une estimation générale. Consultez un érudit qualifié pour les cas complexes.',
+      errorNegative: 'Veuillez ne pas entrer de valeurs négatives.',
+      madhabHanafi: 'École Hanafi sélectionnée: La valeur or/argent saisie est considérée zakatable.',
+      madhabShafai: 'École Shafi\'i sélectionnée: L\'or/argent pour usage général n\'est pas inclus dans les actifs zakatables.'
+    },
+    zh: {
+      navHome: '首页', navAbout: '关于', navContact: '联系', navPrivacy: '隐私', navTerms: '条款',
+      pageTitle: '天课计算器',
+      heroTitle: '天课计算器',
+      heroSubtitle: '几个简单步骤计算您的年度天课（2.5%）',
+      sec1: '1️⃣ 现金和银行余额',
+      labelCash: '现金金额（{currency}）',
+      labelBank: '银行余额（{currency}）',
+      sec2: '2️⃣ 黄金和白银',
+      labelGoldWeight: '黄金重量（克）',
+      labelGoldPrice: '每克黄金价格（{currency}）',
+      goldValuePrefix: '黄金总价值：',
+      labelSilverWeight: '白银重量（克）',
+      labelSilverPrice: '每克白银价格（{currency}）',
+      silverValuePrefix: '白银总价值：',
+      sec3: '3️⃣ 投资和商业资产',
+      labelStocks: '股票/共同基金（{currency}）',
+      labelBusinessStock: '商业库存（{currency}）',
+      labelPropertyInvestment: '房产（转售/投资）（{currency}）',
+      sec4: '4️⃣ 负债',
+      labelLoan: '贷款（{currency}）',
+      labelPendingBills: '未付账单/税款（{currency}）',
+      sec6: '6️⃣ 上年度未缴天课',
+      labelLastYearZakat: '上年度天课（如有）（{currency}）',
+      noteLastYear: '如果去年未付，请在此添加。',
+      sec5: '5️⃣ 尼萨布选项',
+      radioSilver: '基于白银（推荐）',
+      radioGold: '基于黄金',
+      labelNisabGoldPrice: '当前黄金价格（{currency}/克）',
+      noteGoldNisab: '黄金尼萨布 = 87.48克 × 市场价格',
+      labelNisabSilverPrice: '当前白银价格（{currency}/克）',
+      noteSilverNisab: '白银尼萨布 = 612.36克 × 市场价格',
+      btnCalculate: '计算',
+      btnReset: '重置',
+      noteBottom: '注：此工具计算财富天课。您的净财富必须在一个太阴年内保持高于尼萨布。',
+      nisabNote1: '如果某人只有黄金，天课将仅基于黄金尼萨布计算。',
+      nisabNote2: '如果某人只有白银，天课将仅基于白银尼萨布计算。',
+      nisabNote3: '如果某人有白银、现金或商品，将使用白银尼萨布，因为其门槛更容易达到。',
+      resultTitle: '📊 结果',
+      resultTotalAssets: '总资产',
+      resultDebts: '总负债',
+      resultNetWealth: '净财富',
+      resultNisab: '尼萨布门槛',
+      resultZakat: '应缴天课（2.5%）',
+      infoTitle1: '计算器工作原理',
+      infoContent1: '使用公式：<strong>（应缴天课总资产 − 应付负债）× 2.5%</strong>。当您的净财富达到或超过尼萨布并持续一个太阴年时，天课变为义务。',
+      tableHead1: '尼萨布类型',
+      tableHead2: '重量基准',
+      tableHead3: '目的',
+      tableRow1Col1: '黄金尼萨布',
+      tableRow1Col2: '87.48克',
+      tableRow1Col3: '较高门槛',
+      tableRow2Col1: '白银尼萨布',
+      tableRow2Col2: '612.36克',
+      tableRow2Col3: '较低门槛（通常推荐）',
+      infoTitle2: '包含和排除什么',
+      infoContent2: '<li><strong>包含：</strong>现金、银行储蓄、黄金/白银、投资、商业库存。</li><li><strong>排除：</strong>主要住所、加密货币、数字货币、个人用途车辆、家庭用品、非转售设备。</li><li><strong>负债：</strong>扣除应付金额。</li>',
+      infoTitle3: '常见问题',
+      faq1Q: '这个计算器是用于开斋天课的吗？',
+      faq1A: '不是。这个计算器用于年度财富天课，不是开斋天课。',
+      faq2Q: '我可以在到期日前缴纳天课吗？',
+      faq2A: '可以，提前缴纳通常是允许的。无正当理由拖延是不适当的。',
+      faq3Q: '我可以把天课给家庭成员吗？',
+      faq3A: '符合条件的远亲（如兄弟姐妹、表亲）可以接受天课。天课不能给予配偶、父母或子女。',
+      faq4Q: '房产需要缴纳天课吗？',
+      faq4A: '如果房产是以出售为目的购买的（投资或贸易），则需按当前市场价值缴纳天课。如果是自用或仅持有（无出售意图），则不需缴纳天课。',
+      footer: '此计算器提供一般估计。复杂情况请咨询合格学者。',
+      errorNegative: '请不要输入负值。',
+      madhabHanafi: '已选择哈纳菲学派：输入的黄金/白银价值被视为应缴天课资产。',
+      madhabShafai: '已选择沙菲仪学派：日常使用的黄金/白银不包含在应缴天课资产中。'
+    },
+    bn: {
+      navHome: 'হোম', navAbout: 'আমাদের সম্পর্কে', navContact: 'যোগাযোগ', navPrivacy: 'গোপনীয়তা', navTerms: 'শর্তাবলী',
+      pageTitle: 'যাকাত ক্যালকুলেটর',
+      heroTitle: 'যাকাত ক্যালকুলেটর',
+      heroSubtitle: 'কয়েকটি সহজ ধাপে আপনার বার্ষিক যাকাত (২.৫%) গণনা করুন',
+      sec1: '1️⃣ নগদ এবং ব্যাংক ব্যালেন্স',
+      labelCash: 'নগদ পরিমাণ ({currency})',
+      labelBank: 'ব্যাংক ব্যালেন্স ({currency})',
+      sec2: '2️⃣ সোনা এবং রুপা',
+      labelGoldWeight: 'সোনার ওজন (গ্রাম)',
+      labelGoldPrice: 'প্রতি গ্রাম সোনার মূল্য ({currency})',
+      goldValuePrefix: 'মোট সোনার মূল্য:',
+      labelSilverWeight: 'রুপার ওজন (গ্রাম)',
+      labelSilverPrice: 'প্রতি গ্রাম রুপার মূল্য ({currency})',
+      silverValuePrefix: 'মোট রুপার মূল্য:',
+      sec3: '3️⃣ বিনিয়োগ এবং ব্যবসায়িক সম্পদ',
+      labelStocks: 'শেয়ার / মিউচুয়াল ফান্ড ({currency})',
+      labelBusinessStock: 'ব্যবসায়িক স্টক ({currency})',
+      labelPropertyInvestment: 'সম্পত্তি (বিক্রয়/বিনিয়োগ) ({currency})',
+      sec4: '4️⃣ দায়',
+      labelLoan: 'ঋণ ({currency})',
+      labelPendingBills: 'মুলতুবি বিল/কর ({currency})',
+      sec6: '6️⃣ গত বছরের বকেয়া যাকাত',
+      labelLastYearZakat: 'গত বছরের যাকাত (যদি বাকি থাকে) ({currency})',
+      noteLastYear: 'গত বছর পরিশোধ না করলে এখানে যোগ করুন।',
+      sec5: '5️⃣ নিসাব বিকল্প',
+      radioSilver: 'রুপার ভিত্তিতে (প্রস্তাবিত)',
+      radioGold: 'সোনার ভিত্তিতে',
+      labelNisabGoldPrice: 'বর্তমান সোনার মূল্য ({currency}/গ্রাম)',
+      noteGoldNisab: 'সোনার নিসাব = ৮৭.৪৮ গ্রাম × বাজার মূল্য',
+      labelNisabSilverPrice: 'বর্তমান রুপার মূল্য ({currency}/গ্রাম)',
+      noteSilverNisab: 'রুপার নিসাব = ৬১২.৩৬ গ্রাম × বাজার মূল্য',
+      btnCalculate: 'গণনা করুন',
+      btnReset: 'রিসেট',
+      noteBottom: 'নোট: এই টুলটি যাকাত আল-মাল গণনা করে। আপনার নেট সম্পদ একটি চন্দ্র বছরের জন্য নিসাবের উপরে থাকতে হবে।',
+      nisabNote1: 'কারো শুধু সোনা থাকলে যাকাত শুধুমাত্র সোনার নিসাবের ভিত্তিতে হবে।',
+      nisabNote2: 'কারো শুধু রুপা থাকলে যাকাত শুধুমাত্র রুপার নিসাবের ভিত্তিতে হবে।',
+      nisabNote3: 'কারো রুপা, নগদ বা ব্যবসায়িক পণ্য থাকলে রুপার নিসাব প্রযোজ্য কারণ এর সীমা আগে পৌঁছায়।',
+      resultTitle: '📊 ফলাফল',
+      resultTotalAssets: 'মোট সম্পদ',
+      resultDebts: 'মোট দায়',
+      resultNetWealth: 'নেট সম্পদ',
+      resultNisab: 'নিসাব সীমা',
+      resultZakat: 'প্রদেয় যাকাত (২.৫%)',
+      infoTitle1: 'এই ক্যালকুলেটর কীভাবে কাজ করে',
+      infoContent1: 'ব্যবহৃত সূত্র: <strong>(মোট যাকাতযোগ্য সম্পদ − প্রদেয় দায়) × ২.৫%</strong>। যাকাত বাধ্যতামূলক হয় যখন আপনার নেট সম্পদ নিসাব সমান বা বেশি হয় এবং এক চন্দ্র বছর ধরে তা বজায় থাকে।',
+      tableHead1: 'নিসাব প্রকার',
+      tableHead2: 'ওজনের ভিত্তি',
+      tableHead3: 'উদ্দেশ্য',
+      tableRow1Col1: 'সোনার নিসাব',
+      tableRow1Col2: '৮৭.৪৮ গ্রাম',
+      tableRow1Col3: 'উচ্চ সীমা',
+      tableRow2Col1: 'রুপার নিসাব',
+      tableRow2Col2: '৬১২.৩৬ গ্রাম',
+      tableRow2Col3: 'নিম্ন সীমা (সাধারণত প্রস্তাবিত)',
+      infoTitle2: 'কী অন্তর্ভুক্ত করবেন এবং কী বাদ দেবেন',
+      infoContent2: '<li><strong>অন্তর্ভুক্ত করুন:</strong> নগদ, ব্যাংক সঞ্চয়, সোনা/রুপা, বিনিয়োগ, ব্যবসায়িক স্টক।</li><li><strong>বাদ দিন:</strong> প্রধান বাসস্থান, ক্রিপ্টো, ডিজিটাল মুদ্রা, ব্যক্তিগত যানবাহন, গৃহস্থালি সামগ্রী, অ-বিক্রয় সরঞ্জাম।</li><li><strong>দায়:</strong> প্রদেয় পরিমাণ কেটে নিন।</li>',
+      infoTitle3: 'প্রায়শই জিজ্ঞাসিত প্রশ্ন',
+      faq1Q: 'এই ক্যালকুলেটর কি যাকাত আল-ফিতরের জন্য?',
+      faq1A: 'না। এই ক্যালকুলেটর বার্ষিক যাকাত আল-মালের জন্য, যাকাত আল-ফিতরের জন্য নয়।',
+      faq2Q: 'আমি কি নির্ধারিত তারিখের আগে যাকাত দিতে পারি?',
+      faq2A: 'হ্যাঁ, আগাম পরিশোধ সাধারণত অনুমোদিত। বৈধ কারণ ছাড়া বিলম্ব করা উপযুক্ত নয়।',
+      faq3Q: 'আমি কি পরিবারের সদস্যদের যাকাত দিতে পারি?',
+      faq3A: 'যোগ্য বর্ধিত আত্মীয়রা (যেমন ভাই-বোন, চাচাতো ভাই) যোগ্য হলে যাকাত পেতে পারেন। স্বামী/স্ত্রী, বাবা-মা বা সন্তানদের যাকাত দেওয়া যায় না।',
+      faq4Q: 'সম্পত্তিতে কি যাকাত দিতে হয়?',
+      faq4A: 'যদি সম্পত্তি বিক্রির উদ্দেশ্যে কেনা হয়, তাহলে বর্তমান বাজার মূল্যে যাকাত দিতে হবে। ব্যক্তিগত ব্যবহারের জন্য বা ধরে রাখার জন্য কেনা হলে যাকাত নেই।',
+      footer: 'এই ক্যালকুলেটর একটি সাধারণ অনুমান প্রদান করে। জটিল ক্ষেত্রে যোগ্য আলেমের পরামর্শ নিন।',
+      errorNegative: 'অনুগ্রহ করে নেতিবাচক মান প্রবেশ করবেন না।',
+      madhabHanafi: 'হানাফি মাজহাব নির্বাচিত: প্রবেশ করা সোনা/রুপার মান যাকাতযোগ্য বলে গণ্য হয়।',
+      madhabShafai: 'শাফেঈ মাজহাব নির্বাচিত: সাধারণ ব্যবহারের সোনা/রুপা যাকাতযোগ্য সম্পদে অন্তর্ভুক্ত নয়।'
+    },
+    pt: {
+      navHome: 'Início', navAbout: 'Sobre', navContact: 'Contato', navPrivacy: 'Privacidade', navTerms: 'Termos',
+      pageTitle: 'Calculadora de Zakat',
+      heroTitle: 'Calculadora de Zakat',
+      heroSubtitle: 'Calcule seu Zakat anual (2,5%) em alguns passos simples',
+      sec1: '1️⃣ Dinheiro e Saldo Bancário',
+      labelCash: 'Valor em Dinheiro ({currency})',
+      labelBank: 'Saldo Bancário ({currency})',
+      sec2: '2️⃣ Ouro e Prata',
+      labelGoldWeight: 'Peso do Ouro (gramas)',
+      labelGoldPrice: 'Preço do Ouro por grama ({currency})',
+      goldValuePrefix: 'Valor Total do Ouro:',
+      labelSilverWeight: 'Peso da Prata (gramas)',
+      labelSilverPrice: 'Preço da Prata por grama ({currency})',
+      silverValuePrefix: 'Valor Total da Prata:',
+      sec3: '3️⃣ Investimentos e Ativos Comerciais',
+      labelStocks: 'Ações / Fundos Mútuos ({currency})',
+      labelBusinessStock: 'Estoque Comercial ({currency})',
+      labelPropertyInvestment: 'Imóvel (Revenda / Investimento) ({currency})',
+      sec4: '4️⃣ Passivos',
+      labelLoan: 'Empréstimo ({currency})',
+      labelPendingBills: 'Contas Pendentes/Imposto ({currency})',
+      sec6: '6️⃣ Zakat Pendente do Ano Anterior',
+      labelLastYearZakat: 'Zakat do Ano Anterior (se aplicável) ({currency})',
+      noteLastYear: 'Adicione aqui se não foi pago no ano passado.',
+      sec5: '5️⃣ Opções de Nisab',
+      radioSilver: 'Baseado na Prata (Recomendado)',
+      radioGold: 'Baseado no Ouro',
+      labelNisabGoldPrice: 'Preço Atual do Ouro ({currency}/grama)',
+      noteGoldNisab: 'Nisab do Ouro = 87,48 gramas × preço de mercado',
+      labelNisabSilverPrice: 'Preço Atual da Prata ({currency}/grama)',
+      noteSilverNisab: 'Nisab da Prata = 612,36 gramas × preço de mercado',
+      btnCalculate: 'Calcular',
+      btnReset: 'Redefinir',
+      noteBottom: 'Nota: Esta ferramenta calcula o Zakat al-Mal. Sua riqueza líquida deve permanecer acima do Nisab por um ano lunar.',
+      nisabNote1: 'Se alguém só tem ouro, o Zakat será calculado apenas com base no Nisab do ouro.',
+      nisabNote2: 'Se alguém só tem prata, o Zakat será calculado apenas com base no Nisab da prata.',
+      nisabNote3: 'Se alguém tem prata, dinheiro ou mercadorias comerciais, o Nisab da prata se aplica pois seu limiar é atingido mais cedo.',
+      resultTitle: '📊 Resultados',
+      resultTotalAssets: 'Total de Ativos',
+      resultDebts: 'Total de Passivos',
+      resultNetWealth: 'Riqueza Líquida',
+      resultNisab: 'Limiar de Nisab',
+      resultZakat: 'Zakat Devido (2,5%)',
+      infoTitle1: 'Como Funciona esta Calculadora',
+      infoContent1: 'Fórmula utilizada: <strong>(Total de Ativos Zakatáveis − Passivos Pagáveis) × 2,5%</strong>. O Zakat torna-se obrigatório quando sua riqueza líquida iguala ou supera o Nisab e permanece assim por um ano lunar.',
+      tableHead1: 'Tipo de Nisab',
+      tableHead2: 'Base de Peso',
+      tableHead3: 'Propósito',
+      tableRow1Col1: 'Nisab do Ouro',
+      tableRow1Col2: '87,48 gramas',
+      tableRow1Col3: 'Limiar alto',
+      tableRow2Col1: 'Nisab da Prata',
+      tableRow2Col2: '612,36 gramas',
+      tableRow2Col3: 'Limiar baixo (geralmente recomendado)',
+      infoTitle2: 'O Que Incluir e Excluir',
+      infoContent2: '<li><strong>Incluir:</strong> Dinheiro, poupança bancária, ouro/prata, investimentos, estoque comercial.</li><li><strong>Excluir:</strong> Residência principal, criptomoeda, moeda digital, veículo pessoal, itens domésticos, equipamentos não revendidos.</li><li><strong>Passivos:</strong> Deduza os valores pagáveis.</li>',
+      infoTitle3: 'Perguntas Frequentes',
+      faq1Q: 'Esta calculadora é para o Zakat al-Fitr?',
+      faq1A: 'Não. Esta calculadora é para o Zakat al-Mal anual, não para o Zakat al-Fitr.',
+      faq2Q: 'Posso pagar o Zakat antes da data de vencimento?',
+      faq2A: 'Sim, o pagamento antecipado é geralmente permitido. Atrasar sem motivo válido não é apropriado.',
+      faq3Q: 'Posso dar Zakat a membros da família?',
+      faq3A: 'Parentes próximos elegíveis (ex: irmãos, primos) podem receber Zakat se qualificados. Zakat não pode ser dado ao cônjuge, pais ou filhos.',
+      faq4Q: 'O Zakat é devido sobre imóveis?',
+      faq4A: 'Se o imóvel foi comprado com intenção de venda (investimento ou comércio), o Zakat é devido sobre seu valor atual de mercado. Se for para uso pessoal ou apenas mantido, o Zakat não é devido.',
+      footer: 'Esta calculadora fornece uma estimativa geral. Consulte um estudioso qualificado para casos complexos.',
+      errorNegative: 'Por favor, não insira valores negativos.',
+      madhabHanafi: 'Escola Hanafi selecionada: O valor de ouro/prata inserido é considerado zakatable.',
+      madhabShafai: 'Escola Shafi\'i selecionada: Ouro/prata para uso geral não é incluído nos ativos zakatáveis.'
+    },
+    ru: {
+      navHome: 'Главная', navAbout: 'О нас', navContact: 'Контакты', navPrivacy: 'Конфиденциальность', navTerms: 'Условия',
+      pageTitle: 'Калькулятор Заката',
+      heroTitle: 'Калькулятор Заката',
+      heroSubtitle: 'Рассчитайте ваш годовой Закат (2,5%) за несколько простых шагов',
+      sec1: '1️⃣ Наличные и Банковский Баланс',
+      labelCash: 'Сумма Наличных ({currency})',
+      labelBank: 'Банковский Баланс ({currency})',
+      sec2: '2️⃣ Золото и Серебро',
+      labelGoldWeight: 'Вес Золота (граммы)',
+      labelGoldPrice: 'Цена Золота за грамм ({currency})',
+      goldValuePrefix: 'Общая Стоимость Золота:',
+      labelSilverWeight: 'Вес Серебра (граммы)',
+      labelSilverPrice: 'Цена Серебра за грамм ({currency})',
+      silverValuePrefix: 'Общая Стоимость Серебра:',
+      sec3: '3️⃣ Инвестиции и Коммерческие Активы',
+      labelStocks: 'Акции / Паевые Фонды ({currency})',
+      labelBusinessStock: 'Коммерческий Запас ({currency})',
+      labelPropertyInvestment: 'Недвижимость (Перепродажа / Инвестиция) ({currency})',
+      sec4: '4️⃣ Обязательства',
+      labelLoan: 'Кредит ({currency})',
+      labelPendingBills: 'Непогашенные Счета/Налог ({currency})',
+      sec6: '6️⃣ Задолженность по Закату за Прошлый Год',
+      labelLastYearZakat: 'Закат за Прошлый Год (если применимо) ({currency})',
+      noteLastYear: 'Добавьте сюда, если не было уплачено в прошлом году.',
+      sec5: '5️⃣ Параметры Нисаба',
+      radioSilver: 'На основе Серебра (Рекомендуется)',
+      radioGold: 'На основе Золота',
+      labelNisabGoldPrice: 'Текущая Цена Золота ({currency}/грамм)',
+      noteGoldNisab: 'Нисаб Золота = 87,48 граммов × рыночная цена',
+      labelNisabSilverPrice: 'Текущая Цена Серебра ({currency}/грамм)',
+      noteSilverNisab: 'Нисаб Серебра = 612,36 граммов × рыночная цена',
+      btnCalculate: 'Рассчитать',
+      btnReset: 'Сбросить',
+      noteBottom: 'Примечание: Этот инструмент рассчитывает Закат аль-Маль. Ваше чистое состояние должно оставаться выше Нисаба в течение одного лунного года.',
+      nisabNote1: 'Если у человека есть только золото, Закат рассчитывается только по нисабу золота.',
+      nisabNote2: 'Если у человека есть только серебро, Закат рассчитывается только по нисабу серебра.',
+      nisabNote3: 'Если у человека есть серебро, наличные или товары, применяется нисаб серебра, так как его порог достигается раньше.',
+      resultTitle: '📊 Результаты',
+      resultTotalAssets: 'Общие Активы',
+      resultDebts: 'Общие Обязательства',
+      resultNetWealth: 'Чистое Состояние',
+      resultNisab: 'Порог Нисаба',
+      resultZakat: 'Закат к Уплате (2,5%)',
+      infoTitle1: 'Как Работает Этот Калькулятор',
+      infoContent1: 'Используемая формула: <strong>(Общие Закатооблагаемые Активы − Подлежащие Уплате Обязательства) × 2,5%</strong>. Закат становится обязательным, когда ваше чистое состояние достигает или превышает Нисаб и остаётся таким в течение одного лунного года.',
+      tableHead1: 'Тип Нисаба',
+      tableHead2: 'Весовая База',
+      tableHead3: 'Цель',
+      tableRow1Col1: 'Нисаб Золота',
+      tableRow1Col2: '87,48 граммов',
+      tableRow1Col3: 'Высокий порог',
+      tableRow2Col1: 'Нисаб Серебра',
+      tableRow2Col2: '612,36 граммов',
+      tableRow2Col3: 'Низкий порог (обычно рекомендуется)',
+      infoTitle2: 'Что Включать и Исключать',
+      infoContent2: '<li><strong>Включить:</strong> Наличные, банковские сбережения, золото/серебро, инвестиции, коммерческий запас.</li><li><strong>Исключить:</strong> Основное жильё, крипто, цифровая валюта, личный транспорт, предметы быта, оборудование не для перепродажи.</li><li><strong>Обязательства:</strong> Вычтите суммы к уплате.</li>',
+      infoTitle3: 'Частые Вопросы',
+      faq1Q: 'Этот калькулятор для Заката аль-Фитр?',
+      faq1A: 'Нет. Этот калькулятор для годового Заката аль-Маль, не для Заката аль-Фитр.',
+      faq2Q: 'Могу ли я заплатить Закат до даты уплаты?',
+      faq2A: 'Да, досрочная оплата обычно разрешена. Задержка без уважительной причины недопустима.',
+      faq3Q: 'Могу ли я дать Закат членам семьи?',
+      faq3A: 'Подходящие дальние родственники (например, братья, двоюродные) могут получать Закат, если соответствуют условиям. Закат нельзя давать супругу, родителям или детям.',
+      faq4Q: 'Облагается ли недвижимость Закатом?',
+      faq4A: 'Если недвижимость куплена с намерением продать (инвестиция или торговля), Закат уплачивается с её текущей рыночной стоимости. Если для личного использования или просто хранения — Закат не уплачивается.',
+      footer: 'Этот калькулятор предоставляет общую оценку. Проконсультируйтесь с квалифицированным учёным в сложных случаях.',
+      errorNegative: 'Пожалуйста, не вводите отрицательные значения.',
+      madhabHanafi: 'Выбрана школа Ханафи: Введённое значение золота/серебра считается закатооблагаемым.',
+      madhabShafai: 'Выбрана школа Шафии: Золото/серебро для общего использования не включается в закатооблагаемые активы.'
+    },
+    ur: {
+      navHome: 'ہوم', navAbout: 'ہمارے بارے میں', navContact: 'رابطہ', navPrivacy: 'رازداری', navTerms: 'شرائط',
+      pageTitle: 'زکات کیلکولیٹر',
+      heroTitle: 'زکات کیلکولیٹر',
+      heroSubtitle: 'چند آسان مراحل میں اپنی سالانہ زکات (2.5%) کا حساب لگائیں',
+      sec1: '1️⃣ نقد اور بینک بیلنس',
+      labelCash: 'نقد رقم ({currency})',
+      labelBank: 'بینک بیلنس ({currency})',
+      sec2: '2️⃣ سونا اور چاندی',
+      labelGoldWeight: 'سونے کا وزن (گرام)',
+      labelGoldPrice: 'فی گرام سونے کی قیمت ({currency})',
+      goldValuePrefix: 'سونے کی کل قیمت:',
+      labelSilverWeight: 'چاندی کا وزن (گرام)',
+      labelSilverPrice: 'فی گرام چاندی کی قیمت ({currency})',
+      silverValuePrefix: 'چاندی کی کل قیمت:',
+      sec3: '3️⃣ سرمایہ کاری اور کاروباری اثاثے',
+      labelStocks: 'حصص / میوچوئل فنڈز ({currency})',
+      labelBusinessStock: 'کاروباری اسٹاک ({currency})',
+      labelPropertyInvestment: 'جائیداد (فروخت / سرمایہ کاری) ({currency})',
+      sec4: '4️⃣ واجبات',
+      labelLoan: 'قرض ({currency})',
+      labelPendingBills: 'زیر التواء بل/ٹیکس ({currency})',
+      sec6: '6️⃣ گزشتہ سال کی بقایا زکات',
+      labelLastYearZakat: 'گزشتہ سال کی زکات (اگر باقی ہو) ({currency})',
+      noteLastYear: 'اگر گزشتہ سال ادا نہیں کی تو یہاں شامل کریں۔',
+      sec5: '5️⃣ نصاب کے اختیارات',
+      radioSilver: 'چاندی کی بنیاد پر (مناسب)',
+      radioGold: 'سونے کی بنیاد پر',
+      labelNisabGoldPrice: 'موجودہ سونے کی قیمت ({currency}/گرام)',
+      noteGoldNisab: 'سونے کا نصاب = 87.48 گرام × بازار قیمت',
+      labelNisabSilverPrice: 'موجودہ چاندی کی قیمت ({currency}/گرام)',
+      noteSilverNisab: 'چاندی کا نصاب = 612.36 گرام × بازار قیمت',
+      btnCalculate: 'حساب کریں',
+      btnReset: 'دوبارہ ترتیب دیں',
+      noteBottom: 'نوٹ: یہ ٹول زکات المال کا حساب کرتا ہے۔ آپ کی خالص دولت ایک قمری سال تک نصاب سے اوپر رہنی چاہیے۔',
+      nisabNote1: 'اگر کسی کے پاس صرف سونا ہو تو زکات صرف سونے کے نصاب کے مطابق ہوگی۔',
+      nisabNote2: 'اگر کسی کے پاس صرف چاندی ہو تو زکات صرف چاندی کے نصاب کے مطابق ہوگی۔',
+      nisabNote3: 'اگر کسی کے پاس چاندی، نقد پیسہ یا کاروباری مال ہو تو چاندی کا نصاب لاگو ہوگا کیونکہ اس کی حد جلد پہنچ جاتی ہے۔',
+      resultTitle: '📊 نتائج',
+      resultTotalAssets: 'کل اثاثے',
+      resultDebts: 'کل واجبات',
+      resultNetWealth: 'خالص دولت',
+      resultNisab: 'نصاب کی حد',
+      resultZakat: 'واجب الادا زکات (2.5%)',
+      infoTitle1: 'یہ کیلکولیٹر کیسے کام کرتا ہے',
+      infoContent1: 'استعمال شدہ فارمولا: <strong>(کل قابل زکات اثاثے − واجب الادا واجبات) × 2.5%</strong>۔ زکات واجب ہوتی ہے جب آپ کی خالص دولت نصاب کے برابر یا اس سے زیادہ ہو اور ایک قمری سال تک برقرار رہے۔',
+      tableHead1: 'نصاب کی قسم',
+      tableHead2: 'وزن کی بنیاد',
+      tableHead3: 'مقصد',
+      tableRow1Col1: 'سونے کا نصاب',
+      tableRow1Col2: '87.48 گرام',
+      tableRow1Col3: 'اونچی حد',
+      tableRow2Col1: 'چاندی کا نصاب',
+      tableRow2Col2: '612.36 گرام',
+      tableRow2Col3: 'کم حد (عموماً مناسب)',
+      infoTitle2: 'کیا شامل کریں اور کیا نہ کریں',
+      infoContent2: '<li><strong>شامل کریں:</strong> نقد، بینک بچت، سونا/چاندی، سرمایہ کاری، کاروباری اسٹاک۔</li><li><strong>شامل نہ کریں:</strong> بنیادی رہائش، کرپٹو، ڈیجیٹل کرنسی، ذاتی استعمال کی گاڑی، گھریلو سامان، غیر فروختنی آلات۔</li><li><strong>واجبات:</strong> واجب الادا رقوم گھٹائیں۔</li>',
+      infoTitle3: 'فوری سوال و جواب',
+      faq1Q: 'کیا یہ کیلکولیٹر زکات الفطر کے لیے ہے؟',
+      faq1A: 'نہیں۔ یہ کیلکولیٹر سالانہ زکات المال (مال کی زکات) کے لیے ہے، زکات الفطر کے لیے نہیں۔',
+      faq2Q: 'کیا میں مقررہ تاریخ سے پہلے زکات دے سکتا/سکتی ہوں؟',
+      faq2A: 'ہاں، قبل از وقت ادائیگی عموماً جائز ہے۔ معقول وجہ کے بغیر تاخیر درست نہیں۔',
+      faq3Q: 'کیا میں خاندان کو زکات دے سکتا/سکتی ہوں؟',
+      faq3A: 'اہل قریبی رشتہ دار (جیسے بھائی بہن، چچازاد) اگر مستحق ہوں تو زکات لے سکتے ہیں۔ شوہر/بیوی، والدین یا بچوں کو زکات نہیں دی جا سکتی۔',
+      faq4Q: 'کیا جائیداد پر زکات دینی ہوتی ہے؟',
+      faq4A: 'اگر جائیداد فروخت کی نیت سے خریدی گئی ہو (سرمایہ کاری یا تجارت)، تو موجودہ بازاری قیمت پر زکات واجب ہے۔ اگر رہائش یا صرف رکھنے کے لیے ہو تو زکات نہیں۔',
+      footer: 'یہ کیلکولیٹر عمومی اندازہ فراہم کرتا ہے۔ پیچیدہ معاملات میں کسی معتبر عالم سے مشورہ لیں۔',
+      errorNegative: 'براہ کرم منفی قدریں درج نہ کریں۔',
+      madhabHanafi: 'حنفی مسلک منتخب: درج کردہ سونے/چاندی کی قیمت قابل زکات سمجھی جاتی ہے۔',
+      madhabShafai: 'شافعی مسلک منتخب: عام استعمال کا سونا/چاندی قابل زکات اثاثوں میں شامل نہیں۔'
     }
   };
 
   let currentLang = 'hi';
 
   function t(key) {
-    return (translations[currentLang] && translations[currentLang][key]) || key;
+    const cur = currencies[currentCurrency] || currencies.INR;
+    let text = (translations[currentLang] && translations[currentLang][key])
+      || (translations.en && translations.en[key])
+      || key;
+    return text.replace(/\{currency\}/g, cur.symbol);
   }
 
   function setLanguage(lang) {
     currentLang = lang;
+    document.documentElement.dir = (lang === 'ar' || lang === 'ur') ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
     document.title = t('pageTitle');
 
-    // Update toggle button states
-    const btnHindi = document.getElementById('btnHindi');
-    const btnEnglish = document.getElementById('btnEnglish');
-    if (btnHindi) btnHindi.classList.toggle('active', lang === 'hi');
-    if (btnEnglish) btnEnglish.classList.toggle('active', lang === 'en');
+    // Update language dropdown
+    const langSelectEl = document.getElementById('langSelect');
+    if (langSelectEl) langSelectEl.value = lang;
 
     // Update all elements with data-i18n (textContent)
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
@@ -962,6 +1673,12 @@
 
     // Refresh dynamic metal value display
     updateMetalValues();
+  }
+
+  function setCurrency(code) {
+    currentCurrency = code;
+    setLanguage(currentLang);
+    calculate({ shouldScroll: false });
   }
 
   // ─── Calculator logic ──────────────────────────────────────────
@@ -999,10 +1716,15 @@
     "nisabSilverPrice"
   ];
 
-  const INDIAN_FORMATTER = new Intl.NumberFormat("hi-IN", {
-    maximumFractionDigits: 2,
-    minimumFractionDigits: 2
-  });
+  function getFormatter() {
+    const cur = currencies[currentCurrency] || currencies.INR;
+    return new Intl.NumberFormat(cur.locale, { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+  }
+
+  function formatCurrency(value) {
+    const cur = currencies[currentCurrency] || currencies.INR;
+    return `${cur.symbol}${getFormatter().format(value)}`;
+  }
 
   // Safe getter: returns 0 if element is absent or value is not a finite number
   function getNum(id) {
@@ -1010,10 +1732,6 @@
     if (!el) return 0;
     const val = Number(el.value);
     return Number.isFinite(val) ? val : 0;
-  }
-
-  function inr(value) {
-    return `₹${INDIAN_FORMATTER.format(value)}`;
   }
 
   function hasNegativeValues() {
@@ -1045,8 +1763,8 @@
 
   function updateMetalValues() {
     const { goldValue, silverValue, note } = getMetalValuesByMadhab();
-    if (goldValueEl) goldValueEl.textContent = `${t('goldValuePrefix')} ${inr(goldValue)}`;
-    if (silverValueEl) silverValueEl.textContent = `${t('silverValuePrefix')} ${inr(silverValue)}`;
+    if (goldValueEl) goldValueEl.textContent = `${t('goldValuePrefix')} ${formatCurrency(goldValue)}`;
+    if (silverValueEl) silverValueEl.textContent = `${t('silverValuePrefix')} ${formatCurrency(silverValue)}`;
     if (madhabStatusEl) madhabStatusEl.textContent = note;
   }
 
@@ -1102,11 +1820,11 @@
     const currentYearZakat = netWealth >= nisabValue ? Math.max(netWealth, 0) * 0.025 : 0;
     const zakat = currentYearZakat + lastYearZakat;
 
-    if (totalAssetsOut) totalAssetsOut.textContent = inr(Math.max(totalAssets, 0));
-    if (debtsOut) debtsOut.textContent = inr(Math.max(totalDebts, 0));
-    if (netWealthOut) netWealthOut.textContent = inr(Math.max(netWealth, 0));
-    if (nisabOut) nisabOut.textContent = inr(Math.max(nisabValue, 0));
-    if (zakatOut) zakatOut.textContent = inr(Math.max(zakat, 0));
+    if (totalAssetsOut) totalAssetsOut.textContent = formatCurrency(Math.max(totalAssets, 0));
+    if (debtsOut) debtsOut.textContent = formatCurrency(Math.max(totalDebts, 0));
+    if (netWealthOut) netWealthOut.textContent = formatCurrency(Math.max(netWealth, 0));
+    if (nisabOut) nisabOut.textContent = formatCurrency(Math.max(nisabValue, 0));
+    if (zakatOut) zakatOut.textContent = formatCurrency(Math.max(zakat, 0));
 
     if (shouldScroll && resultSection) {
       resultSection.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1146,16 +1864,29 @@
       if (ns) ns.checked = true;
       if (madhabSelect) madhabSelect.value = "hanafi";
       if (errorBox) errorBox.textContent = "";
-      if (totalAssetsOut) totalAssetsOut.textContent = "₹0";
-      if (debtsOut) debtsOut.textContent = "₹0";
-      if (netWealthOut) netWealthOut.textContent = "₹0";
-      if (nisabOut) nisabOut.textContent = "₹0";
-      if (zakatOut) zakatOut.textContent = "₹0";
+      if (totalAssetsOut) totalAssetsOut.textContent = formatCurrency(0);
+      if (debtsOut) debtsOut.textContent = formatCurrency(0);
+      if (netWealthOut) netWealthOut.textContent = formatCurrency(0);
+      if (nisabOut) nisabOut.textContent = formatCurrency(0);
+      if (zakatOut) zakatOut.textContent = formatCurrency(0);
       updateMetalValues();
     });
   }
 
+  // Navbar hamburger
+  const navHamburger = document.getElementById('navHamburger');
+  const navMenu = document.getElementById('navMenu');
+  if (navHamburger && navMenu) {
+    navHamburger.addEventListener('click', function() {
+      navMenu.classList.toggle('open');
+    });
+    navMenu.querySelectorAll('.nav-link').forEach(function(link) {
+      link.addEventListener('click', function() { navMenu.classList.remove('open'); });
+    });
+  }
+
   // Initial update
+  setLanguage('hi');
   updateMetalValues();
 </script>
   </body>

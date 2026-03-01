@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="hi">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CHGYQVXQ97"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CHGYQVXQ97');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact – ZakatCalculation.in</title>
+    <meta name="description" content="Contact Sajid Ali Khan, developer of ZakatCalculation.in." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f6fbf8;
+        --card: #ffffff;
+        --primary: #1f8f63;
+        --primary-dark: #156f4d;
+        --text: #1c2a23;
+        --muted: #5d6b64;
+        --shadow: 0 12px 32px rgba(18, 73, 53, 0.12);
+        --radius: 16px;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: "Noto Sans Devanagari", "Poppins", system-ui, -apple-system, sans-serif;
+        background: radial-gradient(circle at top, #eef9f2 0%, var(--bg) 40%, #f9fcfa 100%);
+        color: var(--text);
+      }
+      .container { width: min(1080px, 92vw); margin: 0 auto; }
+
+      /* Navbar */
+      .navbar {
+        background: linear-gradient(120deg, #1f8f63, #2ca876);
+        box-shadow: 0 2px 12px rgba(18,73,53,0.15);
+        position: sticky; top: 0; z-index: 1000;
+      }
+      .nav-container {
+        width: min(1080px, 92vw); margin: 0 auto;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 12px 0; position: relative;
+      }
+      .nav-brand { color: #fff; text-decoration: none; font-size: 1.15rem; font-weight: 700; }
+      .nav-menu { display: flex; list-style: none; margin: 0; padding: 0; gap: 4px; }
+      .nav-link { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 0.92rem; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: background 0.2s; }
+      .nav-link:hover, .nav-link.active { background: rgba(255,255,255,0.18); color: #fff; }
+      .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: transparent; border: none; cursor: pointer; padding: 4px; }
+      .nav-hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+      @media (max-width: 760px) {
+        .nav-hamburger { display: flex; }
+        .nav-menu { display: none; position: absolute; top: 56px; left: 0; right: 0; background: #1a7d57; flex-direction: column; padding: 8px 16px 16px; gap: 2px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .nav-menu.open { display: flex; }
+        .nav-link { padding: 10px 12px; display: block; }
+      }
+
+      /* Page */
+      .page-hero {
+        margin: 28px auto 24px; border-radius: 24px;
+        background: linear-gradient(120deg, #1f8f63, #2ca876 45%, #8ccf87 100%);
+        color: #fff; box-shadow: var(--shadow); padding: 40px 32px;
+      }
+      .page-hero h1 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.2rem); }
+      .page-hero p { margin: 10px 0 0; opacity: 0.92; font-size: 1.05rem; }
+
+      .content-card {
+        background: var(--card); border-radius: var(--radius);
+        box-shadow: var(--shadow); padding: 28px; margin-bottom: 24px;
+      }
+      .content-card h2 { margin: 0 0 14px; color: var(--primary-dark); font-size: 1.2rem; border-bottom: 1px solid #e9f1ec; padding-bottom: 10px; }
+      .content-card p { line-height: 1.7; color: #334840; margin: 0 0 12px; }
+      .content-card p:last-child { margin-bottom: 0; }
+
+      .contact-card {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: linear-gradient(135deg, #f0fbf5, #e8f5ee);
+        border: 1px solid #b8dfc8;
+        border-radius: 14px;
+        padding: 22px 24px;
+        margin-top: 8px;
+        flex-wrap: wrap;
+      }
+      .contact-avatar {
+        width: 72px; height: 72px;
+        background: linear-gradient(135deg, #1f8f63, #2ca876);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 2rem; color: #fff; flex-shrink: 0;
+      }
+      .contact-info h3 { margin: 0 0 4px; color: var(--primary-dark); font-size: 1.15rem; }
+      .contact-info p { margin: 0 0 8px; color: var(--muted); font-size: 0.95rem; }
+      .contact-link {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: var(--primary); color: #fff;
+        text-decoration: none; padding: 8px 16px; border-radius: 10px;
+        font-size: 0.9rem; font-weight: 600;
+        transition: background 0.2s, transform 0.2s;
+      }
+      .contact-link:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+      footer { text-align: center; color: var(--muted); font-size: 0.9rem; padding: 24px 0; }
+      .developer-credit { margin-top: 0.5rem; font-size: 0.85rem; color: #6b7280; font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-brand">🕌 ZakatCalculation.in</a>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+          <li><a href="privacy-policy.html" class="nav-link">Privacy</a></li>
+          <li><a href="terms-and-conditions.html" class="nav-link">Terms</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="page-hero">
+        <h1>📬 Contact</h1>
+        <p>Get in touch with the developer of ZakatCalculation.in</p>
+      </div>
+
+      <article class="content-card">
+        <h2>Developer Contact</h2>
+        <p>
+          ZakatCalculation.in is developed and maintained by <strong>Sajid Ali Khan</strong>.
+          For feedback, feature requests, bug reports, or general enquiries, feel free to reach out via LinkedIn.
+        </p>
+        <div class="contact-card">
+          <div class="contact-avatar">👤</div>
+          <div class="contact-info">
+            <h3>Sajid Ali Khan</h3>
+            <p>Developer &amp; Creator of ZakatCalculation.in</p>
+            <a href="https://www.linkedin.com/in/sajid-sj/" target="_blank" rel="noopener noreferrer" class="contact-link">
+              🔗 Connect on LinkedIn
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="content-card">
+        <h2>Feedback &amp; Suggestions</h2>
+        <p>
+          Your feedback helps improve this tool for the entire Muslim community. If you notice any
+          calculation errors, missing currency/language support, or have suggestions for new features,
+          please reach out via LinkedIn.
+        </p>
+        <p>
+          If you are a scholar or Islamic finance expert who would like to contribute to improving the
+          accuracy and coverage of this calculator, your input is especially welcome.
+        </p>
+      </article>
+
+      <article class="content-card">
+        <h2>About the Project</h2>
+        <p>
+          This is a non-commercial, community-service project. No fees are charged and no user data is
+          collected (beyond standard Google Analytics page-view data). The tool is provided as-is for
+          the benefit of the Muslim community worldwide.
+        </p>
+        <p>
+          For more information about the tool and its features, visit the
+          <a href="about.html" style="color: var(--primary); font-weight: 600;">About page</a>.
+        </p>
+      </article>
+    </main>
+
+    <footer class="container">
+      <span>This calculator provides a general estimate. Consult a qualified scholar for complex cases.</span>
+      <p class="developer-credit">Developed by Sajid Ali Khan</p>
+    </footer>
+
+    <script>
+      const navHamburger = document.getElementById('navHamburger');
+      const navMenu = document.getElementById('navMenu');
+      if (navHamburger && navMenu) {
+        navHamburger.addEventListener('click', function() { navMenu.classList.toggle('open'); });
+        navMenu.querySelectorAll('.nav-link').forEach(function(link) {
+          link.addEventListener('click', function() { navMenu.classList.remove('open'); });
+        });
+      }
+    </script>
+  </body>
+</html>
