@@ -1052,5 +1052,5 @@
   });
 
   // Initial update
-  setLanguage('hi');
+  setLanguage('en');
   updateMetalValues();
