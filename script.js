@@ -1037,10 +1037,19 @@
     navHamburger.addEventListener('click', function() {
       navMenu.classList.toggle('open');
     });
-    navMenu.querySelectorAll('.nav-link').forEach(function(link) {
+    navMenu.querySelectorAll('.nav-link:not(.nav-dropdown-btn)').forEach(function(link) {
       link.addEventListener('click', function() { navMenu.classList.remove('open'); });
     });
   }
+
+  // Dropdown toggle on mobile
+  document.querySelectorAll('.nav-dropdown-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const item = this.closest('.nav-dropdown');
+      item.classList.toggle('open');
+          this.setAttribute('aria-expanded', item.classList.contains('open'));
+    });
+  });
 
   // Initial update
   setLanguage('hi');

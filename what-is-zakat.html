@@ -143,10 +143,16 @@
         padding: 12px 0;
         position: relative;
       }
-      .nav-brand { color: #fff; text-decoration: none; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.2px; }
-      .nav-menu { display: flex; list-style: none; margin: 0; padding: 0; gap: 4px; }
-      .nav-link { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 0.92rem; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: background 0.2s; }
+      .nav-brand { color: #fff; text-decoration: none; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.2px; white-space: nowrap; }
+      .nav-menu { display: flex; list-style: none; margin: 0; padding: 0; gap: 4px; flex-wrap: nowrap; }
+      .nav-link { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 0.92rem; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: background 0.2s; white-space: nowrap; background: none; border: none; cursor: pointer; font-family: inherit; display: block; }
       .nav-link:hover, .nav-link.active { background: rgba(255,255,255,0.18); color: #fff; }
+      .nav-dropdown { position: relative; }
+      .nav-dropdown-btn { display: flex; align-items: center; gap: 4px; }
+      .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; background: #fff; border-radius: 10px; box-shadow: 0 8px 24px rgba(18,73,53,0.18); list-style: none; padding: 8px 0; min-width: 200px; z-index: 200; margin: 0; }
+      .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown.open .nav-dropdown-menu { display: block; }
+      .nav-dropdown-link { display: block; padding: 9px 18px; color: #1c2a23; text-decoration: none; font-size: 0.9rem; font-weight: 500; white-space: nowrap; transition: background 0.15s; }
+      .nav-dropdown-link:hover { background: #e8f8f0; color: #1f8f63; }
       .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: transparent; border: none; cursor: pointer; padding: 4px; }
       .nav-hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
       @media (max-width: 760px) {
@@ -154,6 +160,11 @@
         .nav-menu { display: none; position: absolute; top: 56px; left: 0; right: 0; background: #1a7d57; flex-direction: column; padding: 8px 16px 16px; gap: 2px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
         .nav-menu.open { display: flex; }
         .nav-link { padding: 10px 12px; display: block; }
+        .nav-dropdown-menu { position: static; background: rgba(0,0,0,0.15); box-shadow: none; border-radius: 8px; padding: 4px 0; margin: 2px 0 4px; }
+        .nav-dropdown-link { color: rgba(255,255,255,0.85); padding: 8px 24px; font-size: 0.88rem; }
+        .nav-dropdown-link:hover { background: rgba(255,255,255,0.15); color: #fff; }
+        .nav-dropdown:hover .nav-dropdown-menu { display: none; }
+        .nav-dropdown.open .nav-dropdown-menu { display: block; }
       }
 
       /* Article hero */
@@ -255,12 +266,18 @@
         </button>
         <ul class="nav-menu" id="navMenu">
           <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="what-is-zakat.html" class="nav-link active">What is Zakat?</a></li>
-          <li><a href="zakat-on-pf-india.html" class="nav-link">Zakat on PF</a></li>
-          <li><a href="zakat-on-business-stock-india.html" class="nav-link">Zakat on Business Stock</a></li>
-          <li><a href="zakat-on-mutual-funds-india.html" class="nav-link">Zakat on Mutual Funds</a></li>
-          <li><a href="zakat-on-salary-india.html" class="nav-link">Zakat on Salary</a></li>
-          <li><a href="zakat-on-agriculture-india.html" class="nav-link">Zakat on Agriculture</a></li>
+          <li class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn active" aria-expanded="false">Zakat Guide ▾</button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="what-is-zakat.html" class="nav-dropdown-link">What is Zakat</a></li>
+              <li><a href="gold-vs-silver-nisab-india.html" class="nav-dropdown-link">Zakat on Gold</a></li>
+              <li><a href="zakat-on-pf-india.html" class="nav-dropdown-link">Zakat on PF</a></li>
+              <li><a href="zakat-on-business-stock-india.html" class="nav-dropdown-link">Zakat on Business</a></li>
+              <li><a href="zakat-on-salary-india.html" class="nav-dropdown-link">Zakat on Salary</a></li>
+              <li><a href="zakat-on-agriculture-india.html" class="nav-dropdown-link">Zakat on Agriculture</a></li>
+            </ul>
+          </li>
+          <li><a href="index.html" class="nav-link">Calculator</a></li>
           <li><a href="about.html" class="nav-link">About</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
@@ -594,10 +611,18 @@
       const navMenu = document.getElementById('navMenu');
       if (navHamburger && navMenu) {
         navHamburger.addEventListener('click', function() { navMenu.classList.toggle('open'); });
-        navMenu.querySelectorAll('.nav-link').forEach(function(link) {
+        navMenu.querySelectorAll('.nav-link:not(.nav-dropdown-btn)').forEach(function(link) {
           link.addEventListener('click', function() { navMenu.classList.remove('open'); });
         });
       }
+      // Dropdown toggle on mobile
+      document.querySelectorAll('.nav-dropdown-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const item = this.closest('.nav-dropdown');
+          item.classList.toggle('open');
+          this.setAttribute('aria-expanded', item.classList.contains('open'));
+        });
+      });
 
       // FAQ accordion
       document.querySelectorAll('.faq-question').forEach(function(question) {
