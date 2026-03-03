@@ -13,7 +13,7 @@
     CNY: { symbol: '¥', locale: 'zh-CN' },
     MYR: { symbol: 'RM', locale: 'ms-MY' }
   };
-  let currentCurrency = 'INR';
+  let currentCurrency = 'USD';
 
   // ─── Translations ──────────────────────────────────────────────
   const translations = {
