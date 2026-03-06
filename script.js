@@ -91,7 +91,9 @@
       footer: 'यह कैलकुलेटर आम अंदाज़ा देता है। पेचीदा मामलों में किसी मुअतबर आलिम से मशविरा लें।',
       errorNegative: 'मेहरबानी करके मनफ़ी (negative) क़ीमत दर्ज न करें।',
       madhabHanafi: 'हन्फ़ी मस्लक चुना गया: सोना/चांदी की दर्ज की गई वैल्यू ज़कात योग्य संपत्ति मानी जाती है।',
-      madhabShafai: 'शाफ़ई मस्लक चुना गया: सामान्य इस्तेमाल का सोना/चांदी ज़कात योग्य में शामिल नहीं।'
+      madhabShafai: 'शाफ़ई मस्लक चुना गया: सामान्य इस्तेमाल का सोना/चांदी ज़कात योग्य में शामिल नहीं।',
+      homeZakatDesc: 'जकात इस्लाम के पाँच स्तंभों में से एक है। यह हर उस मुसलमान पर फर्ज़ है जिसकी संपत्ति निसाब से ऊपर हो और उस पर एक चांद्र वर्ष (हौल) गुजर चुका हो। जकात आमतौर पर कुल संपत्ति का 2.5% होती है।',
+      homeCalcPromo: 'हमारे <a href="zakat-calculator.html">जकात कैलकुलेटर इंडिया</a> का उपयोग करें — सोना, नकद, बचत और निवेश पर जकात की गणना करें। यह मुफ़्त जकात कैलकुलेटर रुपयों में आपकी सालाना जकात का अनुमान जल्दी लगाने में मदद करता है।'
     },
     en: {
       navHome: 'Home', navAbout: 'About', navContact: 'Contact', navPrivacy: 'Privacy', navTerms: 'Terms',
@@ -167,7 +169,9 @@
       footer: 'This calculator provides a general estimate. Consult a qualified scholar for complex cases.',
       errorNegative: 'Please do not enter negative values.',
       madhabHanafi: 'Hanafi school selected: Entered gold/silver value is considered zakatable.',
-      madhabShafai: "Shafi'i school selected: Gold/silver for general use is not included in zakatable assets."
+      madhabShafai: "Shafi'i school selected: Gold/silver for general use is not included in zakatable assets.",
+      homeZakatDesc: 'Zakat is one of the Five Pillars of Islam. It is obligatory on every Muslim whose wealth exceeds the Nisab threshold and has been held for one full lunar year (Hawl). Zakat is generally 2.5% of total zakatable wealth.',
+      homeCalcPromo: 'Use our <a href="zakat-calculator.html">Zakat Calculator India</a> to calculate zakat on gold, cash, savings and investments. This free zakat calculator in rupees helps you estimate your annual zakat quickly.'
     },
     ar: {
       navHome: 'الرئيسية', navAbout: 'حول', navContact: 'اتصل', navPrivacy: 'الخصوصية', navTerms: 'الشروط',
@@ -243,7 +247,9 @@
       footer: 'توفر هذه الحاسبة تقديراً عاماً. استشر عالماً مؤهلاً للحالات المعقدة.',
       errorNegative: 'يرجى عدم إدخال قيم سالبة.',
       madhabHanafi: 'تم اختيار المذهب الحنفي: قيمة الذهب/الفضة المُدخلة تُعدّ خاضعة للزكاة.',
-      madhabShafai: 'تم اختيار المذهب الشافعي: الذهب/الفضة للاستخدام العام غير مشمول في الأصول الخاضعة للزكاة.'
+      madhabShafai: 'تم اختيار المذهب الشافعي: الذهب/الفضة للاستخدام العام غير مشمول في الأصول الخاضعة للزكاة.',
+      homeZakatDesc: 'الزكاة ركن من أركان الإسلام الخمسة. تجب على كل مسلم يملك نصاباً وحال عليه الحول. الزكاة عادةً 2.5% من إجمالي الثروة الزكوية.',
+      homeCalcPromo: 'استخدم <a href="zakat-calculator.html">حاسبة الزكاة</a> لحساب الزكاة على الذهب والنقد والمدخرات والاستثمارات. تساعدك هذه الأداة المجانية على تقدير زكاتك السنوية بسرعة.'
     },
     es: {
       navHome: 'Inicio', navAbout: 'Acerca de', navContact: 'Contacto', navPrivacy: 'Privacidad', navTerms: 'Términos',
@@ -319,7 +325,9 @@
       footer: 'Esta calculadora proporciona una estimación general. Consulta a un erudito calificado para casos complejos.',
       errorNegative: 'Por favor, no ingrese valores negativos.',
       madhabHanafi: 'Escuela Hanafi seleccionada: El valor de oro/plata ingresado se considera zakatable.',
-      madhabShafai: 'Escuela Shafi\'i seleccionada: El oro/plata para uso general no se incluye en los activos zakatables.'
+      madhabShafai: 'Escuela Shafi\'i seleccionada: El oro/plata para uso general no se incluye en los activos zakatables.',
+      homeZakatDesc: 'El Zakat es uno de los cinco pilares del Islam. Es obligatorio para todo musulmán cuya riqueza supere el Nisab durante un año lunar completo. El Zakat es generalmente el 2,5% de la riqueza zakatable total.',
+      homeCalcPromo: 'Usa nuestra <a href="zakat-calculator.html">Calculadora de Zakat</a> para calcular el zakat sobre oro, efectivo, ahorros e inversiones. Esta herramienta gratuita te ayuda a estimar tu zakat anual rápidamente.'
     },
     fr: {
       navHome: 'Accueil', navAbout: 'À propos', navContact: 'Contact', navPrivacy: 'Confidentialité', navTerms: 'Conditions',
@@ -395,7 +403,9 @@
       footer: 'Ce calculateur fournit une estimation générale. Consultez un érudit qualifié pour les cas complexes.',
       errorNegative: 'Veuillez ne pas entrer de valeurs négatives.',
       madhabHanafi: 'École Hanafi sélectionnée: La valeur or/argent saisie est considérée zakatable.',
-      madhabShafai: 'École Shafi\'i sélectionnée: L\'or/argent pour usage général n\'est pas inclus dans les actifs zakatables.'
+      madhabShafai: 'École Shafi\'i sélectionnée: L\'or/argent pour usage général n\'est pas inclus dans les actifs zakatables.',
+      homeZakatDesc: 'La Zakat est l\'un des cinq piliers de l\'Islam. Elle est obligatoire pour tout musulman dont la richesse dépasse le Nisab pendant une année lunaire complète. La Zakat est généralement 2,5% de la richesse totale zakatable.',
+      homeCalcPromo: 'Utilisez notre <a href="zakat-calculator.html">Calculateur de Zakat</a> pour calculer la zakat sur l\'or, les liquidités, l\'épargne et les investissements. Cet outil gratuit vous aide à estimer rapidement votre zakat annuelle.'
     },
     zh: {
       navHome: '首页', navAbout: '关于', navContact: '联系', navPrivacy: '隐私', navTerms: '条款',
@@ -471,7 +481,9 @@
       footer: '此计算器提供一般估计。复杂情况请咨询合格学者。',
       errorNegative: '请不要输入负值。',
       madhabHanafi: '已选择哈纳菲学派：输入的黄金/白银价值被视为应缴天课资产。',
-      madhabShafai: '已选择沙菲仪学派：日常使用的黄金/白银不包含在应缴天课资产中。'
+      madhabShafai: '已选择沙菲仪学派：日常使用的黄金/白银不包含在应缴天课资产中。',
+      homeZakatDesc: '天课是伊斯兰五功之一。凡财富达到尼萨布标准并持有满一个太阴年的穆斯林均须缴纳。天课通常为应缴财富总额的2.5%。',
+      homeCalcPromo: '使用我们的<a href="zakat-calculator.html">天课计算器</a>计算黄金、现金、储蓄和投资的天课。这款免费工具帮助您快速估算年度天课。'
     },
     bn: {
       navHome: 'হোম', navAbout: 'আমাদের সম্পর্কে', navContact: 'যোগাযোগ', navPrivacy: 'গোপনীয়তা', navTerms: 'শর্তাবলী',
@@ -547,7 +559,9 @@
       footer: 'এই ক্যালকুলেটর একটি সাধারণ অনুমান প্রদান করে। জটিল ক্ষেত্রে যোগ্য আলেমের পরামর্শ নিন।',
       errorNegative: 'অনুগ্রহ করে নেতিবাচক মান প্রবেশ করবেন না।',
       madhabHanafi: 'হানাফি মাজহাব নির্বাচিত: প্রবেশ করা সোনা/রুপার মান যাকাতযোগ্য বলে গণ্য হয়।',
-      madhabShafai: 'শাফেঈ মাজহাব নির্বাচিত: সাধারণ ব্যবহারের সোনা/রুপা যাকাতযোগ্য সম্পদে অন্তর্ভুক্ত নয়।'
+      madhabShafai: 'শাফেঈ মাজহাব নির্বাচিত: সাধারণ ব্যবহারের সোনা/রুপা যাকাতযোগ্য সম্পদে অন্তর্ভুক্ত নয়।',
+      homeZakatDesc: 'যাকাত ইসলামের পাঁচটি স্তম্ভের একটি। যে মুসলমানের সম্পদ নিসাব পরিমাণ ছাড়িয়ে এক চন্দ্র বছর অতিবাহিত হয় তার জন্য এটি ফরজ। যাকাত সাধারণত মোট যাকাতযোগ্য সম্পদের ২.৫%।',
+      homeCalcPromo: 'আমাদের <a href="zakat-calculator.html">যাকাত ক্যালকুলেটর</a> ব্যবহার করুন — সোনা, নগদ, সঞ্চয় ও বিনিয়োগের উপর যাকাত হিসাব করুন। এই বিনামূল্যের টুলটি আপনার বার্ষিক যাকাত দ্রুত অনুমান করতে সাহায্য করে।'
     },
     pt: {
       navHome: 'Início', navAbout: 'Sobre', navContact: 'Contato', navPrivacy: 'Privacidade', navTerms: 'Termos',
@@ -623,7 +637,9 @@
       footer: 'Esta calculadora fornece uma estimativa geral. Consulte um estudioso qualificado para casos complexos.',
       errorNegative: 'Por favor, não insira valores negativos.',
       madhabHanafi: 'Escola Hanafi selecionada: O valor de ouro/prata inserido é considerado zakatable.',
-      madhabShafai: 'Escola Shafi\'i selecionada: Ouro/prata para uso geral não é incluído nos ativos zakatáveis.'
+      madhabShafai: 'Escola Shafi\'i selecionada: Ouro/prata para uso geral não é incluído nos ativos zakatáveis.',
+      homeZakatDesc: 'O Zakat é um dos cinco pilares do Islã. É obrigatório para todo muçulmano cuja riqueza supere o Nisab durante um ano lunar completo. O Zakat é geralmente 2,5% da riqueza zakatable total.',
+      homeCalcPromo: 'Use nossa <a href="zakat-calculator.html">Calculadora de Zakat</a> para calcular o zakat sobre ouro, dinheiro, poupanças e investimentos. Esta ferramenta gratuita ajuda você a estimar seu zakat anual rapidamente.'
     },
     ru: {
       navHome: 'Главная', navAbout: 'О нас', navContact: 'Контакты', navPrivacy: 'Конфиденциальность', navTerms: 'Условия',
@@ -699,7 +715,9 @@
       footer: 'Этот калькулятор предоставляет общую оценку. Проконсультируйтесь с квалифицированным учёным в сложных случаях.',
       errorNegative: 'Пожалуйста, не вводите отрицательные значения.',
       madhabHanafi: 'Выбрана школа Ханафи: Введённое значение золота/серебра считается закатооблагаемым.',
-      madhabShafai: 'Выбрана школа Шафии: Золото/серебро для общего использования не включается в закатооблагаемые активы.'
+      madhabShafai: 'Выбрана школа Шафии: Золото/серебро для общего использования не включается в закатооблагаемые активы.',
+      homeZakatDesc: 'Закят — один из пяти столпов ислама. Он обязателен для каждого мусульманина, чьё состояние превышает нисаб в течение полного лунного года. Закят составляет, как правило, 2,5% от общего закятооблагаемого имущества.',
+      homeCalcPromo: 'Используйте наш <a href="zakat-calculator.html">калькулятор закята</a> для расчёта закята на золото, наличные, сбережения и инвестиции. Этот бесплатный инструмент поможет вам быстро оценить ваш годовой закят.'
     },
     ur: {
       navHome: 'ہوم', navAbout: 'ہمارے بارے میں', navContact: 'رابطہ', navPrivacy: 'رازداری', navTerms: 'شرائط',
@@ -775,7 +793,9 @@
       footer: 'یہ کیلکولیٹر عمومی اندازہ فراہم کرتا ہے۔ پیچیدہ معاملات میں کسی معتبر عالم سے مشورہ لیں۔',
       errorNegative: 'براہ کرم منفی قدریں درج نہ کریں۔',
       madhabHanafi: 'حنفی مسلک منتخب: درج کردہ سونے/چاندی کی قیمت قابل زکات سمجھی جاتی ہے۔',
-      madhabShafai: 'شافعی مسلک منتخب: عام استعمال کا سونا/چاندی قابل زکات اثاثوں میں شامل نہیں۔'
+      madhabShafai: 'شافعی مسلک منتخب: عام استعمال کا سونا/چاندی قابل زکات اثاثوں میں شامل نہیں۔',
+      homeZakatDesc: 'زکات اسلام کے پانچ ارکان میں سے ایک ہے۔ یہ ہر اس مسلمان پر فرض ہے جس کا مال نصاب کے برابر یا اس سے زائد ہو اور اس پر ایک قمری سال گزر چکا ہو۔ زکات عام طور پر کل زکاتی مال کا 2.5% ہوتی ہے۔',
+      homeCalcPromo: 'ہمارے <a href="zakat-calculator.html">زکات کیلکولیٹر</a> کا استعمال کریں — سونے، نقد، بچت اور سرمایہ کاری پر زکات کا حساب لگائیں۔ یہ مفت ٹول آپ کی سالانہ زکات کا فوری اندازہ لگانے میں مدد کرتا ہے۔'
     }
   };
 
