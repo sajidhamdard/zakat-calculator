@@ -7,120 +7,106 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+    
       gtag('config', 'G-CHGYQVXQ97');
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About – ZakatCalculation.in</title>
-    <meta name="description" content="About ZakatCalculation.in – a free online Zakat calculator developed by Sajid Ali Khan." />
+    <title>About – Zakat Guide | ZakatCalculation.in</title>
+    <meta name="description" content="Learn about ZakatCalculation.in – a free online Zakat calculator. Zakat guide for Muslims worldwide covering gold, silver, cash and business assets." />
+    <meta name="keywords" content="zakat calculator, zakat, zakat calculation, islamic finance, gold zakat, silver zakat, ज़कात कैलकुलेटर, ज़कात, nisab" />
+    <meta name="author" content="Sajid Ali Khan" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://zakatcalculation.in/about.html" />
+
+    <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zakatcalculation.in/about.html" />
+    <meta property="og:title" content="About – Zakat Guide | ZakatCalculation.in" />
+    <meta property="og:description" content="Learn about ZakatCalculation.in – a free online Zakat calculator for Muslims worldwide. Supports 50+ currencies and 10 languages." />
+    <meta property="og:image" content="https://zakatcalculation.in/home.png" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:site_name" content="Zakat Calculator" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="About – Zakat Guide | ZakatCalculation.in" />
+    <meta name="twitter:description" content="Learn about ZakatCalculation.in – a free online Zakat calculator for Muslims worldwide." />
+    <meta name="twitter:image" content="https://zakatcalculation.in/home.png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "About – Zakat Guide",
+      "url": "https://zakatcalculation.in/about.html",
+      "description": "Learn about ZakatCalculation.in – a free online Zakat calculator for Muslims worldwide covering gold, silver, cash and business assets.",
+      "inLanguage": ["en"]
+    }
+    </script>
+
+    <!-- FAQPage Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How to calculate Zakat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Add all zakatable assets (cash, gold, silver, business stock, investments), subtract short-term liabilities, check if net wealth exceeds Nisab, then pay 2.5% as Zakat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Nisab in Zakat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nisab is the minimum wealth threshold for Zakat: Gold Nisab is 87.48 grams of gold; Silver Nisab is 612.36 grams of silver. Silver Nisab is generally recommended for mixed assets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Provident Fund (PF) / Pension Fund included in Zakat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most scholars say Zakat on Provident Fund/Pension Fund applies only to the portion that is accessible/withdrawable. Consult a qualified Islamic scholar for personalised guidance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much Zakat on gold?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zakat on gold is 2.5% of the total value of your gold, provided you own 87.48 grams or more (gold Nisab) and it has been in your possession for one full lunar year."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Zakat 2.5% on total savings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zakat is 2.5% on your net zakatable wealth - cash, bank balance, gold, silver, business stock, and investments minus short-term liabilities - not just savings."
+          }
+        }
+      ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <style>
-      :root {
-        --bg: #f6fbf8;
-        --card: #ffffff;
-        --primary: #1f8f63;
-        --primary-dark: #156f4d;
-        --accent: #d7b76a;
-        --text: #1c2a23;
-        --muted: #5d6b64;
-        --shadow: 0 12px 32px rgba(18, 73, 53, 0.12);
-        --radius: 16px;
-      }
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body {
-        margin: 0;
-        font-family: "Noto Sans Devanagari", "Poppins", system-ui, -apple-system, sans-serif;
-        background: radial-gradient(circle at top, #eef9f2 0%, var(--bg) 40%, #f9fcfa 100%);
-        color: var(--text);
-      }
-      .container { width: min(1080px, 92vw); margin: 0 auto; }
-
-      /* Navbar */
-      .navbar {
-        background: linear-gradient(120deg, #1f8f63, #2ca876);
-        box-shadow: 0 2px 12px rgba(18,73,53,0.15);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-      }
-      .nav-container {
-        width: min(1080px, 92vw);
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 0;
-        position: relative;
-      }
-      .nav-brand { color: #fff; text-decoration: none; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.2px; white-space: nowrap; }
-      .nav-menu { display: flex; list-style: none; margin: 0; padding: 0; gap: 4px; flex-wrap: nowrap; }
-      .nav-link { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 0.92rem; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: background 0.2s; white-space: nowrap; background: none; border: none; cursor: pointer; font-family: inherit; display: block; }
-      .nav-link:hover, .nav-link.active { background: rgba(255,255,255,0.18); color: #fff; }
-      .nav-dropdown { position: relative; }
-      .nav-dropdown-btn { display: flex; align-items: center; gap: 4px; }
-      .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; background: #fff; border-radius: 10px; box-shadow: 0 8px 24px rgba(18,73,53,0.18); list-style: none; padding: 8px 0; min-width: 200px; z-index: 200; margin: 0; }
-      .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown.open .nav-dropdown-menu { display: block; }
-      .nav-dropdown-link { display: block; padding: 9px 18px; color: #1c2a23; text-decoration: none; font-size: 0.9rem; font-weight: 500; white-space: nowrap; transition: background 0.15s; }
-      .nav-dropdown-link:hover { background: #e8f8f0; color: #1f8f63; }
-      .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: transparent; border: none; cursor: pointer; padding: 4px; }
-      .nav-hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
-      @media (max-width: 760px) {
-        .nav-hamburger { display: flex; }
-        .nav-menu { display: none; position: absolute; top: 56px; left: 0; right: 0; background: #1a7d57; flex-direction: column; padding: 8px 16px 16px; gap: 2px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-        .nav-menu.open { display: flex; }
-        .nav-link { padding: 10px 12px; display: block; }
-        .nav-dropdown-menu { position: static; background: rgba(0,0,0,0.15); box-shadow: none; border-radius: 8px; padding: 4px 0; margin: 2px 0 4px; }
-        .nav-dropdown-link { color: rgba(255,255,255,0.85); padding: 8px 24px; font-size: 0.88rem; }
-        .nav-dropdown-link:hover { background: rgba(255,255,255,0.15); color: #fff; }
-        .nav-dropdown:hover .nav-dropdown-menu { display: none; }
-        .nav-dropdown.open .nav-dropdown-menu { display: block; }
-      }
-
-      /* Page content */
-      .page-hero {
-        margin: 28px auto 24px;
-        border-radius: 24px;
-        background: linear-gradient(120deg, #1f8f63, #2ca876 45%, #8ccf87 100%);
-        color: #fff;
-        box-shadow: var(--shadow);
-        padding: 40px 32px;
-      }
-      .page-hero h1 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.2rem); }
-      .page-hero p { margin: 10px 0 0; opacity: 0.92; font-size: 1.05rem; }
-
-      .content-card {
-        background: var(--card);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        padding: 28px;
-        margin-bottom: 24px;
-      }
-      .content-card h2 { margin: 0 0 14px; color: var(--primary-dark); font-size: 1.2rem; border-bottom: 1px solid #e9f1ec; padding-bottom: 10px; }
-      .content-card p { line-height: 1.7; color: #334840; margin: 0 0 12px; }
-      .content-card p:last-child { margin-bottom: 0; }
-      .content-card ul { padding-left: 20px; color: #334840; line-height: 1.7; }
-      .content-card ul li { margin-bottom: 8px; }
-
-      .highlight-box {
-        background: linear-gradient(135deg, #f0fbf5, #e8f5ee);
-        border: 1px solid #b8dfc8;
-        border-radius: 12px;
-        padding: 18px 20px;
-        margin-top: 16px;
-      }
-      .highlight-box strong { color: var(--primary-dark); }
-
-      footer { text-align: center; color: var(--muted); font-size: 0.9rem; padding: 24px 0; }
-      .developer-credit { margin-top: 0.5rem; font-size: 0.85rem; color: #6b7280; font-weight: 600; }
-      .footer-links { margin-top: 0.75rem; font-size: 0.85rem; }
-      .footer-links a { color: var(--primary); text-decoration: none; font-weight: 500; }
-      .footer-links a:hover { text-decoration: underline; }
-    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <nav class="navbar">
@@ -130,7 +116,7 @@
           <span></span><span></span><span></span>
         </button>
         <ul class="nav-menu" id="navMenu">
-          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="index.html" class="nav-link" data-i18n="navHome">Home</a></li>
           <li class="nav-dropdown">
             <button class="nav-link nav-dropdown-btn" aria-expanded="false">Zakat Guide ▾</button>
             <ul class="nav-dropdown-menu">
@@ -142,105 +128,165 @@
               <li><a href="zakat-on-agriculture.html" class="nav-dropdown-link">Zakat on Agriculture</a></li>
             </ul>
           </li>
-          <li><a href="zakat-calculator.html" class="nav-link">Calculator</a></li>
-          <li><a href="about.html" class="nav-link active">About</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="index.html" class="nav-link">Calculator</a></li>
+          <li><a href="about.html" class="nav-link active" data-i18n="navAbout">About</a></li>
+          <li><a href="contact.html" class="nav-link" data-i18n="navContact">Contact</a></li>
         </ul>
       </div>
     </nav>
-
     <main class="container">
-      <div class="page-hero">
-        <h1>About ZakatCalculation.in</h1>
-        <p>A free, open-use Zakat calculator for Muslims worldwide</p>
-      </div>
 
-      <article class="content-card">
-        <h2>About This Tool</h2>
-        <p>
-          <strong>ZakatCalculation.in</strong> is a free online Zakat calculator designed to help Muslims
-          easily calculate their annual Zakat al-Mal (wealth Zakat). The tool supports gold, silver, cash,
-          bank balances, investments, business stock, and property assets - with deductions for liabilities.
-        </p>
-        <p>
-          The calculator supports both the <strong>silver Nisab</strong> and <strong>gold Nisab</strong>
-          methods, making it suitable for followers of different scholarly opinions. It also supports
-          10 languages and 11 currencies, ensuring accessibility for Muslims around the world.
-        </p>
-        <div class="highlight-box">
-          <strong>💡 Formula used:</strong> (Total Zakatable Assets − Payable Liabilities) × 2.5%<br />
-          Zakat becomes obligatory when net wealth reaches or exceeds the Nisab threshold and is
-          maintained for one full lunar year (Hawl).
+      <section class="hero">
+        <div class="hero-content">
+          <!-- Updated H1: informational guide, not competing with calculator page -->
+          <h1>Zakat Guide – Learn How to Calculate Zakat Correctly</h1>
+          <p class="hero-subtitle">Free online Zakat calculator for Gold, Silver, Cash &amp; Business assets</p>
+          <!-- Updated CTA button text for better keyword targeting -->
+          <a href="index.html" class="btn btn-primary hero-btn">Calculate Zakat in India &#8594; Open Zakat Calculator</a>
         </div>
-      </article>
+      </section>
 
-      <article class="content-card">
-        <h2>Features</h2>
-        <ul>
-          <li>🌐 Available in 10 languages: Hindi, English, Arabic, Spanish, French, Chinese, Bengali, Portuguese, Russian, Urdu</li>
-          <li>💰 Supports 11 currencies: INR, USD, EUR, GBP, SAR, AED, PKR, BDT, IDR, CNY, MYR</li>
-          <li>📊 Calculates Zakat on gold, silver, cash, bank balance, investments, and business stock</li>
-          <li>⚖️ Supports both Silver Nisab and Gold Nisab methods</li>
-          <li>📅 Includes option for previous year's pending Zakat</li>
-          <li>📱 Fully mobile responsive with a clean, modern UI</li>
-          <li>🆓 Completely free - no sign-up, no ads blocking content</li>
-        </ul>
-      </article>
+      <!-- SEO Content Section -->
+      <section class="info-section" aria-label="About Zakat – Guide for Muslims worldwide">
+        <article class="info-card">
+          <h2>About This Zakat Calculator – A Guide for Muslims worldwide</h2>
 
-      <article class="content-card">
-        <h2>About the Developer</h2>
-        <p>
-          This tool was developed by <strong>Sajid Ali Khan</strong> as a public service for the Muslim
-          community. The goal is to make Zakat calculation simple, accurate, and accessible for everyone -
-          whether you are , the Middle East, Southeast Asia, or anywhere else in the world.
-        </p>
-        <p>
-          This is a non-commercial project. The calculator provides a general estimate based on standard
-          Islamic jurisprudence. For complex financial situations, please consult a qualified Islamic scholar.
-        </p>
-        <p>
-          For feedback, suggestions, or to get in touch, please visit the
-          <a href="contact.html" style="color: var(--primary); font-weight: 600;">Contact page</a>.
-        </p>
-      </article>
+          <h3>What is Zakat?</h3>
+          <p>Zakat is one of the Five Pillars of Islam and a mandatory annual charity that every eligible Muslim must pay. It is calculated as <strong>2.5% of your net zakatable wealth</strong> - total assets minus short-term liabilities - provided that wealth has remained above the Nisab threshold for one full lunar year (Hawl). Zakat purifies wealth and redistributes resources within the Muslim community, making it both a spiritual obligation and a social welfare system.</p>
 
-      <article class="content-card">
-        <h2>Disclaimer</h2>
-        <p>
-          The information and calculations provided by ZakatCalculation.in are for general guidance only.
-          While we strive for accuracy, Zakat rulings can vary based on your specific madhab (school of
-          jurisprudence) and personal circumstances. We strongly recommend consulting a qualified Islamic
-          scholar or mufti for authoritative Zakat guidance, especially in complex situations.
+          <h3>Who Needs to Pay Zakat?</h3>
+          <p>Any Muslim who is an adult (post-puberty), sane, and owns wealth equal to or above the Nisab threshold for a complete lunar year is obligated to pay Zakat. With fluctuating prices of gold and silver, the Nisab threshold changes throughout the year - use this free <strong>Zakat calculator</strong> to check whether you are eligible and how much Zakat you owe.</p>
+
+          <h3>What Assets Are Included in Zakat?</h3>
+          <ul>
+            <li><strong>Gold &amp; Silver:</strong> All gold jewellery, coins, and bars. <strong>Zakat on gold</strong> applies even to ornaments in the Hanafi school. Gold Nisab is 87.48 g; Silver Nisab is 612.36 g.</li>
+            <li><strong>Cash &amp; Bank Balance:</strong> Cash in hand, savings accounts, current accounts, and fixed deposits are fully zakatable.</li>
+            <li><strong>Business Stock &amp; Inventory:</strong> The current market value of goods held for trade counts as <strong>Zakat on business</strong> assets at 2.5%.</li>
+            <li><strong>Investments:</strong> Shares, mutual funds, and properties purchased for resale are included at current market value.</li>
+            <li><strong>Receivables:</strong> Loans you have given to others and money owed to you that you expect to receive are zakatable.</li>
+          </ul>
+
+          <h3>What is Nisab?</h3>
+          <p>Nisab is the minimum wealth threshold that makes Zakat obligatory. Two Nisab standards exist: the <strong>Gold Nisab</strong> (87.48 grams of gold) and the <strong>Silver Nisab</strong> (612.36 grams of silver). Most contemporary scholars recommend the Silver Nisab for people with mixed assets (cash + gold + business), as it has a lower threshold and includes more people obligated to contribute to charity. Enter the current market price of gold or silver in the calculator above to get the exact Nisab value in Rupees.</p>
+
+          <h3>Why Use This Zakat Calculator for?</h3>
+          <p>This <strong>Zakat calculator</strong> is built for Muslims worldwide. It supports <strong>50+ currencies</strong>, provides Nisab calculations based on current gold and silver prices, and covers all major asset categories. Whether you need to calculate <strong>Zakat on gold</strong>, determine Zakat on your business stock, or understand <strong>zakat calculation 2.5%</strong> on your total savings, this tool makes it accurate and simple. The calculator is available in 10 languages - select your preferred language from the menu at the top.</p>
+          <!-- Keyword-rich internal links (item D) -->
+          <p>Use our <a href="index.html">Zakat Calculator India</a> to calculate zakat on gold, cash, savings and investments. It is completely free and works in multiple currencies including INR. Try the <a href="index.html">free zakat calculator in rupees</a> to get an accurate estimate of your annual Zakat obligation.</p>
+        </article>
+      </section>
+
+      <!-- Zakat Guides & Articles Section -->
+      <section class="info-section" aria-label="Zakat Guides and Articles">
+        <article class="info-card">
+          <h2>Zakat Guides &amp; Articles</h2>
+          <p>Deepen your understanding of Islamic finance with these comprehensive Zakat guides written for Muslims worldwide:</p>
+          <ul class="guide-links">
+            <li><a href="what-is-zakat.html">What is Zakat? – Complete Guide to Zakat in Islam</a></li>
+            <li><a href="gold-vs-silver-nisab.html">Zakat on Gold &amp; Silver – Gold Nisab vs Silver Nisab Explained</a></li>
+            <li><a href="zakat-on-provident-fund.html">Is Provident Fund (PF) Subject to Zakat? – Zakat on Provident Fund</a></li>
+            <li><a href="zakat-on-business-stock.html">Zakat on Business Stock &amp; Inventory – How to Calculate</a></li>
+            <li><a href="zakat-on-salary.html">Zakat on Salary Income – Rules &amp; Calculation</a></li>
+            <li><a href="zakat-on-agriculture.html">Zakat on Agricultural Income – Ushr &amp; Rules</a></li>
+            <li><a href="zakat-on-mutual-funds.html">Zakat on Mutual Funds &amp; Stocks – Complete Guide</a></li>
+            <li><a href="best-zakat-calculator.html">Best Zakat Calculator 2026 – Features &amp; How to Use</a></li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="info-section" aria-label="Frequently Asked Questions about Zakat">
+        <article class="info-card">
+          <h2>Frequently Asked Questions (FAQ) – Zakat</h2>
+
+          <details class="faq-item">
+            <summary>How to calculate Zakat?</summary>
+            <p>To calculate Zakat: (1) Add up all zakatable assets - cash, bank balance, gold, silver, business stock, and investments. (2) Subtract short-term liabilities due within the year (loan instalments, pending bills). (3) Check if your net wealth meets or exceeds the Nisab threshold. (4) If yes, pay <strong>2.5% of your net zakatable wealth</strong> as Zakat. Use the free Zakat calculator above to automate these steps.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>What is Nisab?</summary>
+            <p>Nisab is the minimum wealth threshold that triggers the Zakat obligation. There are two Nisab values: <strong>Gold Nisab</strong> (87.48 grams of gold) and <strong>Silver Nisab</strong> (612.36 grams of silver). If your total zakatable wealth equals or exceeds the Nisab and has been at that level for one full lunar year, Zakat becomes obligatory. The Silver Nisab is generally recommended for mixed assets (cash + gold + business).</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is Provident Fund (PF) included in Zakat?</summary>
+            <p>This is a matter of scholarly debate. Many contemporary scholars hold that Zakat on Provident Fund applies only to the portion you can access or withdraw. Since PF is generally inaccessible until retirement or resignation, many scholars consider it exempt until withdrawal. However, some scholars say Zakat applies to the full PF balance. Read our full guide on <a href="zakat-on-provident-fund.html">Zakat on Provident Fund</a> and consult a qualified Islamic scholar.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>How much Zakat on gold?</summary>
+            <p>Zakat on gold is <strong>2.5% of the total market value</strong> of your gold, provided you own 87.48 grams or more (Gold Nisab) and it has been in your possession for one full lunar year. For example, if you own 100 g of gold at $100/gram (total $10,000), your Zakat on gold = $250. In the Hanafi school, Zakat applies to all gold including everyday jewellery.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is Zakat 2.5% on total savings?</summary>
+            <p>Zakat is <strong>2.5% on your net zakatable wealth</strong>, which is broader than just savings. It includes cash in hand, bank balance, gold, silver, business inventory, and investments, <em>minus</em> any short-term liabilities. It is not calculated on your total annual income or salary - only on accumulated wealth that has been above the Nisab for a complete lunar year.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is there a Zakat calculator in multiple languages?</summary>
+            <p>Yes. This Zakat calculator supports <strong>10 languages</strong> including English, Arabic, Hindi, Urdu, Bengali, French, Spanish, Portuguese, Russian, and Chinese. Select your preferred language from the language menu at the top of the calculator page.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can I use this calculator for Zakat on business assets?</summary>
+            <p>Yes. This Zakat calculator supports <strong>Zakat on business</strong> stock and inventory. Enter the current market value of your trade goods, stock, and receivables in the "Business Stock" field. The calculator adds it to your total zakatable wealth and computes 2.5% Zakat on business assets automatically.</p>
+          </details>
+        </article>
+      </section>
+
+      <!-- Hindi SEO section for Indian audience (item E) -->
+      <section class="info-section" aria-label="जकात कैलकुलेटर – हिंदी जानकारी" lang="hi">
+        <article class="info-card">
+          <h2>जकात कैलकुलेटर</h2>
+          <p>
+            अगर आप जानना चाहते हैं कि आपकी जकात कितनी बनती है,
+            तो हमारे <a href="index.html">जकात कैलकुलेटर</a>
+            का उपयोग करें। यह सोना, नकद, बैंक बैलेंस और व्यापार
+            पर जकात की गणना करने में मदद करता है।
+          </p>
+        </article>
+      </section>
+
+      <section class="info-section" aria-label="Calculator Features">
+        <article class="info-card">
+          <h2>Features</h2>
+          <ul>
+            <li>🌐 Available in 10 languages: Hindi, English, Arabic, Spanish, French, Chinese, Bengali, Portuguese, Russian, Urdu</li>
+            <li>💰 Supports 11 currencies: INR, USD, EUR, GBP, SAR, AED, PKR, BDT, IDR, CNY, MYR</li>
+            <li>📊 Calculates Zakat on gold, silver, cash, bank balance, investments, and business stock</li>
+            <li>⚖️ Supports both Silver Nisab and Gold Nisab methods</li>
+            <li>📅 Includes option for previous year's pending Zakat</li>
+            <li>📱 Fully mobile responsive with a clean, modern UI</li>
+            <li>🆓 Completely free - no sign-up, no ads blocking content</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="info-section" aria-label="Disclaimer">
+        <article class="info-card">
+          <h2>Disclaimer</h2>
+          <p>
+            The information and calculations provided by ZakatCalculation.in are for general guidance only.
+            While we strive for accuracy, Zakat rulings can vary based on your specific madhab (school of
+            jurisprudence) and personal circumstances. We strongly recommend consulting a qualified Islamic
+            scholar or mufti for authoritative Zakat guidance, especially in complex situations.
+          </p>
+        </article>
+      </section>
+
+      <footer>
+        <span >This calculator provides a general estimate. Consult a qualified scholar for complex cases.</span>
+        <p class="scholar-disclaimer">Scholarly opinions may differ based on madhab and individual circumstances. Please consult a qualified scholar for personalized guidance.</p>
+        <p class="footer-links">
+          <a href="contact.html">Contact</a> |
+          <a href="privacy-policy.html">Privacy</a> |
+          <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
         </p>
-      </article>
+      </footer>
     </main>
 
-    <footer class="container">
-      <span>This calculator provides a general estimate. Consult a qualified scholar for complex cases.</span>
-      <p class="footer-links">
-        <a href="contact.html">Contact</a> |
-        <a href="privacy-policy.html">Privacy</a> |
-        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
-      </p>
-    </footer>
-
-    <script>
-      const navHamburger = document.getElementById('navHamburger');
-      const navMenu = document.getElementById('navMenu');
-      if (navHamburger && navMenu) {
-        navHamburger.addEventListener('click', function() { navMenu.classList.toggle('open'); });
-        navMenu.querySelectorAll('.nav-link:not(.nav-dropdown-btn)').forEach(function(link) {
-          link.addEventListener('click', function() { navMenu.classList.remove('open'); });
-        });
-      }
-      // Dropdown toggle on mobile
-      document.querySelectorAll('.nav-dropdown-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          const item = this.closest('.nav-dropdown');
-          item.classList.toggle('open');
-          this.setAttribute('aria-expanded', item.classList.contains('open'));
-        });
-      });
-    </script>
+<script src="script.js"></script>
   </body>
 </html>

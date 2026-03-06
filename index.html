@@ -12,13 +12,25 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Updated title: homepage acts as informational guide, not competing with calculator page -->
-    <title>Zakat Guide – Learn How to Calculate Zakat | ZakatCalculation.in</title>
-    <meta name="description" content="Complete Zakat Guide 2026. Learn how to calculate Zakat on gold, silver, cash and business assets. Use our free Zakat Calculator India in Rupees. ज़कात कैलकुलेटर गाइड" />
-    <meta name="keywords" content="zakat calculator, zakat, zakat calculation, islamic finance, gold zakat, silver zakat, ज़कात कैलकुलेटर, ज़कात, nisab" />
+    <title>Zakat Calculator (2.5%) | Calculate Zakat on Gold, Cash &amp; Savings</title>
+    <meta name="description" content="Free Zakat Calculator to calculate 2.5% Zakat on gold, silver, cash, savings and business assets. Supports multiple languages and currencies for Muslims worldwide." />
+    <meta name="keywords" content="zakat calculator, zakat, zakat calculation, islamic finance, gold zakat, silver zakat, ज़कात कैलकुलेटर, ज़कात, nisab, حاسبة الزكاة, calculadora de zakat, calculateur de zakat, 扎卡特计算器, যাকাত ক্যালকুলেটর, calculadora de zakat, калькулятор заката, زکوٰۃ کیلکولیٹر" />
     <meta name="author" content="Sajid Ali Khan" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://zakatcalculation.in/" />
+
+    <!-- Hreflang tags for multilingual SEO -->
+    <link rel="alternate" hreflang="en" href="https://zakatcalculation.in/" />
+    <link rel="alternate" hreflang="hi" href="https://zakatcalculation.in/" />
+    <link rel="alternate" hreflang="ar" href="https://zakatcalculation.in/" />
+    <link rel="alternate" hreflang="es" href="https://zakatcalculation.in/" />
+    <link rel="alternate" hreflang="fr" href="https://zakatcalculation.in/" />
+    <link rel="alternate" hreflang="zh" href="https://zakatcalculation.in/" />
+    <link rel="alternate" hreflang="bn" href="https://zakatcalculation.in/" />
+    <link rel="alternate" hreflang="pt" href="https://zakatcalculation.in/" />
+    <link rel="alternate" hreflang="ru" href="https://zakatcalculation.in/" />
+    <link rel="alternate" hreflang="ur" href="https://zakatcalculation.in/" />
+    <link rel="alternate" hreflang="x-default" href="https://zakatcalculation.in/" />
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -45,9 +57,18 @@
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Zakat Calculator",
-      "alternateName": "ज़कात कैलकुलेटर",
+      "alternateName": [
+        "ज़कात कैलकुलेटर",
+        "حاسبة الزكاة",
+        "Calculadora de Zakat",
+        "Calculateur de Zakat",
+        "扎卡特计算器",
+        "যাকাত ক্যালকুলেটর",
+        "Калькулятор Заката",
+        "زکوٰۃ کیلکولیٹر"
+      ],
       "url": "https://zakatcalculation.in/",
-      "description": "Free online Zakat Calculator to calculate your Zakat on gold, silver, cash, stocks and business assets. Supports Hanafi and Shafi methods.",
+      "description": "Free Zakat Calculator to calculate 2.5% Zakat on gold, silver, cash, savings and business assets. Supports multiple languages and currencies for Muslims worldwide.",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "All",
       "offers": {
@@ -55,7 +76,9 @@
         "price": "0",
         "priceCurrency": "USD"
       },
-      "inLanguage": ["en"]
+      "inLanguage": ["en", "hi", "ar", "es", "fr", "zh", "bn", "pt", "ru", "ur"],
+      "availableLanguage": ["English", "Hindi", "Arabic", "Spanish", "French", "Chinese", "Bengali", "Portuguese", "Russian", "Urdu"],
+      "currenciesAccepted": "INR, USD, EUR, GBP, SAR, AED, PKR, BDT, IDR, CNY, MYR, SGD, PHP, THB, VND, KHR, HKD, TWD, KRW, JPY, MNT, LKR, NPR, AFN, MMK, KWD, QAR, BHD, OMR, IQD, JOD, LBP, ILS, TRY, CHF, SEK, NOK, DKK, PLN, CZK, HUF, RON, UAH, RUB, CAD, AUD, NZD, BRL, MXN, COP, ARS, EGP, NGN, KES, ZAR, GHS, TZS, UGX, MAD, DZD, TND, SDG, ETB, KZT, AZN, GEL, UZS"
     }
     </script>
 
@@ -125,7 +148,7 @@
           <span></span><span></span><span></span>
         </button>
         <ul class="nav-menu" id="navMenu">
-          <li><a href="index.html" class="nav-link active" data-i18n="navHome">Home</a></li>
+          <li><a href="index.html" class="nav-link" data-i18n="navHome">Home</a></li>
           <li class="nav-dropdown">
             <button class="nav-link nav-dropdown-btn" aria-expanded="false">Zakat Guide ▾</button>
             <ul class="nav-dropdown-menu">
@@ -137,134 +160,530 @@
               <li><a href="zakat-on-agriculture.html" class="nav-dropdown-link">Zakat on Agriculture</a></li>
             </ul>
           </li>
-          <li><a href="zakat-calculator.html" class="nav-link">Calculator</a></li>
+          <li><a href="index.html" class="nav-link active">Calculator</a></li>
           <li><a href="about.html" class="nav-link" data-i18n="navAbout">About</a></li>
           <li><a href="contact.html" class="nav-link" data-i18n="navContact">Contact</a></li>
         </ul>
       </div>
     </nav>
     <main class="container">
+      <div class="controls-row">
+        <div class="control-group">
+          <label class="control-label" for="langSelect">🌐</label>
+          <select id="langSelect" class="control-select" onchange="setLanguage(this.value)">
+            <option value="hi" selected>हिंदी</option>
+            <option value="en">English</option>
+            <option value="ar">العربية</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="zh">中文</option>
+            <option value="bn">বাংলা</option>
+            <option value="pt">Português</option>
+            <option value="ru">Русский</option>
+            <option value="ur">اردو</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="currencySelect">💰</label>
+          <select id="currencySelect" class="control-select" onchange="setCurrency(this.value)">
+            <optgroup label="Asia &amp; South Asia">
+              <option value="INR">₹ INR – Indian Rupee</option>
+              <option value="PKR">₨ PKR – Pakistani Rupee</option>
+              <option value="BDT">৳ BDT – Bangladeshi Taka</option>
+              <option value="LKR">Rs LKR – Sri Lankan Rupee</option>
+              <option value="NPR">रू NPR – Nepali Rupee</option>
+              <option value="AFN">؋ AFN – Afghan Afghani</option>
+              <option value="MMK">K MMK – Myanmar Kyat</option>
+            </optgroup>
+            <optgroup label="Southeast &amp; East Asia">
+              <option value="IDR">Rp IDR – Indonesian Rupiah</option>
+              <option value="MYR">RM MYR – Malaysian Ringgit</option>
+              <option value="SGD">S$ SGD – Singapore Dollar</option>
+              <option value="PHP">₱ PHP – Philippine Peso</option>
+              <option value="THB">฿ THB – Thai Baht</option>
+              <option value="VND">₫ VND – Vietnamese Dong</option>
+              <option value="KHR">៛ KHR – Cambodian Riel</option>
+              <option value="CNY">¥ CNY – Chinese Yuan</option>
+              <option value="HKD">HK$ HKD – Hong Kong Dollar</option>
+              <option value="TWD">NT$ TWD – Taiwan Dollar</option>
+              <option value="KRW">₩ KRW – South Korean Won</option>
+              <option value="JPY">¥ JPY – Japanese Yen</option>
+              <option value="MNT">₮ MNT – Mongolian Tugrik</option>
+            </optgroup>
+            <optgroup label="Middle East">
+              <option value="SAR">ر.س SAR – Saudi Riyal</option>
+              <option value="AED">د.إ AED – UAE Dirham</option>
+              <option value="KWD">د.ك KWD – Kuwaiti Dinar</option>
+              <option value="QAR">ر.ق QAR – Qatari Riyal</option>
+              <option value="BHD">.د.ب BHD – Bahraini Dinar</option>
+              <option value="OMR">ر.ع. OMR – Omani Rial</option>
+              <option value="IQD">ع.د IQD – Iraqi Dinar</option>
+              <option value="JOD">د.ا JOD – Jordanian Dinar</option>
+              <option value="LBP">ل.ل LBP – Lebanese Pound</option>
+              <option value="ILS">₪ ILS – Israeli Shekel</option>
+              <option value="TRY">₺ TRY – Turkish Lira</option>
+            </optgroup>
+            <optgroup label="Europe &amp; Americas">
+              <option value="USD" selected>$ USD – US Dollar</option>
+              <option value="EUR">€ EUR – Euro</option>
+              <option value="GBP">£ GBP – British Pound</option>
+              <option value="CHF">CHF – Swiss Franc</option>
+              <option value="SEK">kr SEK – Swedish Krona</option>
+              <option value="NOK">kr NOK – Norwegian Krone</option>
+              <option value="DKK">kr DKK – Danish Krone</option>
+              <option value="PLN">zł PLN – Polish Zloty</option>
+              <option value="CZK">Kč CZK – Czech Koruna</option>
+              <option value="HUF">Ft HUF – Hungarian Forint</option>
+              <option value="RON">lei RON – Romanian Leu</option>
+              <option value="UAH">₴ UAH – Ukrainian Hryvnia</option>
+              <option value="RUB">₽ RUB – Russian Ruble</option>
+              <option value="CAD">CA$ CAD – Canadian Dollar</option>
+              <option value="AUD">A$ AUD – Australian Dollar</option>
+              <option value="NZD">NZ$ NZD – New Zealand Dollar</option>
+              <option value="BRL">R$ BRL – Brazilian Real</option>
+              <option value="MXN">MX$ MXN – Mexican Peso</option>
+              <option value="COP">COP$ COP – Colombian Peso</option>
+              <option value="ARS">AR$ ARS – Argentine Peso</option>
+            </optgroup>
+            <optgroup label="Africa">
+              <option value="EGP">E£ EGP – Egyptian Pound</option>
+              <option value="NGN">₦ NGN – Nigerian Naira</option>
+              <option value="KES">KSh KES – Kenyan Shilling</option>
+              <option value="ZAR">R ZAR – South African Rand</option>
+              <option value="GHS">GH₵ GHS – Ghanaian Cedi</option>
+              <option value="TZS">TSh TZS – Tanzanian Shilling</option>
+              <option value="UGX">USh UGX – Ugandan Shilling</option>
+              <option value="MAD">د.م. MAD – Moroccan Dirham</option>
+              <option value="DZD">دج DZD – Algerian Dinar</option>
+              <option value="TND">د.ت TND – Tunisian Dinar</option>
+              <option value="SDG">ج.س. SDG – Sudanese Pound</option>
+              <option value="ETB">Br ETB – Ethiopian Birr</option>
+            </optgroup>
+            <optgroup label="Central Asia">
+              <option value="KZT">₸ KZT – Kazakhstani Tenge</option>
+              <option value="AZN">₼ AZN – Azerbaijani Manat</option>
+              <option value="GEL">₾ GEL – Georgian Lari</option>
+              <option value="UZS">сўм UZS – Uzbekistani Som</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
 
       <section class="hero">
         <div class="hero-content">
-          <!-- Updated H1: informational guide, not competing with calculator page -->
-          <h1>Zakat Guide – Learn How to Calculate Zakat Correctly</h1>
-          <p class="hero-subtitle">Free online Zakat calculator for Gold, Silver, Cash &amp; Business assets</p>
-          <!-- Updated CTA button text for better keyword targeting -->
-          <a href="zakat-calculator.html" class="btn btn-primary hero-btn">Calculate Zakat in India &#8594; Open Zakat Calculator</a>
+          <p class="subtitle" data-i18n="heroTitle">ज़कात कैलकुलेटर</p>
+          <p class="subtitle" data-i18n="heroSubtitle">अपनी सालाना ज़कात (2.5%) की गणना कुछ आसान स्टेप्स में करें</p>
         </div>
       </section>
 
-      <!-- SEO Content Section -->
-      <section class="info-section" aria-label="About Zakat – Guide for Muslims worldwide">
-        <article class="info-card">
-          <h2>About This Zakat Calculator – A Guide for Muslims worldwide</h2>
+     <!-- <section class="card">
+        <div class="field">
+          <label for="madhabSelect">मस्लक (Madhab) चुनें</label>
+          <select id="madhabSelect">
+            <option value="hanafi">हन्फ़ी (सामान्य इस्तेमाल का ज़ेवर शामिल)</option>
+          </select>
+          <p class="inline-note">मस्लक बदलते ही नीचे सोना/चांदी की गणना और कुल ज़कात योग्य संपत्ति अपडेट हो जाती है।</p>
+          <p class="madhab-status" id="madhabStatus" aria-live="polite"></p>
+        </div>
+      </section>-->
 
-          <h3>What is Zakat?</h3>
-          <p>Zakat is one of the Five Pillars of Islam and a mandatory annual charity that every eligible Muslim must pay. It is calculated as <strong>2.5% of your net zakatable wealth</strong> - total assets minus short-term liabilities - provided that wealth has remained above the Nisab threshold for one full lunar year (Hawl). Zakat purifies wealth and redistributes resources within the Muslim community, making it both a spiritual obligation and a social welfare system.</p>
+      <form id="zakatForm" novalidate>
+        <div class="grid">
+          <section class="card split">
+            <h2 data-i18n="sec1">1️⃣ नकद और बैंक राशि</h2>
+            <div class="field-grid">
+              <div class="field">
+                <label for="cash" data-i18n="labelCash">नकद राशि (₹)</label>
+                <input type="number" id="cash" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
+              </div>
+              <div class="field">
+                <label for="bank" data-i18n="labelBank">बैंक बैलेंस (₹)</label>
+                <input type="number" id="bank" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
+              </div>
+            </div>
+          </section>
 
-          <h3>Who Needs to Pay Zakat?</h3>
-          <p>Any Muslim who is an adult (post-puberty), sane, and owns wealth equal to or above the Nisab threshold for a complete lunar year is obligated to pay Zakat. With fluctuating prices of gold and silver, the Nisab threshold changes throughout the year - use this free <strong>Zakat calculator</strong> to check whether you are eligible and how much Zakat you owe.</p>
+          <section class="card split">
+            <h2 data-i18n="sec2">2️⃣ सोना और चांदी</h2>
+            <div class="field-grid">
+              <div class="field">
+                <label for="goldWeight" data-i18n="labelGoldWeight">सोने का वजन (ग्राम)</label>
+                <input type="number" id="goldWeight" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
+              </div>
+              <div class="field">
+                <label for="goldPrice" data-i18n="labelGoldPrice">सोने की प्रति ग्राम कीमत (₹)</label>
+                <input type="number" id="goldPrice" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
+              </div>
+              <p class="calc-value" id="goldValue">सोने का कुल मूल्य: ₹0</p>
 
-          <h3>What Assets Are Included in Zakat?</h3>
-          <ul>
-            <li><strong>Gold &amp; Silver:</strong> All gold jewellery, coins, and bars. <strong>Zakat on gold</strong> applies even to ornaments in the Hanafi school. Gold Nisab is 87.48 g; Silver Nisab is 612.36 g.</li>
-            <li><strong>Cash &amp; Bank Balance:</strong> Cash in hand, savings accounts, current accounts, and fixed deposits are fully zakatable.</li>
-            <li><strong>Business Stock &amp; Inventory:</strong> The current market value of goods held for trade counts as <strong>Zakat on business</strong> assets at 2.5%.</li>
-            <li><strong>Investments:</strong> Shares, mutual funds, and properties purchased for resale are included at current market value.</li>
-            <li><strong>Receivables:</strong> Loans you have given to others and money owed to you that you expect to receive are zakatable.</li>
-          </ul>
+              <div class="field">
+                <label for="silverWeight" data-i18n="labelSilverWeight">चांदी का वजन (ग्राम)</label>
+                <input type="number" id="silverWeight" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
+              </div>
+              <div class="field">
+                <label for="silverPrice" data-i18n="labelSilverPrice">चांदी की प्रति ग्राम कीमत (₹)</label>
+                <input type="number" id="silverPrice" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
+              </div>
+              <p class="calc-value" id="silverValue">चांदी का कुल मूल्य: ₹0</p>
+            </div>
+          </section>
 
-          <h3>What is Nisab?</h3>
-          <p>Nisab is the minimum wealth threshold that makes Zakat obligatory. Two Nisab standards exist: the <strong>Gold Nisab</strong> (87.48 grams of gold) and the <strong>Silver Nisab</strong> (612.36 grams of silver). Most contemporary scholars recommend the Silver Nisab for people with mixed assets (cash + gold + business), as it has a lower threshold and includes more people obligated to contribute to charity. Enter the current market price of gold or silver in the calculator above to get the exact Nisab value in Rupees.</p>
+          <section class="card split">
+            <h2 data-i18n="sec3">3️⃣ निवेश और व्यापारिक संपत्ति</h2>
+            <div class="field-grid">
+              <div class="field">
+                <label for="stocks" data-i18n="labelStocks">शेयर / म्यूचुअल फंड (₹)</label>
+                <input type="number" id="stocks" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
+              </div>
+              <div class="field">
+                <label for="businessStock" data-i18n="labelBusinessStock">बिजनेस स्टॉक (₹)</label>
+                <input type="number" id="businessStock" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
+              </div>
+              <div class="field">
+                <label for="propertyInvestment" data-i18n="labelPropertyInvestment">प्रॉपर्टी (Resale / Investment) (₹)</label>
+                <input type="number" id="propertyInvestment" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
+              </div>
+            </div>
+          </section>
 
-          <h3>Why Use This Zakat Calculator for?</h3>
-          <p>This <strong>Zakat calculator</strong> is built for Muslims worldwide. It supports <strong>50+ currencies</strong>, provides Nisab calculations based on current gold and silver prices, and covers all major asset categories. Whether you need to calculate <strong>Zakat on gold</strong>, determine Zakat on your business stock, or understand <strong>zakat calculation 2.5%</strong> on your total savings, this tool makes it accurate and simple. The calculator is available in 10 languages - select your preferred language from the menu at the top.</p>
-          <!-- Keyword-rich internal links (item D) -->
-          <p>Use our <a href="zakat-calculator.html">Zakat Calculator India</a> to calculate zakat on gold, cash, savings and investments. It is completely free and works in multiple currencies including INR. Try the <a href="zakat-calculator.html">free zakat calculator in rupees</a> to get an accurate estimate of your annual Zakat obligation.</p>
-        </article>
+          <section class="card split">
+            <h2 data-i18n="sec4">4️⃣ Liabilities</h2>
+            <p class="helper-text" data-i18n="liabilityHelper">Only deduct short-term liabilities that are due within one lunar year (e.g., upcoming EMI, payable bills, taxes). Do not deduct full long-term loan amounts.</p>
+            <div class="field-grid">
+              <div class="field">
+                <label for="loan" data-i18n="labelLoan">Short-Term Payable Loan Amount (₹)</label>
+                <input type="number" id="loan" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
+              </div>
+              <div class="field">
+                <label for="pendingBills" data-i18n="labelPendingBills">Pending Bills/Tax (₹)</label>
+                <input type="number" id="pendingBills" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
+              </div>
+            </div>
+          </section>
+
+          <section class="card split">
+            <h2 data-i18n="sec6">6️⃣ पिछला साल की बकाया ज़कात</h2>
+            <div class="field-grid">
+              <div class="field">
+                <label for="lastYearZakat" data-i18n="labelLastYearZakat">पिछले साल की ज़कात (अगर बाकी हो) (₹)</label>
+                <input type="number" id="lastYearZakat" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
+                <p class="inline-note" data-i18n="noteLastYear">अगर पिछला साल अदा नहीं किया तो यहाँ जोड़ें।</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2 data-i18n="sec5">5️⃣ निसाब विकल्प</h2>
+            <div class="radio-group">
+              <label class="radio-item">
+                <input type="radio" name="nisabBase" value="silver" checked />
+                <span data-i18n="radioSilver">चांदी के आधार पर (मुनासिब)</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="nisabBase" value="gold" />
+                <span data-i18n="radioGold">सोने के आधार पर</span>
+              </label>
+            </div>
+            <div class="field-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+              <div class="field">
+                <label for="nisabGoldPrice" data-i18n="labelNisabGoldPrice">वर्तमान सोने की कीमत (₹/ग्राम)</label>
+                <input type="number" id="nisabGoldPrice" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
+                <p class="inline-note" data-i18n="noteGoldNisab">सोना निसाब = 87.48 ग्राम × बाज़ार क़ीमत</p>
+              </div>
+              <div class="field">
+                <label for="nisabSilverPrice" data-i18n="labelNisabSilverPrice">वर्तमान चांदी की कीमत (₹/ग्राम)</label>
+                <input type="number" id="nisabSilverPrice" min="0" step="0.01" value="0" oninput="if (this.value !== '' && Number(this.value) < 0) this.value = 0;" />
+                <p class="inline-note" data-i18n="noteSilverNisab">चांदी निसाब = 612.36 ग्राम × बाज़ार क़ीमत</p>
+              </div>
+            </div>
+            <div class="actions" style="margin-top: 14px;">
+              <button type="submit" class="btn btn-primary" data-i18n="btnCalculate">हिसाब करें</button>
+              <button type="button" class="btn btn-secondary" id="resetBtn" data-i18n="btnReset">दुबारा सेट करें</button>
+            </div>
+            <p class="inline-note" style="margin-top: 12px;" data-i18n="noteBottom">
+              गौर फ़रमाएं: यह टूल ज़कात अल-माल की गणना करता है। आपकी खालिस दौलत एक क़मरी साल (हौल) तक निसाब से ऊपर होनी चाहिए।
+            </p>
+            <!-- Insert this block immediately after the two buttons (हिसाब करें and दुबारा सेट करें) -->
+            <div class="nisab-notes" aria-label="निसाब के बारे में नोट्स">
+              <ol>
+                <li data-i18n="nisabNote1">अगर किसी के पास सिर्फ सोना हो तो ज़कात सिर्फ सोने के निसाब के अनुसार होगी ।</li>
+                <li data-i18n="nisabNote2">अगर किसी के पास सिर्फ चांदी हो तो ज़कात सिर्फ चांदी के निसाब के अनुसार होगी ।</li>
+                <li data-i18n="nisabNote3">अगर चांदी, नकद पैसा या व्यापार का माल हो तो चांदी के निसाब के अनुसार होगी क्यूंकि चांदी का निसाब जल्दी पहुंच जाता है।</li>
+              </ol>
+            </div>
+            <div class="error" id="errorBox" aria-live="polite"></div>
+          </section>
+        </div>
+      </form>
+
+      <section class="result-card" id="resultSection">
+        <h2 class="result-title" data-i18n="resultTitle">📊 परिणाम</h2>
+        <div class="result-list">
+          <div class="result-item">
+            <strong data-i18n="resultTotalAssets">कुल संपत्ति</strong>
+            <span id="totalAssetsOut">₹0</span>
+          </div>
+          <div class="result-item">
+            <strong data-i18n="resultDebts">जुमला देनदारियां</strong>
+            <span id="debtsOut">₹0</span>
+          </div>
+          <div class="result-item">
+            <strong data-i18n="resultNetWealth">खालिस दौलत</strong>
+            <span id="netWealthOut">₹0</span>
+          </div>
+          <div class="result-item">
+            <strong data-i18n="resultNisab">निसाब हद</strong>
+            <span id="nisabOut">₹0</span>
+          </div>
+          <div class="result-item highlight">
+            <strong data-i18n="resultZakat">ज़कात देय राशि (2.5%)</strong>
+            <span id="zakatOut">₹0</span>
+          </div>
+        </div>
+        <div class="formula-box" id="formulaBreakdown" aria-label="Calculation Breakdown"></div>
       </section>
 
-      <!-- Zakat Guides & Articles Section -->
-      <section class="info-section" aria-label="Zakat Guides and Articles">
+      <section class="info-section" aria-label="ज़कात जानकारी और संदर्भ">
         <article class="info-card">
-          <h2>Zakat Guides &amp; Articles</h2>
-          <p>Deepen your understanding of Islamic finance with these comprehensive Zakat guides written for Muslims worldwide:</p>
-          <ul class="guide-links">
-            <li><a href="what-is-zakat.html">What is Zakat? – Complete Guide to Zakat in Islam</a></li>
-            <li><a href="gold-vs-silver-nisab.html">Zakat on Gold &amp; Silver – Gold Nisab vs Silver Nisab Explained</a></li>
-            <li><a href="zakat-on-provident-fund.html">Is Provident Fund (PF) Subject to Zakat? – Zakat on Provident Fund</a></li>
-            <li><a href="zakat-on-business-stock.html">Zakat on Business Stock &amp; Inventory – How to Calculate</a></li>
-            <li><a href="zakat-on-salary.html">Zakat on Salary Income – Rules &amp; Calculation</a></li>
-            <li><a href="zakat-on-agriculture.html">Zakat on Agricultural Income – Ushr &amp; Rules</a></li>
-            <li><a href="zakat-on-mutual-funds.html">Zakat on Mutual Funds &amp; Stocks – Complete Guide</a></li>
-            <li><a href="best-zakat-calculator.html">Best Zakat Calculator 2026 – Features &amp; How to Use</a></li>
-          </ul>
-        </article>
-      </section>
-
-      <!-- FAQ Section -->
-      <section class="info-section" aria-label="Frequently Asked Questions about Zakat">
-        <article class="info-card">
-          <h2>Frequently Asked Questions (FAQ) – Zakat</h2>
-
-          <details class="faq-item">
-            <summary>How to calculate Zakat?</summary>
-            <p>To calculate Zakat: (1) Add up all zakatable assets - cash, bank balance, gold, silver, business stock, and investments. (2) Subtract short-term liabilities due within the year (loan instalments, pending bills). (3) Check if your net wealth meets or exceeds the Nisab threshold. (4) If yes, pay <strong>2.5% of your net zakatable wealth</strong> as Zakat. Use the free Zakat calculator above to automate these steps.</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>What is Nisab?</summary>
-            <p>Nisab is the minimum wealth threshold that triggers the Zakat obligation. There are two Nisab values: <strong>Gold Nisab</strong> (87.48 grams of gold) and <strong>Silver Nisab</strong> (612.36 grams of silver). If your total zakatable wealth equals or exceeds the Nisab and has been at that level for one full lunar year, Zakat becomes obligatory. The Silver Nisab is generally recommended for mixed assets (cash + gold + business).</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>Is Provident Fund (PF) included in Zakat?</summary>
-            <p>This is a matter of scholarly debate. Many contemporary scholars hold that Zakat on Provident Fund applies only to the portion you can access or withdraw. Since PF is generally inaccessible until retirement or resignation, many scholars consider it exempt until withdrawal. However, some scholars say Zakat applies to the full PF balance. Read our full guide on <a href="zakat-on-provident-fund.html">Zakat on Provident Fund</a> and consult a qualified Islamic scholar.</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>How much Zakat on gold?</summary>
-            <p>Zakat on gold is <strong>2.5% of the total market value</strong> of your gold, provided you own 87.48 grams or more (Gold Nisab) and it has been in your possession for one full lunar year. For example, if you own 100 g of gold at $100/gram (total $10,000), your Zakat on gold = $250. In the Hanafi school, Zakat applies to all gold including everyday jewellery.</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>Is Zakat 2.5% on total savings?</summary>
-            <p>Zakat is <strong>2.5% on your net zakatable wealth</strong>, which is broader than just savings. It includes cash in hand, bank balance, gold, silver, business inventory, and investments, <em>minus</em> any short-term liabilities. It is not calculated on your total annual income or salary - only on accumulated wealth that has been above the Nisab for a complete lunar year.</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>Is there a Zakat calculator in multiple languages?</summary>
-            <p>Yes. This Zakat calculator supports <strong>10 languages</strong> including English, Arabic, Hindi, Urdu, Bengali, French, Spanish, Portuguese, Russian, and Chinese. Select your preferred language from the language menu at the top of the calculator page.</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>Can I use this calculator for Zakat on business assets?</summary>
-            <p>Yes. This Zakat calculator supports <strong>Zakat on business</strong> stock and inventory. Enter the current market value of your trade goods, stock, and receivables in the "Business Stock" field. The calculator adds it to your total zakatable wealth and computes 2.5% Zakat on business assets automatically.</p>
-          </details>
-        </article>
-      </section>
-
-      <!-- Hindi SEO section for Indian audience (item E) -->
-      <section class="info-section" aria-label="जकात कैलकुलेटर – हिंदी जानकारी" lang="hi">
-        <article class="info-card">
-          <h2>जकात कैलकुलेटर</h2>
-          <p>
-            अगर आप जानना चाहते हैं कि आपकी जकात कितनी बनती है,
-            तो हमारे <a href="zakat-calculator.html">जकात कैलकुलेटर</a>
-            का उपयोग करें। यह सोना, नकद, बैंक बैलेंस और व्यापार
-            पर जकात की गणना करने में मदद करता है।
+          <h3 data-i18n="infoTitle1">यह कैलकुलेटर कैसे काम करता है</h3>
+          <p data-i18n-html="infoContent1">
+            इस्तेमाल किया गया फ़ॉर्मूला: <strong>(कुल ज़कात योग्य संपत्ति − देय देनदारियां) × 2.5%</strong>।
+            ज़कात तब लाज़िम होती है जब आपकी खालिस दौलत निसाब के बराबर या उससे अधिक हो और एक क़मरी साल तक बनी रहे।
           </p>
+          <table class="quick-table">
+            <thead>
+              <tr>
+                <th data-i18n="tableHead1">निसाब प्रकार</th>
+                <th data-i18n="tableHead2">वजन आधार</th>
+                <th data-i18n="tableHead3">मकसद</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="tableRow1Col1">सोना निसाब</td>
+                <td data-i18n="tableRow1Col2">87.48 ग्राम</td>
+                <td data-i18n="tableRow1Col3">ऊंची हद</td>
+              </tr>
+              <tr>
+                <td data-i18n="tableRow2Col1">चांदी निसाब</td>
+                <td data-i18n="tableRow2Col2">612.36 ग्राम</td>
+                <td data-i18n="tableRow2Col3">कम सीमा (आमतौर पर मुनासिब)</td>
+              </tr>
+            </tbody>
+          </table>
         </article>
+
+        <article class="info-card">
+          <h3 data-i18n="infoTitle2">क्या शामिल करें और क्या नहीं</h3>
+          <ul data-i18n-html="infoContent2">
+            <li><strong>शामिल करें:</strong> नकद, बैंक बचत, सोना/चांदी, निवेश, बिजनेस स्टॉक।</li>
+            <li><strong>शामिल न करें:</strong> मुख्य निवास, क्रिप्टो, डिजिटल मुद्रा, निजी उपयोग की गाड़ी, घरेलू सामान, बिक्री के लिए नहीं होने वाले उपकरण।</li>
+            <li><strong>देनदारियां:</strong> देय रकम घटाएं।</li>
+          </ul>
+        </article>
+
+        <article class="info-card">
+          <h3 data-i18n="infoTitle3">फ़ौरी सवाल-जवाब</h3>
+          <details class="faq-item">
+            <summary data-i18n="faq1Q">क्या यह कैलकुलेटर ज़कात अल-फित्र के लिए है?</summary>
+            <p data-i18n="faq1A">नहीं। यह कैलकुलेटर सालाना ज़कात अल-माल (माल की ज़कात) के लिए है, ज़कात अल-फ़ित्र के लिए नहीं।</p>
+          </details>
+          <details class="faq-item">
+            <summary data-i18n="faq2Q">क्या मैं नियत तिथि से पहले ज़कात दे सकता/सकती हूँ?</summary>
+            <p data-i18n="faq2A">हाँ, पहले अदायगी करना आम तौर पर जायज़ है। बिना मुनासिब वजह ताख़ीर करना दुरुस्त नहीं है।</p>
+          </details>
+          <details class="faq-item">
+            <summary data-i18n="faq3Q">क्या मैं परिवार को ज़कात दे सकता/सकती हूँ?</summary>
+            <p data-i18n="faq3A">
+              मुनासिब विस्तारित रिश्तेदार (जैसे भाई-बहन, चचेरे/ममेरे रिश्तेदार) पात्र होने पर ज़कात ले सकते हैं।
+              जीवनसाथी, माता-पिता या बच्चों को ज़कात नहीं दी जा सकती।
+            </p>
+          </details>
+          <details class="faq-item">
+          <summary data-i18n="faq4Q">क्या प्रॉपर्टी पर ज़कात देनी होती है?</summary>
+          <p data-i18n="faq4A">
+            यदि प्रॉपर्टी बेचने (निवेश या व्यापार) के इरादे से खरीदी गई हो, तो उसकी मौजूदा बाजार कीमत पर ज़कात देना जरूरी है।
+            लेकिन अगर प्रॉपर्टी रहने के लिए या केवल रखने (बिना बेचने के इरादे) के लिए ली गई है,
+            तो उस पर ज़कात नहीं है।
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faqSilverNisabQ">Why is Silver Nisab Recommended?</summary>
+          <ul data-i18n-html="faqSilverNisabA">
+            <li>Silver Nisab (612.36g) results in a lower threshold.</li>
+            <li>It benefits more people in need.</li>
+            <li>Many contemporary scholars recommend using Silver Nisab for mixed assets (cash + gold + business assets).</li>
+          </ul>
+        </details>
+        </article>
+      </section>
+
+      <!-- SEO Content Section -->
+      <section class="seo-section" aria-label="Zakat Calculator Global Information">
+        <h2>Zakat Calculator for Gold, Cash and Savings (Global)</h2>
+        <p>
+          This free online Zakat Calculator helps Muslims around the world calculate 2.5% Zakat on gold, silver, cash,
+          savings and business assets. The calculator supports multiple languages and <strong>50+ global currencies</strong>
+          including INR, USD, EUR, GBP, SAR, AED, PKR, BDT, IDR, CNY, MYR, SGD, CAD, AUD, EGP, NGN, KES, ZAR, TRY,
+          KWD, QAR, BHD, OMR and many more.
+          Whether you are in India, the United States, the United Kingdom, Saudi Arabia, UAE, Pakistan, Bangladesh,
+          Indonesia, China, Malaysia, Nigeria, Kenya, South Africa or anywhere else, you can calculate your Zakat in your local currency.
+          Your data stays private and is never stored on our servers.
+        </p>
+      </section>
+
+      <!-- Zakat Guide & Resources Section -->
+      <section class="info-section" aria-label="Zakat Guide and Resources">
+        <article class="info-card">
+          <h2>Zakat Guide &amp; Resources</h2>
+
+          <h3>How to Use This Zakat Calculator</h3>
+          <p>Our free Zakat calculator makes it easy to determine your annual Zakat obligation in minutes. Start by selecting your preferred currency from 50+ supported options. Then, enter your assets in each category: cash and savings, gold and silver (by weight and purity), stocks and investments, business inventory, and any debts owed to you. The calculator automatically fetches live gold and silver prices to determine the current nisab threshold in your currency. Once you've entered all your zakatable wealth, the calculator applies the standard 2.5% Zakat rate and shows your total obligation. You can adjust values anytime—your data stays private and is never stored on our servers.</p>
+
+          <h3>Current 2026 Nisab Thresholds (Gold vs Silver)</h3>
+          <p>Nisab is the minimum amount of wealth you must possess before Zakat becomes obligatory. There are two standards established by Islamic jurisprudence:</p>
+          <ul>
+            <li><strong>Gold Nisab:</strong> 85 grams of pure 24K gold (approximately 2.7 troy ounces). At current 2026 prices, this equals roughly $7,500–$8,000 USD depending on market fluctuations.</li>
+            <li><strong>Silver Nisab:</strong> 595 grams of pure silver (approximately 21 ounces). At current 2026 prices, this equals roughly $500–$600 USD.</li>
+          </ul>
+          <p>Note: Some scholars use 87.48 grams for gold nisab and 612.36 grams for silver nisab based on a different scholarly calculation. Both standards are valid and used by qualified scholars worldwide.</p>
+          <p>Most contemporary scholars recommend using the silver nisab as it is more inclusive and benefits more Zakat recipients. However, some scholars prefer the gold nisab as it better represents meaningful wealth in today's economy. Our calculator displays both values with live prices so you can make an informed choice. The nisab you choose affects whether you're obligated to pay Zakat—if your total zakatable wealth exceeds the nisab and has been held for one lunar year (hawl), Zakat becomes due at 2.5% of your total wealth. Learn more on our detailed <a href="gold-vs-silver-nisab.html">Nisab Guide</a>.</p>
+
+          <h3>Who is Eligible to Receive Zakat?</h3>
+          <p>The Quran specifies eight categories of people eligible to receive Zakat (Surah At-Tawbah, 9:60). Understanding these categories ensures your Zakat reaches those who truly qualify:</p>
+          <ol>
+            <li><strong>The Poor (Al-Fuqara):</strong> Those with little to no income who cannot meet their basic needs.</li>
+            <li><strong>The Needy (Al-Masakin):</strong> Those who have some income but still fall short of meeting essential needs.</li>
+            <li><strong>Zakat Administrators (Al-Amileen):</strong> Those employed to collect, manage, and distribute Zakat funds.</li>
+            <li><strong>New Muslims (Al-Mu'allafatu Qulubuhum):</strong> Those whose hearts are being reconciled to Islam.</li>
+            <li><strong>Freeing Captives (Fir-Riqab):</strong> Historically for freeing slaves; today may include helping those in bondage or trafficking.</li>
+            <li><strong>Those in Debt (Al-Gharimeen):</strong> People overwhelmed by legitimate debt they cannot repay.</li>
+            <li><strong>In the Path of Allah (Fi Sabilillah):</strong> Those striving for Islamic causes and community welfare.</li>
+            <li><strong>Stranded Travelers (Ibn as-Sabil):</strong> Travelers in need who are away from home without resources.</li>
+          </ol>
+          <p><strong>Important:</strong> You cannot give Zakat to your spouse, parents, grandparents, children, or grandchildren—you are already obligated to support them. However, extended family members who qualify under the eight categories may receive your Zakat.</p>
+
+          <h3>What Is Zakat?</h3>
+          <p>Zakat is one of the Five Pillars of Islam and represents an obligatory form of almsgiving that purifies wealth and helps those in need. The word "Zakat" comes from the Arabic root meaning "purification" and "growth," reflecting its dual purpose: cleansing the giver's wealth from greed while helping society's most vulnerable members.</p>
+          <p>Unlike voluntary charity (sadaqah), Zakat is a mandatory religious duty for every Muslim who possesses wealth above a minimum threshold called nisab. The standard rate is 2.5% (or 1/40th) of your total zakatable wealth, calculated once per lunar year. This obligation is mentioned repeatedly in the Quran, often alongside prayer, highlighting its fundamental importance in Islamic practice.</p>
+
+          <h3>Difference Between Zakat and Sadaqah</h3>
+          <p>While both Zakat and Sadaqah involve giving, they differ significantly. Zakat is obligatory with fixed rates and specific recipients, while Sadaqah is voluntary charity given in any amount to anyone in need. Zakat must meet specific conditions (nisab, hawl, zakatable assets), whereas Sadaqah has no minimum requirements. A Muslim cannot replace Zakat with Sadaqah—both serve important but distinct purposes.</p>
+
+          <h3>Difference Between Zakat and Tax</h3>
+          <p>Zakat and tax are fundamentally different obligations. Zakat is a religious duty prescribed by Allah with specific eligible recipients mentioned in the Quran (the poor, needy, Zakat collectors, those in debt, etc.). Tax is a civil obligation imposed by governments for public services. Paying government tax does not fulfill your Zakat obligation—Muslims must fulfill both duties separately.</p>
+
+          <h3>Who Must Pay Zakat?</h3>
+          <p>Zakat is obligatory for every adult, sane Muslim who:</p>
+          <ul>
+            <li>Owns wealth above the nisab threshold (equivalent to 87.48g of gold or 612.36g of silver)</li>
+            <li>Has held that wealth for one complete lunar year (hawl)</li>
+            <li>Has full ownership of the assets (not borrowed or owed to others)</li>
+          </ul>
+
+          <h3>When Does Zakat Become Obligatory?</h3>
+          <p>Zakat becomes obligatory when three conditions are met: you possess nisab (minimum threshold), you maintain that wealth for one lunar year (hawl), and the wealth is of a zakatable type (gold, silver, cash, investments, business inventory). Your Zakat anniversary is the date when you first reached nisab—you calculate and pay on this same date each lunar year.</p>
+          <blockquote><em>"And establish prayer and give Zakat, and whatever good you put forward for yourselves—you will find it with Allah. Indeed, Allah of what you do is Seeing." (Quran 2:110)</em></blockquote>
+
+          <h3>How to Calculate Zakat (Step-by-Step)</h3>
+          <p>Calculating Zakat correctly requires understanding which assets are zakatable and how to value them. Here's a comprehensive breakdown by asset type:</p>
+
+          <h4>Zakat on Salary</h4>
+          <p>You do not pay Zakat on your salary directly—Zakat is due on savings from salary that accumulate above nisab for one year. If you earn a salary and save a portion each month, the saved amount becomes zakatable once it reaches nisab and remains there for a complete lunar year.</p>
+          <p><em>Example:</em> If you save $500/month and after one year have $6,000 in savings (above nisab), you pay 2.5% = $150 Zakat. Use the <a href="zakat-on-salary.html">Zakat on Savings calculator</a> for accurate calculations.</p>
+
+          <h4>Zakat on Savings</h4>
+          <p>Cash savings in bank accounts, fixed deposits, and cash at home are all zakatable. Calculate the total balance on your Zakat anniversary date. Include all currencies, converting to one base currency for calculation. Deduct any debts due within the year before applying the 2.5% rate.</p>
+
+          <h4>Zakat on Gold and Silver</h4>
+          <p>Zakat on gold applies when you own 87.48 grams or more. For different purities: 24K gold uses full weight; 22K gold multiply weight by 0.916; 18K gold multiply by 0.75. Silver nisab is 612.36 grams.</p>
+          <p><em>Example:</em> 100 grams of 22K gold at $65/gram pure gold value = 100 × 0.916 × $65 = $5,954. Zakat = $5,954 × 2.5% = $148.85.</p>
+
+          <h4>Zakat on Stocks and Investments</h4>
+          <p>Stocks, mutual funds, ETFs, and investment portfolios are zakatable at their current market value. On your Zakat anniversary, check the total value of your investment portfolio and apply 2.5%. Both capital gains and dividends are included in the calculation.</p>
+
+          <h4>Zakat on Business Assets</h4>
+          <p>Business Zakat includes inventory for sale, cash, and receivables. Fixed assets like machinery and buildings used for business are NOT zakatable. Calculate: (Inventory value + Cash + Receivables) − (Debts + Payables) × 2.5%.</p>
+
+          <h4>Quick Zakat Calculation Steps:</h4>
+          <ol>
+            <li>Determine your Zakat anniversary date</li>
+            <li>List all zakatable assets (gold, silver, cash, investments, inventory)</li>
+            <li>Calculate total current market value</li>
+            <li>Subtract debts due within the year</li>
+            <li>Check if total exceeds nisab threshold</li>
+            <li>If yes, multiply by 2.5% to get your Zakat amount</li>
+            <li>Distribute to eligible recipients</li>
+          </ol>
+
+          <h3>Nisab Explained (Gold vs Silver)</h3>
+          <p>Nisab is the minimum amount of wealth a Muslim must possess before Zakat becomes obligatory. It serves as a threshold to ensure only those with sufficient means are required to pay. Understanding nisab is crucial for correct Zakat calculation.</p>
+
+          <h4>Current Nisab Thresholds (2026)</h4>
+          <p>There are two nisab standards established by Islamic jurisprudence (updated January 2026):</p>
+          <ul>
+            <li><strong>Gold Nisab:</strong> 87.48 grams of pure gold (approximately 7.5 tolas or 3 troy ounces)</li>
+            <li><strong>Silver Nisab:</strong> 612.36 grams of pure silver (approximately 21.6 ounces)</li>
+          </ul>
+          <p>The monetary value of nisab changes daily based on gold and silver market prices. Our calculator automatically uses live prices to show you the current nisab in your chosen currency.</p>
+
+          <h4>Gold vs Silver Debate</h4>
+          <p>A significant debate exists among scholars about which nisab to use. Historically, gold and silver had similar relative values, but today silver is much cheaper, resulting in a lower nisab threshold.</p>
+          <ul>
+            <li>Silver nisab supporters (many Hanafi scholars) argue this includes more people in the obligation, benefiting more recipients</li>
+            <li>Gold nisab supporters argue gold better represents true wealth in the modern economy</li>
+          </ul>
+          <p>Contemporary practice: Many scholars recommend using the silver nisab as it takes a more cautious approach and ensures more people fulfill their obligation. However, consult a qualified scholar for guidance specific to your situation.</p>
+          <p>Learn more on our detailed <a href="gold-vs-silver-nisab.html">Nisab Explained page</a>.</p>
+
+          <h3>Common Zakat Mistakes to Avoid</h3>
+          <p>Many Muslims make errors in Zakat calculation that can invalidate their obligation or result in underpayment. Here are the most common mistakes:</p>
+
+          <h4>1. Paying Zakat Monthly Instead of Yearly</h4>
+          <p>Zakat is calculated once per lunar year, not monthly. Some confuse Zakat with regular charity. While you can give Sadaqah anytime, Zakat is specifically calculated on your annual Zakat anniversary when your wealth has been held for one full year.</p>
+
+          <h4>2. Confusing Zakat with General Charity</h4>
+          <p>Zakat has specific recipients defined in Quran 9:60. Donations to mosques, hospitals, or schools (unless serving eligible recipients) may not count as Zakat. Ensure your Zakat reaches the eight categories of eligible recipients.</p>
+
+          <h4>3. Incorrectly Handling Debts</h4>
+          <p>Only deduct debts that are due within the coming year, not long-term debts like mortgages. Additionally, deducting debt you don't intend to pay soon may be incorrect. Consult a scholar for complex debt situations.</p>
+
+          <h4>4. Paying Zakat on Non-Zakatable Assets</h4>
+          <p>Personal residence, car, furniture, and items for personal use are NOT zakatable. Only wealth held for growth or trade is subject to Zakat. Don't include non-zakatable items in your calculation.</p>
+
+          <h4>5. Forgetting to Include All Assets</h4>
+          <p>Many forget to include retirement accounts, stocks, cryptocurrency, business inventory, or receivables. All zakatable wealth must be included regardless of where it's held or its liquidity.</p>
+
+          <h4>6. Using Incorrect Gold Valuation</h4>
+          <p>When calculating gold Zakat, use the value you would receive if selling (buyback price), not the retail purchase price. Also, account for purity—22K gold should be multiplied by 0.916 to get pure gold equivalent.</p>
+        </article>
+      </section>
+
+      <!-- Multilingual SEO keywords section - visible and useful to users -->
+      <section class="seo-keywords-section" aria-label="Supported Languages">
+        <p class="seo-languages">
+          <strong>Available in:</strong>
+          English · हिंदी (Hindi) · العربية (Arabic) · Español (Spanish) · Français (French) ·
+          中文 (Chinese) · বাংলা (Bengali) · Português (Portuguese) · Русский (Russian) · اردو (Urdu)
+        </p>
+        <p class="seo-search-terms" lang="ar" dir="rtl" style="font-size:0.85em;color:#888;margin-top:0.25rem;">
+          حاسبة الزكاة · زكاة الذهب · زكاة النقود
+        </p>
+        <p class="seo-search-terms" lang="hi" style="font-size:0.85em;color:#888;margin-top:0.25rem;">
+          ज़कात कैलकुलेटर · सोने पर ज़कात · नक़दी पर ज़कात
+        </p>
+        <p class="seo-search-terms" lang="ur" dir="rtl" style="font-size:0.85em;color:#888;margin-top:0.25rem;">
+          زکوٰۃ کیلکولیٹر · سونے پر زکوٰۃ · نقدی پر زکوٰۃ
+        </p>
       </section>
 
       <footer>
-        <span >This calculator provides a general estimate. Consult a qualified scholar for complex cases.</span>
-        <p class="scholar-disclaimer">Scholarly opinions may differ based on madhab and individual circumstances. Please consult a qualified scholar for personalized guidance.</p>
+        <span data-i18n="footer">This calculator provides a general estimate. Consult a qualified scholar for complex cases.</span>
+        <p class="scholar-disclaimer" data-i18n="scholarDisclaimer">Scholarly opinions may differ based on madhab and individual circumstances. Please consult a qualified scholar for personalized guidance.</p>
         <p class="footer-links">
-          <a href="contact.html">Contact</a> |
-          <a href="privacy-policy.html">Privacy</a> |
-          <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+          <a href="contact.html" data-i18n="navContact">Contact</a> |
+          <a href="privacy-policy.html" data-i18n="navPrivacy">Privacy</a> |
+          <a href="terms-and-conditions.html" data-i18n="navTerms">Terms &amp; Conditions</a>
         </p>
       </footer>
     </main>
