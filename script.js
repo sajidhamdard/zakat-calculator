@@ -779,7 +779,7 @@
     }
   };
 
-  let currentLang = 'en';
+  let currentLang = 'hi';
 
   function t(key) {
     const cur = currencies[currentCurrency] || currencies.INR;
