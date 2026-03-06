@@ -1051,6 +1051,8 @@
     });
   });
 
-  // Initial update
-  setLanguage('en');
+  // Initial update – read the selected language from the dropdown so the
+  // HTML attribute (now "hi" by default) drives the initial language.
+  const _initLang = (document.getElementById('langSelect') || {}).value || 'hi';
+  setLanguage(_initLang);
   updateMetalValues();
