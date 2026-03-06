@@ -78,7 +78,7 @@
       },
       "inLanguage": ["en", "hi", "ar", "es", "fr", "zh", "bn", "pt", "ru", "ur"],
       "availableLanguage": ["English", "Hindi", "Arabic", "Spanish", "French", "Chinese", "Bengali", "Portuguese", "Russian", "Urdu"],
-      "currenciesAccepted": "INR, USD, EUR, GBP, SAR, AED, PKR, BDT, IDR, CNY, MYR"
+      "currenciesAccepted": "INR, USD, EUR, GBP, SAR, AED, PKR, BDT, IDR, CNY, MYR, SGD, PHP, THB, VND, KHR, HKD, TWD, KRW, JPY, MNT, LKR, NPR, AFN, MMK, KWD, QAR, BHD, OMR, IQD, JOD, LBP, ILS, TRY, CHF, SEK, NOK, DKK, PLN, CZK, HUF, RON, UAH, RUB, CAD, AUD, NZD, BRL, MXN, COP, ARS, EGP, NGN, KES, ZAR, GHS, TZS, UGX, MAD, DZD, TND, SDG, ETB, KZT, AZN, GEL, UZS"
     }
     </script>
 
@@ -186,17 +186,85 @@
         <div class="control-group">
           <label class="control-label" for="currencySelect">💰</label>
           <select id="currencySelect" class="control-select" onchange="setCurrency(this.value)">
-            <option value="INR">₹ INR</option>
-            <option value="USD" selected>$ USD</option>
-            <option value="EUR">€ EUR</option>
-            <option value="GBP">£ GBP</option>
-            <option value="SAR">ر.س SAR</option>
-            <option value="AED">د.إ AED</option>
-            <option value="PKR">₨ PKR</option>
-            <option value="BDT">৳ BDT</option>
-            <option value="IDR">Rp IDR</option>
-            <option value="CNY">¥ CNY</option>
-            <option value="MYR">RM MYR</option>
+            <optgroup label="Asia &amp; South Asia">
+              <option value="INR">₹ INR – Indian Rupee</option>
+              <option value="PKR">₨ PKR – Pakistani Rupee</option>
+              <option value="BDT">৳ BDT – Bangladeshi Taka</option>
+              <option value="LKR">Rs LKR – Sri Lankan Rupee</option>
+              <option value="NPR">रू NPR – Nepali Rupee</option>
+              <option value="AFN">؋ AFN – Afghan Afghani</option>
+              <option value="MMK">K MMK – Myanmar Kyat</option>
+            </optgroup>
+            <optgroup label="Southeast &amp; East Asia">
+              <option value="IDR">Rp IDR – Indonesian Rupiah</option>
+              <option value="MYR">RM MYR – Malaysian Ringgit</option>
+              <option value="SGD">S$ SGD – Singapore Dollar</option>
+              <option value="PHP">₱ PHP – Philippine Peso</option>
+              <option value="THB">฿ THB – Thai Baht</option>
+              <option value="VND">₫ VND – Vietnamese Dong</option>
+              <option value="KHR">៛ KHR – Cambodian Riel</option>
+              <option value="CNY">¥ CNY – Chinese Yuan</option>
+              <option value="HKD">HK$ HKD – Hong Kong Dollar</option>
+              <option value="TWD">NT$ TWD – Taiwan Dollar</option>
+              <option value="KRW">₩ KRW – South Korean Won</option>
+              <option value="JPY">¥ JPY – Japanese Yen</option>
+              <option value="MNT">₮ MNT – Mongolian Tugrik</option>
+            </optgroup>
+            <optgroup label="Middle East">
+              <option value="SAR">ر.س SAR – Saudi Riyal</option>
+              <option value="AED">د.إ AED – UAE Dirham</option>
+              <option value="KWD">د.ك KWD – Kuwaiti Dinar</option>
+              <option value="QAR">ر.ق QAR – Qatari Riyal</option>
+              <option value="BHD">.د.ب BHD – Bahraini Dinar</option>
+              <option value="OMR">ر.ع. OMR – Omani Rial</option>
+              <option value="IQD">ع.د IQD – Iraqi Dinar</option>
+              <option value="JOD">د.ا JOD – Jordanian Dinar</option>
+              <option value="LBP">ل.ل LBP – Lebanese Pound</option>
+              <option value="ILS">₪ ILS – Israeli Shekel</option>
+              <option value="TRY">₺ TRY – Turkish Lira</option>
+            </optgroup>
+            <optgroup label="Europe &amp; Americas">
+              <option value="USD" selected>$ USD – US Dollar</option>
+              <option value="EUR">€ EUR – Euro</option>
+              <option value="GBP">£ GBP – British Pound</option>
+              <option value="CHF">CHF – Swiss Franc</option>
+              <option value="SEK">kr SEK – Swedish Krona</option>
+              <option value="NOK">kr NOK – Norwegian Krone</option>
+              <option value="DKK">kr DKK – Danish Krone</option>
+              <option value="PLN">zł PLN – Polish Zloty</option>
+              <option value="CZK">Kč CZK – Czech Koruna</option>
+              <option value="HUF">Ft HUF – Hungarian Forint</option>
+              <option value="RON">lei RON – Romanian Leu</option>
+              <option value="UAH">₴ UAH – Ukrainian Hryvnia</option>
+              <option value="RUB">₽ RUB – Russian Ruble</option>
+              <option value="CAD">CA$ CAD – Canadian Dollar</option>
+              <option value="AUD">A$ AUD – Australian Dollar</option>
+              <option value="NZD">NZ$ NZD – New Zealand Dollar</option>
+              <option value="BRL">R$ BRL – Brazilian Real</option>
+              <option value="MXN">MX$ MXN – Mexican Peso</option>
+              <option value="COP">COP$ COP – Colombian Peso</option>
+              <option value="ARS">AR$ ARS – Argentine Peso</option>
+            </optgroup>
+            <optgroup label="Africa">
+              <option value="EGP">E£ EGP – Egyptian Pound</option>
+              <option value="NGN">₦ NGN – Nigerian Naira</option>
+              <option value="KES">KSh KES – Kenyan Shilling</option>
+              <option value="ZAR">R ZAR – South African Rand</option>
+              <option value="GHS">GH₵ GHS – Ghanaian Cedi</option>
+              <option value="TZS">TSh TZS – Tanzanian Shilling</option>
+              <option value="UGX">USh UGX – Ugandan Shilling</option>
+              <option value="MAD">د.م. MAD – Moroccan Dirham</option>
+              <option value="DZD">دج DZD – Algerian Dinar</option>
+              <option value="TND">د.ت TND – Tunisian Dinar</option>
+              <option value="SDG">ج.س. SDG – Sudanese Pound</option>
+              <option value="ETB">Br ETB – Ethiopian Birr</option>
+            </optgroup>
+            <optgroup label="Central Asia">
+              <option value="KZT">₸ KZT – Kazakhstani Tenge</option>
+              <option value="AZN">₼ AZN – Azerbaijani Manat</option>
+              <option value="GEL">₾ GEL – Georgian Lari</option>
+              <option value="UZS">сўм UZS – Uzbekistani Som</option>
+            </optgroup>
           </select>
         </div>
       </div>
@@ -455,11 +523,140 @@
         <h2>Zakat Calculator for Gold, Cash and Savings (Global)</h2>
         <p>
           This free online Zakat Calculator helps Muslims around the world calculate 2.5% Zakat on gold, silver, cash,
-          savings and business assets. The calculator supports multiple languages and the following global currencies:
-          <strong>INR, USD, EUR, GBP, SAR, AED, PKR, BDT, IDR, CNY, MYR</strong>.
+          savings and business assets. The calculator supports multiple languages and <strong>50+ global currencies</strong>
+          including INR, USD, EUR, GBP, SAR, AED, PKR, BDT, IDR, CNY, MYR, SGD, CAD, AUD, EGP, NGN, KES, ZAR, TRY,
+          KWD, QAR, BHD, OMR and many more.
           Whether you are in India, the United States, the United Kingdom, Saudi Arabia, UAE, Pakistan, Bangladesh,
-          Indonesia, China or Malaysia, you can calculate your Zakat in your local currency.
+          Indonesia, China, Malaysia, Nigeria, Kenya, South Africa or anywhere else, you can calculate your Zakat in your local currency.
+          Your data stays private and is never stored on our servers.
         </p>
+      </section>
+
+      <!-- Zakat Guide & Resources Section -->
+      <section class="info-section" aria-label="Zakat Guide and Resources">
+        <article class="info-card">
+          <h2>Zakat Guide &amp; Resources</h2>
+
+          <h3>How to Use This Zakat Calculator</h3>
+          <p>Our free Zakat calculator makes it easy to determine your annual Zakat obligation in minutes. Start by selecting your preferred currency from 50+ supported options. Then, enter your assets in each category: cash and savings, gold and silver (by weight and purity), stocks and investments, business inventory, and any debts owed to you. The calculator automatically fetches live gold and silver prices to determine the current nisab threshold in your currency. Once you've entered all your zakatable wealth, the calculator applies the standard 2.5% Zakat rate and shows your total obligation. You can adjust values anytime—your data stays private and is never stored on our servers.</p>
+
+          <h3>Current 2026 Nisab Thresholds (Gold vs Silver)</h3>
+          <p>Nisab is the minimum amount of wealth you must possess before Zakat becomes obligatory. There are two standards established by Islamic jurisprudence:</p>
+          <ul>
+            <li><strong>Gold Nisab:</strong> 85 grams of pure 24K gold (approximately 2.7 troy ounces). At current 2026 prices, this equals roughly $7,500–$8,000 USD depending on market fluctuations.</li>
+            <li><strong>Silver Nisab:</strong> 595 grams of pure silver (approximately 21 ounces). At current 2026 prices, this equals roughly $500–$600 USD.</li>
+          </ul>
+          <p>Note: Some scholars use 87.48 grams for gold nisab and 612.36 grams for silver nisab based on a different scholarly calculation. Both standards are valid and used by qualified scholars worldwide.</p>
+          <p>Most contemporary scholars recommend using the silver nisab as it is more inclusive and benefits more Zakat recipients. However, some scholars prefer the gold nisab as it better represents meaningful wealth in today's economy. Our calculator displays both values with live prices so you can make an informed choice. The nisab you choose affects whether you're obligated to pay Zakat—if your total zakatable wealth exceeds the nisab and has been held for one lunar year (hawl), Zakat becomes due at 2.5% of your total wealth. Learn more on our detailed <a href="gold-vs-silver-nisab.html">Nisab Guide</a>.</p>
+
+          <h3>Who is Eligible to Receive Zakat?</h3>
+          <p>The Quran specifies eight categories of people eligible to receive Zakat (Surah At-Tawbah, 9:60). Understanding these categories ensures your Zakat reaches those who truly qualify:</p>
+          <ol>
+            <li><strong>The Poor (Al-Fuqara):</strong> Those with little to no income who cannot meet their basic needs.</li>
+            <li><strong>The Needy (Al-Masakin):</strong> Those who have some income but still fall short of meeting essential needs.</li>
+            <li><strong>Zakat Administrators (Al-Amileen):</strong> Those employed to collect, manage, and distribute Zakat funds.</li>
+            <li><strong>New Muslims (Al-Mu'allafatu Qulubuhum):</strong> Those whose hearts are being reconciled to Islam.</li>
+            <li><strong>Freeing Captives (Fir-Riqab):</strong> Historically for freeing slaves; today may include helping those in bondage or trafficking.</li>
+            <li><strong>Those in Debt (Al-Gharimeen):</strong> People overwhelmed by legitimate debt they cannot repay.</li>
+            <li><strong>In the Path of Allah (Fi Sabilillah):</strong> Those striving for Islamic causes and community welfare.</li>
+            <li><strong>Stranded Travelers (Ibn as-Sabil):</strong> Travelers in need who are away from home without resources.</li>
+          </ol>
+          <p><strong>Important:</strong> You cannot give Zakat to your spouse, parents, grandparents, children, or grandchildren—you are already obligated to support them. However, extended family members who qualify under the eight categories may receive your Zakat.</p>
+
+          <h3>What Is Zakat?</h3>
+          <p>Zakat is one of the Five Pillars of Islam and represents an obligatory form of almsgiving that purifies wealth and helps those in need. The word "Zakat" comes from the Arabic root meaning "purification" and "growth," reflecting its dual purpose: cleansing the giver's wealth from greed while helping society's most vulnerable members.</p>
+          <p>Unlike voluntary charity (sadaqah), Zakat is a mandatory religious duty for every Muslim who possesses wealth above a minimum threshold called nisab. The standard rate is 2.5% (or 1/40th) of your total zakatable wealth, calculated once per lunar year. This obligation is mentioned repeatedly in the Quran, often alongside prayer, highlighting its fundamental importance in Islamic practice.</p>
+
+          <h3>Difference Between Zakat and Sadaqah</h3>
+          <p>While both Zakat and Sadaqah involve giving, they differ significantly. Zakat is obligatory with fixed rates and specific recipients, while Sadaqah is voluntary charity given in any amount to anyone in need. Zakat must meet specific conditions (nisab, hawl, zakatable assets), whereas Sadaqah has no minimum requirements. A Muslim cannot replace Zakat with Sadaqah—both serve important but distinct purposes.</p>
+
+          <h3>Difference Between Zakat and Tax</h3>
+          <p>Zakat and tax are fundamentally different obligations. Zakat is a religious duty prescribed by Allah with specific eligible recipients mentioned in the Quran (the poor, needy, Zakat collectors, those in debt, etc.). Tax is a civil obligation imposed by governments for public services. Paying government tax does not fulfill your Zakat obligation—Muslims must fulfill both duties separately.</p>
+
+          <h3>Who Must Pay Zakat?</h3>
+          <p>Zakat is obligatory for every adult, sane Muslim who:</p>
+          <ul>
+            <li>Owns wealth above the nisab threshold (equivalent to 87.48g of gold or 612.36g of silver)</li>
+            <li>Has held that wealth for one complete lunar year (hawl)</li>
+            <li>Has full ownership of the assets (not borrowed or owed to others)</li>
+          </ul>
+
+          <h3>When Does Zakat Become Obligatory?</h3>
+          <p>Zakat becomes obligatory when three conditions are met: you possess nisab (minimum threshold), you maintain that wealth for one lunar year (hawl), and the wealth is of a zakatable type (gold, silver, cash, investments, business inventory). Your Zakat anniversary is the date when you first reached nisab—you calculate and pay on this same date each lunar year.</p>
+          <blockquote><em>"And establish prayer and give Zakat, and whatever good you put forward for yourselves—you will find it with Allah. Indeed, Allah of what you do is Seeing." (Quran 2:110)</em></blockquote>
+
+          <h3>How to Calculate Zakat (Step-by-Step)</h3>
+          <p>Calculating Zakat correctly requires understanding which assets are zakatable and how to value them. Here's a comprehensive breakdown by asset type:</p>
+
+          <h4>Zakat on Salary</h4>
+          <p>You do not pay Zakat on your salary directly—Zakat is due on savings from salary that accumulate above nisab for one year. If you earn a salary and save a portion each month, the saved amount becomes zakatable once it reaches nisab and remains there for a complete lunar year.</p>
+          <p><em>Example:</em> If you save $500/month and after one year have $6,000 in savings (above nisab), you pay 2.5% = $150 Zakat. Use the <a href="zakat-on-salary.html">Zakat on Savings calculator</a> for accurate calculations.</p>
+
+          <h4>Zakat on Savings</h4>
+          <p>Cash savings in bank accounts, fixed deposits, and cash at home are all zakatable. Calculate the total balance on your Zakat anniversary date. Include all currencies, converting to one base currency for calculation. Deduct any debts due within the year before applying the 2.5% rate.</p>
+
+          <h4>Zakat on Gold and Silver</h4>
+          <p>Zakat on gold applies when you own 87.48 grams or more. For different purities: 24K gold uses full weight; 22K gold multiply weight by 0.916; 18K gold multiply by 0.75. Silver nisab is 612.36 grams.</p>
+          <p><em>Example:</em> 100 grams of 22K gold at $65/gram pure gold value = 100 × 0.916 × $65 = $5,954. Zakat = $5,954 × 2.5% = $148.85.</p>
+
+          <h4>Zakat on Stocks and Investments</h4>
+          <p>Stocks, mutual funds, ETFs, and investment portfolios are zakatable at their current market value. On your Zakat anniversary, check the total value of your investment portfolio and apply 2.5%. Both capital gains and dividends are included in the calculation.</p>
+
+          <h4>Zakat on Business Assets</h4>
+          <p>Business Zakat includes inventory for sale, cash, and receivables. Fixed assets like machinery and buildings used for business are NOT zakatable. Calculate: (Inventory value + Cash + Receivables) − (Debts + Payables) × 2.5%.</p>
+
+          <h4>Quick Zakat Calculation Steps:</h4>
+          <ol>
+            <li>Determine your Zakat anniversary date</li>
+            <li>List all zakatable assets (gold, silver, cash, investments, inventory)</li>
+            <li>Calculate total current market value</li>
+            <li>Subtract debts due within the year</li>
+            <li>Check if total exceeds nisab threshold</li>
+            <li>If yes, multiply by 2.5% to get your Zakat amount</li>
+            <li>Distribute to eligible recipients</li>
+          </ol>
+
+          <h3>Nisab Explained (Gold vs Silver)</h3>
+          <p>Nisab is the minimum amount of wealth a Muslim must possess before Zakat becomes obligatory. It serves as a threshold to ensure only those with sufficient means are required to pay. Understanding nisab is crucial for correct Zakat calculation.</p>
+
+          <h4>Current Nisab Thresholds (2026)</h4>
+          <p>There are two nisab standards established by Islamic jurisprudence (updated January 2026):</p>
+          <ul>
+            <li><strong>Gold Nisab:</strong> 87.48 grams of pure gold (approximately 7.5 tolas or 3 troy ounces)</li>
+            <li><strong>Silver Nisab:</strong> 612.36 grams of pure silver (approximately 21.6 ounces)</li>
+          </ul>
+          <p>The monetary value of nisab changes daily based on gold and silver market prices. Our calculator automatically uses live prices to show you the current nisab in your chosen currency.</p>
+
+          <h4>Gold vs Silver Debate</h4>
+          <p>A significant debate exists among scholars about which nisab to use. Historically, gold and silver had similar relative values, but today silver is much cheaper, resulting in a lower nisab threshold.</p>
+          <ul>
+            <li>Silver nisab supporters (many Hanafi scholars) argue this includes more people in the obligation, benefiting more recipients</li>
+            <li>Gold nisab supporters argue gold better represents true wealth in the modern economy</li>
+          </ul>
+          <p>Contemporary practice: Many scholars recommend using the silver nisab as it takes a more cautious approach and ensures more people fulfill their obligation. However, consult a qualified scholar for guidance specific to your situation.</p>
+          <p>Learn more on our detailed <a href="gold-vs-silver-nisab.html">Nisab Explained page</a>.</p>
+
+          <h3>Common Zakat Mistakes to Avoid</h3>
+          <p>Many Muslims make errors in Zakat calculation that can invalidate their obligation or result in underpayment. Here are the most common mistakes:</p>
+
+          <h4>1. Paying Zakat Monthly Instead of Yearly</h4>
+          <p>Zakat is calculated once per lunar year, not monthly. Some confuse Zakat with regular charity. While you can give Sadaqah anytime, Zakat is specifically calculated on your annual Zakat anniversary when your wealth has been held for one full year.</p>
+
+          <h4>2. Confusing Zakat with General Charity</h4>
+          <p>Zakat has specific recipients defined in Quran 9:60. Donations to mosques, hospitals, or schools (unless serving eligible recipients) may not count as Zakat. Ensure your Zakat reaches the eight categories of eligible recipients.</p>
+
+          <h4>3. Incorrectly Handling Debts</h4>
+          <p>Only deduct debts that are due within the coming year, not long-term debts like mortgages. Additionally, deducting debt you don't intend to pay soon may be incorrect. Consult a scholar for complex debt situations.</p>
+
+          <h4>4. Paying Zakat on Non-Zakatable Assets</h4>
+          <p>Personal residence, car, furniture, and items for personal use are NOT zakatable. Only wealth held for growth or trade is subject to Zakat. Don't include non-zakatable items in your calculation.</p>
+
+          <h4>5. Forgetting to Include All Assets</h4>
+          <p>Many forget to include retirement accounts, stocks, cryptocurrency, business inventory, or receivables. All zakatable wealth must be included regardless of where it's held or its liquidity.</p>
+
+          <h4>6. Using Incorrect Gold Valuation</h4>
+          <p>When calculating gold Zakat, use the value you would receive if selling (buyback price), not the retail purchase price. Also, account for purity—22K gold should be multiplied by 0.916 to get pure gold equivalent.</p>
+        </article>
       </section>
 
       <!-- Multilingual SEO keywords section - visible and useful to users -->
