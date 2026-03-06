@@ -12,10 +12,8 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Updated title to rank for calculator searches including India/Rupees queries -->
-    <title>Zakat Calculator India – Calculate Zakat in Rupees | ZakatCalculation.in</title>
-    <!-- Updated meta description with India/Hindi/Rupees keywords (item F) -->
-    <meta name="description" content="Free Zakat Calculator India 2026. Calculate 2.5% Zakat on gold, silver, cash &amp; savings in Rupees. जकात कैलकुलेटर – जानें 70000 की जकात कितनी होती है। Multilingual: Hindi, English, Arabic &amp; more." />
+    <title>Zakat Calculator (2.5%) | Calculate Zakat on Gold, Cash &amp; Savings</title>
+    <meta name="description" content="Free Zakat Calculator to calculate 2.5% Zakat on gold, silver, cash, savings and business assets. Supports multiple languages and currencies for Muslims worldwide." />
     <meta name="keywords" content="zakat calculator, zakat, zakat calculation, islamic finance, gold zakat, silver zakat, ज़कात कैलकुलेटर, ज़कात, nisab, حاسبة الزكاة, calculadora de zakat, calculateur de zakat, 扎卡特计算器, যাকাত ক্যালকুলেটর, calculadora de zakat, калькулятор заката, زکوٰۃ کیلکولیٹر" />
     <meta name="author" content="Sajid Ali Khan" />
     <meta name="robots" content="index, follow" />
@@ -129,22 +127,6 @@
             "@type": "Answer",
             "text": "Zakat is 2.5% on your net zakatable wealth - cash, bank balance, gold, silver, business stock, and investments minus short-term liabilities - not just savings."
           }
-        },
-        {
-          "@type": "Question",
-          "name": "70000 ki zakat kitni hoti hai?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "If someone has ₹70,000 and it qualifies for zakat, the zakat amount is 2.5%. 70,000 × 2.5% = ₹1,750. So the Zakat on ₹70,000 would be ₹1,750."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "जकात की गणना कैसे करें?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "जकात की गणना का फार्मूला है: (कुल संपत्ति − देनदारियां) × 2.5%। सभी जकात योग्य संपत्तियां जोड़ें, अल्पकालिक देनदारियां घटाएं, और अगर बाकी रकम निसाब से अधिक है तो उस पर 2.5% जकात देना अनिवार्य है।"
-          }
         }
       ]
     }
@@ -185,19 +167,12 @@
       </div>
     </nav>
     <main class="container">
-      <h1>Zakat Calculator – Calculate 2.5% Zakat on Gold, Cash &amp; Savings</h1>
-      <p lang="hi">
-        यह जकात कैलकुलेटर आपको सोना, नकद, बैंक बैलेंस और निवेश पर 2.5% जकात की गणना करने में मदद करता है।
-        आप अपनी कुल संपत्ति और देनदारियों के आधार पर अपनी सालाना जकात आसानी से निकाल सकते हैं।
-      </p>
-      <p>Available in Hindi, English, Arabic, Urdu and other languages.</p>
       <div class="controls-row">
         <div class="control-group">
           <label class="control-label" for="langSelect">🌐</label>
           <select id="langSelect" class="control-select" onchange="setLanguage(this.value)">
-          <!-- Hindi set as default language for Indian users (item E) -->
-          <option value="hi" selected>हिंदी</option>
-          <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="en" selected>English</option>
             <option value="ar">العربية</option>
             <option value="es">Español</option>
             <option value="fr">Français</option>
@@ -402,13 +377,10 @@
 
       <section class="info-section" aria-label="ज़कात जानकारी और संदर्भ">
         <article class="info-card">
-          <h2>How Zakat Calculation Works</h2>
-          <p>
-            Formula used: <strong>(Total Zakatable Assets − Payable Liabilities) × 2.5%</strong>
-          </p>
-          <p lang="hi">
-            जकात तब अनिवार्य होती है जब संपत्ति निसाब तक पहुंच जाए (Nisab)
-            और एक पूरा चंद्र वर्ष (Hawl) गुजर जाए।
+          <h3 data-i18n="infoTitle1">यह कैलकुलेटर कैसे काम करता है</h3>
+          <p data-i18n-html="infoContent1">
+            इस्तेमाल किया गया फ़ॉर्मूला: <strong>(कुल ज़कात योग्य संपत्ति − देय देनदारियां) × 2.5%</strong>।
+            ज़कात तब लाज़िम होती है जब आपकी खालिस दौलत निसाब के बराबर या उससे अधिक हो और एक क़मरी साल तक बनी रहे।
           </p>
           <table class="quick-table">
             <thead>
@@ -434,41 +406,78 @@
         </article>
 
         <article class="info-card">
-          <h2>What is Included in Zakat</h2>
-          <ul>
-            <li><strong lang="hi">शामिल करें:</strong> नकद, बैंक बैलेंस, सोना और चांदी, निवेश, बिजनेस स्टॉक।</li>
-            <li><strong lang="hi">शामिल न करें:</strong> मुख्य निवास, निजी उपयोग की गाड़ी, घरेलू सामान, बिक्री के लिए नहीं होने वाले उपकरण।</li>
+          <h3 data-i18n="infoTitle2">क्या शामिल करें और क्या नहीं</h3>
+          <ul data-i18n-html="infoContent2">
+            <li><strong>शामिल करें:</strong> नकद, बैंक बचत, सोना/चांदी, निवेश, बिजनेस स्टॉक।</li>
+            <li><strong>शामिल न करें:</strong> मुख्य निवास, क्रिप्टो, डिजिटल मुद्रा, निजी उपयोग की गाड़ी, घरेलू सामान, बिक्री के लिए नहीं होने वाले उपकरण।</li>
+            <li><strong>देनदारियां:</strong> देय रकम घटाएं।</li>
           </ul>
         </article>
 
         <article class="info-card">
-          <h2>Zakat Calculator FAQ</h2>
-
+          <h3 data-i18n="infoTitle3">फ़ौरी सवाल-जवाब</h3>
           <details class="faq-item">
-            <summary>70000 ki zakat kitni hoti hai?</summary>
-            <p lang="hi">
-              Agar kisi ke paas ₹70,000 ho aur वह निसाब से ऊपर हो तो जकात = 2.5%<br />
-              <strong>₹70,000 × 2.5% = ₹1,750</strong>
+            <summary data-i18n="faq1Q">क्या यह कैलकुलेटर ज़कात अल-फित्र के लिए है?</summary>
+            <p data-i18n="faq1A">नहीं। यह कैलकुलेटर सालाना ज़कात अल-माल (माल की ज़कात) के लिए है, ज़कात अल-फ़ित्र के लिए नहीं।</p>
+          </details>
+          <details class="faq-item">
+            <summary data-i18n="faq2Q">क्या मैं नियत तिथि से पहले ज़कात दे सकता/सकती हूँ?</summary>
+            <p data-i18n="faq2A">हाँ, पहले अदायगी करना आम तौर पर जायज़ है। बिना मुनासिब वजह ताख़ीर करना दुरुस्त नहीं है।</p>
+          </details>
+          <details class="faq-item">
+            <summary data-i18n="faq3Q">क्या मैं परिवार को ज़कात दे सकता/सकती हूँ?</summary>
+            <p data-i18n="faq3A">
+              मुनासिब विस्तारित रिश्तेदार (जैसे भाई-बहन, चचेरे/ममेरे रिश्तेदार) पात्र होने पर ज़कात ले सकते हैं।
+              जीवनसाथी, माता-पिता या बच्चों को ज़कात नहीं दी जा सकती।
             </p>
           </details>
-
           <details class="faq-item">
-            <summary lang="hi">जकात की गणना कैसे करें?</summary>
-            <p>Zakat = (Total wealth – liabilities) × 2.5%</p>
-            <p lang="hi">सभी जकात योग्य संपत्तियां जोड़ें, देनदारियां घटाएं, और अगर बाकी रकम निसाब से अधिक हो तो उस पर 2.5% जकात देना अनिवार्य है।</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>What is the Zakat percentage?</summary>
-            <p>Zakat is <strong>2.5%</strong> (1/40) of your zakatable wealth.</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>What is Nisab?</summary>
-            <p>Nisab is the minimum wealth required before Zakat becomes obligatory.
-              Gold Nisab is 87.48 g; Silver Nisab is 612.36 g (recommended).</p>
-          </details>
+          <summary data-i18n="faq4Q">क्या प्रॉपर्टी पर ज़कात देनी होती है?</summary>
+          <p data-i18n="faq4A">
+            यदि प्रॉपर्टी बेचने (निवेश या व्यापार) के इरादे से खरीदी गई हो, तो उसकी मौजूदा बाजार कीमत पर ज़कात देना जरूरी है।
+            लेकिन अगर प्रॉपर्टी रहने के लिए या केवल रखने (बिना बेचने के इरादे) के लिए ली गई है,
+            तो उस पर ज़कात नहीं है।
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faqSilverNisabQ">Why is Silver Nisab Recommended?</summary>
+          <ul data-i18n-html="faqSilverNisabA">
+            <li>Silver Nisab (612.36g) results in a lower threshold.</li>
+            <li>It benefits more people in need.</li>
+            <li>Many contemporary scholars recommend using Silver Nisab for mixed assets (cash + gold + business assets).</li>
+          </ul>
+        </details>
         </article>
+      </section>
+
+      <!-- SEO Content Section -->
+      <section class="seo-section" aria-label="Zakat Calculator Global Information">
+        <h2>Zakat Calculator for Gold, Cash and Savings (Global)</h2>
+        <p>
+          This free online Zakat Calculator helps Muslims around the world calculate 2.5% Zakat on gold, silver, cash,
+          savings and business assets. The calculator supports multiple languages and the following global currencies:
+          <strong>INR, USD, EUR, GBP, SAR, AED, PKR, BDT, IDR, CNY, MYR</strong>.
+          Whether you are in India, the United States, the United Kingdom, Saudi Arabia, UAE, Pakistan, Bangladesh,
+          Indonesia, China or Malaysia, you can calculate your Zakat in your local currency.
+        </p>
+      </section>
+
+      <!-- Multilingual SEO keywords section - visible and useful to users -->
+      <section class="seo-keywords-section" aria-label="Supported Languages">
+        <p class="seo-languages">
+          <strong>Available in:</strong>
+          English · हिंदी (Hindi) · العربية (Arabic) · Español (Spanish) · Français (French) ·
+          中文 (Chinese) · বাংলা (Bengali) · Português (Portuguese) · Русский (Russian) · اردو (Urdu)
+        </p>
+        <p class="seo-search-terms" lang="ar" dir="rtl" style="font-size:0.85em;color:#888;margin-top:0.25rem;">
+          حاسبة الزكاة · زكاة الذهب · زكاة النقود
+        </p>
+        <p class="seo-search-terms" lang="hi" style="font-size:0.85em;color:#888;margin-top:0.25rem;">
+          ज़कात कैलकुलेटर · सोने पर ज़कात · नक़दी पर ज़कात
+        </p>
+        <p class="seo-search-terms" lang="ur" dir="rtl" style="font-size:0.85em;color:#888;margin-top:0.25rem;">
+          زکوٰۃ کیلکولیٹر · سونے پر زکوٰۃ · نقدی پر زکوٰۃ
+        </p>
       </section>
 
       <footer>
